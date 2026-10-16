@@ -32,6 +32,14 @@ function calibrarPotenciasRecarga(tipo, bateria, marca) {
   const brandNorm = (marca || '').toLowerCase();
   const bat = Number(bateria) || 0;
 
+  if (tipo === 'EREV' || tipo === 'REEV') {
+    // Autonomia Estendida (EREV / REEV)
+    if (bat >= 35) {
+      return { maxAc: 11.0, maxDc: 60.0 };
+    }
+    return { maxAc: 6.6, maxDc: 30.0 };
+  }
+
   if (tipo === 'PHEV') {
     // Híbridos Plug-in
     if (brandNorm.includes('porsche')) {
@@ -113,7 +121,7 @@ function baixarCatalogoHtml() {
 }
 
 /**
- * Extrai veículos BEV e PHEV a partir do conteúdo HTML/RSC do eletricos.app
+ * Extrai veículos BEV, PHEV e EREV a partir do conteúdo HTML/RSC do eletricos.app
  */
 function extrairVeiculosDoHtml(html) {
   const secoes = html.split('<a class="block" href="/veiculo/');
@@ -149,7 +157,7 @@ function extrairVeiculosDoHtml(html) {
     const batMatch = trechoCard.match(/Bateria<\/div><div class="font-bold text-sm ">([0-9]+(?:,[0-9]+)?)\s*kWh<\/div>/);
     const battery = batMatch ? parseFloat(batMatch[1].replace(',', '.')) : 0;
 
-    // Classificação estrita: Apenas BEV ou PHEV
+    // Classificação estrita: BEV, PHEV ou REEV (Autonomia Estendida)
     let tipoPadronizado = null;
     const tipoTextoLower = tipoTexto.toLowerCase();
     const slugLower = slug.toLowerCase();
@@ -158,10 +166,20 @@ function extrairVeiculosDoHtml(html) {
     if (tipoTextoLower.includes('elétrico') || slugLower.includes('-bev') || modeloLower.includes('bev')) {
       tipoPadronizado = 'BEV';
     } else if (
+      tipoTextoLower.includes('autonomia estendida') ||
+      tipoTextoLower.includes('extensor') ||
+      tipoTextoLower.includes('erev') ||
+      tipoTextoLower.includes('reev') ||
+      slugLower.includes('erev') ||
+      slugLower.includes('reev') ||
+      modeloLower.includes('erev') ||
+      modeloLower.includes('reev')
+    ) {
+      tipoPadronizado = 'REEV';
+    } else if (
       tipoTextoLower.includes('plug-in') ||
       slugLower.includes('-phev') ||
       modeloLower.includes('phev') ||
-      slugLower.includes('reev') ||
       tipoTextoLower.includes('híbrido plug-in')
     ) {
       tipoPadronizado = 'PHEV';
@@ -177,8 +195,8 @@ function extrairVeiculosDoHtml(html) {
         model: modelo,
         year: ano,
         type: tipoPadronizado,
-        battery: battery || (tipoPadronizado === 'BEV' ? 60 : 18),
-        range: range || (tipoPadronizado === 'BEV' ? 300 : 60),
+        battery: battery || (tipoPadronizado === 'BEV' ? 60 : (tipoPadronizado === 'REEV' || tipoPadronizado === 'EREV' ? 28 : 18)),
+        range: range || (tipoPadronizado === 'BEV' ? 300 : (tipoPadronizado === 'REEV' || tipoPadronizado === 'EREV' ? 140 : 60)),
         maxAc: potencias.maxAc,
         maxDc: potencias.maxDc,
         price: preco,
@@ -189,6 +207,25 @@ function extrairVeiculosDoHtml(html) {
   }
 
   return veiculos;
+}
+
+/**
+ * Conjunto de termos de propulsão e conectores genéricos
+ * que não devem ser usados sozinhos para associar modelos diferentes.
+ */
+const TERMOS_PROPULSAO = new Set([
+  'hibrido', 'híbrido', 'reev', 'erev', 'phev', 'bev', 'ev',
+  'eletrico', 'elétrico', 'plugin', 'plug-in', 'plug', 'in'
+]);
+
+function extrairTokensModelo(modeloStr) {
+  return (modeloStr || '')
+    .toLowerCase()
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .replace(/[^a-z0-9\s]/g, ' ')
+    .split(/\s+/)
+    .filter(t => t.length >= 2 && !TERMOS_PROPULSAO.has(t));
 }
 
 /**
@@ -211,20 +248,42 @@ async function verificarNovidades() {
       // 1. Checa ID direto
       if (vLocal.id === vRemoto.id) return true;
 
+      // 2. Mesma marca obrigatória
       const vLocalMarcaNorm = normalizarTexto(vLocal.brand);
-      const vLocalModeloNorm = normalizarTexto(vLocal.model);
+      if (vLocalMarcaNorm !== marcaNorm) return false;
 
-      if (vLocalMarcaNorm === marcaNorm) {
-        if (modeloNorm.includes(vLocalModeloNorm) || vLocalModeloNorm.includes(modeloNorm)) {
-          return true;
+      // 3. Tipo de propulsão: BEV (100% elétrico) NUNCA é igual a REEV/EREV ou PHEV
+      const tipoLocal = (vLocal.type || '').toUpperCase();
+      const tipoRemoto = (vRemoto.type || '').toUpperCase();
+      const isReevLocal = tipoLocal === 'REEV' || tipoLocal === 'EREV';
+      const isReevRemoto = tipoRemoto === 'REEV' || tipoRemoto === 'EREV';
+      if (isReevLocal !== isReevRemoto) return false;
+      if (tipoLocal !== tipoRemoto && !isReevLocal) {
+        if (tipoLocal === 'BEV' || tipoRemoto === 'BEV') return false;
+      }
+
+      // 4. Modelo com string normalizada idêntica
+      const vLocalModeloNorm = normalizarTexto(vLocal.model);
+      if (vLocalModeloNorm === modeloNorm) return true;
+
+      // 5. Comparação por tokens distintivos do modelo
+      const tokensLocal = extrairTokensModelo(vLocal.model);
+      const tokensRemoto = extrairTokensModelo(vRemoto.model);
+
+      if (tokensLocal.length > 0 && tokensRemoto.length > 0) {
+        // O identificador base (primeiro termo, ex: 'b10', 'c10', 'dolphin') DEVE coincidir
+        if (tokensLocal[0] !== tokensRemoto[0]) {
+          return false;
         }
 
-        // Checagem de palavras-chave do modelo
-        const pRemoto = vRemoto.model.toLowerCase().split(/\s+/).filter(p => p.length > 2);
-        const pLocal = vLocal.model.toLowerCase().split(/\s+/).filter(p => p.length > 2);
-        const palavrasComuns = pRemoto.filter(p => pLocal.includes(p));
-        if (palavrasComuns.length >= 2) return true;
+        // Se ambos compartilham o nome base e termos distintivos principais
+        const palavrasComuns = tokensRemoto.filter(p => tokensLocal.includes(p));
+        const minEsperado = Math.min(tokensLocal.length, tokensRemoto.length);
+        if (palavrasComuns.length >= 2 || palavrasComuns.length >= minEsperado) {
+          return true;
+        }
       }
+
       return false;
     });
 

@@ -1,5 +1,5 @@
 /**
- * Base oficial de veículos com marcas e especificações técnicas (BEV e PHEV)
+ * Base oficial de veículos com marcas e especificações técnicas (BEV, PHEV e EREV)
  * Homologação padronizada conforme ciclo Inmetro (PBEV) brasileiro.
  */
 function obterListaVeiculos() {
@@ -94,7 +94,7 @@ function obterListaVeiculos() {
     // Leapmotor
     { id: "leapmotor_b10_bev", type: "BEV", brand: "Leapmotor", model: "B10 BEV", battery: 56.2, maxAc: 11.0, maxDc: 70.0, range: 292 },
     { id: "leapmotor_c10_eletrico_bev_699_kwh", type: "BEV", brand: "Leapmotor", model: "C10 Elétrico - BEV 69.9 kWh", battery: 69.9, maxAc: 11.0, maxDc: 84.0, range: 362 },
-    { id: "leapmotor_c10_ultra_hibrido_reev_15_plug_in_phev", type: "PHEV", brand: "Leapmotor", model: "C10 Ultra Híbrido - REEV 1.5 Plug-in", battery: 28.4, maxAc: 6.6, maxDc: 30.0, range: 140 },
+    { id: "leapmotor_c10_ultra_hibrido_reev_15_plug_in_phev", type: "EREV", brand: "Leapmotor", model: "C10 Ultra Híbrido - REEV 1.5 Plug-in", battery: 28.4, maxAc: 6.6, maxDc: 30.0, range: 140 },
 
     // Lexus
     { id: "lexus_rz_500e", type: "BEV", brand: "Lexus", model: "RZ 500e", battery: 77.0, maxAc: 11.0, maxDc: 150.0, range: 380 },

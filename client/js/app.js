@@ -120,7 +120,7 @@
     // Leapmotor
     { id: "leapmotor_b10_bev", type: "BEV", brand: "Leapmotor", model: "B10 BEV", battery: 56.2, maxAc: 11, maxDc: 70, range: 292 },
     { id: "leapmotor_c10_eletrico_bev_699_kwh", type: "BEV", brand: "Leapmotor", model: "C10 Elétrico - BEV 69.9 kWh", battery: 69.9, maxAc: 11, maxDc: 84, range: 362 },
-    { id: "leapmotor_c10_ultra_hibrido_reev_15_plug_in_phev", type: "PHEV", brand: "Leapmotor", model: "C10 Ultra Híbrido - REEV 1.5 Plug-in", battery: 28.4, maxAc: 6.6, maxDc: 30, range: 140 },
+    { id: "leapmotor_c10_ultra_hibrido_reev_15_plug_in_phev", type: "EREV", brand: "Leapmotor", model: "C10 Ultra Híbrido - REEV 1.5 Plug-in", battery: 28.4, maxAc: 6.6, maxDc: 30, range: 140 },
 
     // Lexus
     { id: "lexus_rz_500e", type: "BEV", brand: "Lexus", model: "RZ 500e", battery: 77, maxAc: 11, maxDc: 150, range: 380 },
@@ -367,7 +367,15 @@
         } else {
           // Nos demais filtros, só traz ativos
           if (v.active === false) return false;
-          if (selectedTypeFilter !== 'ALL' && v.type !== selectedTypeFilter) return false;
+          if (selectedTypeFilter !== 'ALL') {
+            const isReevFilter = selectedTypeFilter === 'REEV' || selectedTypeFilter === 'EREV';
+            const isReevVehicle = v.type === 'REEV' || v.type === 'EREV';
+            if (isReevFilter) {
+              if (!isReevVehicle) return false;
+            } else if (v.type !== selectedTypeFilter) {
+              return false;
+            }
+          }
         }
 
         const matchesBrand = (selectedBrandFilter === 'ALL') || (v.brand === selectedBrandFilter);
@@ -409,7 +417,14 @@
     function renderBrandPills() {
       const availableVehicles = (selectedTypeFilter === 'INACTIVE')
         ? VEHICLE_DATA.filter(v => v.active === false)
-        : VEHICLE_DATA.filter(v => v.active !== false && (selectedTypeFilter === 'ALL' || v.type === selectedTypeFilter));
+        : VEHICLE_DATA.filter(v => {
+            if (v.active === false) return false;
+            if (selectedTypeFilter === 'ALL') return true;
+            if (selectedTypeFilter === 'REEV' || selectedTypeFilter === 'EREV') {
+              return v.type === 'REEV' || v.type === 'EREV';
+            }
+            return v.type === selectedTypeFilter;
+          });
 
       const brands = ['ALL', ...new Set(availableVehicles.map(v => v.brand))].sort((a, b) => {
         if (a === 'ALL') return -1;
@@ -488,8 +503,15 @@
         const isInativo = (v.active === false);
         item.className = 'model-card-item' + (isInativo ? ' is-inactive' : '');
         
-        const typeClass = (v.type === 'BEV') ? 'bev' : 'phev';
-        const typeLabel = (v.type === 'BEV') ? '100% ELÉTRICO' : 'HÍBRIDO PLUG-IN';
+        let typeClass = 'bev';
+        let typeLabel = '100% ELÉTRICO';
+        if (v.type === 'PHEV') {
+          typeClass = 'phev';
+          typeLabel = 'HÍBRIDO PLUG-IN';
+        } else if (v.type === 'EREV' || v.type === 'REEV') {
+          typeClass = 'reev';
+          typeLabel = 'REEV';
+        }
 
         let adminActionsHtml = '';
         if (isInativo) {
@@ -2626,7 +2648,7 @@
           let detailsHtml = `
             <div class="solicitacao-detail-item">
               <span class="label">Propulsão</span>
-              <span class="val">${s.type ? (s.type === 'BEV' ? '⚡ 100% Elétrico (BEV)' : '🔋 Plug-in (PHEV)') : 'Não informada'}</span>
+              <span class="val">${s.type ? (s.type === 'BEV' ? '⚡ 100% Elétrico (BEV)' : (s.type === 'EREV' || s.type === 'REEV' ? '🔄 Extensor (REEV)' : '🔋 Plug-in (PHEV)')) : 'Não informada'}</span>
             </div>
             <div class="solicitacao-detail-item">
               <span class="label">Bateria</span>
@@ -2878,9 +2900,15 @@
         card.className = 'sync-veiculo-card';
         card.dataset.index = index;
 
-        const isBev = v.type === 'BEV';
-        const badgeClass = isBev ? 'bev' : 'phev';
-        const badgeLabel = isBev ? '100% Elétrico (BEV)' : 'Plug-in (PHEV)';
+        let badgeClass = 'phev';
+        let badgeLabel = 'Plug-in (PHEV)';
+        if (v.type === 'BEV') {
+          badgeClass = 'bev';
+          badgeLabel = '100% Elétrico (BEV)';
+        } else if (v.type === 'EREV' || v.type === 'REEV') {
+          badgeClass = 'reev';
+          badgeLabel = 'Extensor (REEV)';
+        }
 
         card.innerHTML = `
           <div class="sync-check-wrap">

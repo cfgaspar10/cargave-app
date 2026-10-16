@@ -1022,6 +1022,12 @@
       color: #a78bfa;
       border: 1px solid rgba(139, 92, 246, 0.3);
     }
+    .type-badge.erev,
+    .type-badge.reev {
+      background: rgba(6, 182, 212, 0.15);
+      color: #06b6d4;
+      border: 1px solid rgba(6, 182, 212, 0.35);
+    }
     .model-card-specs {
       font-size: 11px;
       color: var(--text-secondary);
@@ -2410,6 +2416,12 @@
   background: rgba(87, 143, 202, 0.18);
   color: var(--accent-blue-light);
   border: 1px solid rgba(87, 143, 202, 0.4);
+}
+.sync-veiculo-badge.erev,
+.sync-veiculo-badge.reev {
+  background: rgba(6, 182, 212, 0.18);
+  color: #06b6d4;
+  border: 1px solid rgba(6, 182, 212, 0.4);
 }
 .sync-specs-chips {
   display: flex;

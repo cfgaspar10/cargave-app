@@ -25,7 +25,7 @@
   <link rel="icon" type="image/png" href="assets/favicon.png">
   
   <!-- Estilos desacoplados -->
-  <link rel="stylesheet" href="css/estilos.css">
+  <link rel="stylesheet" href="css/estilos.css?v=20261016_3">
 </head>
 <body>
 
@@ -588,6 +588,7 @@
         <button type="button" class="filter-type-pill active" data-type="ALL">Todos</button>
         <button type="button" class="filter-type-pill" data-type="BEV">⚡ 100% Elétrico (BEV)</button>
         <button type="button" class="filter-type-pill" data-type="PHEV">🔋 Plug-in (PHEV)</button>
+        <button type="button" class="filter-type-pill" data-type="REEV">🔄 Extensor (REEV)</button>
         <button type="button" class="filter-type-pill admin-only-element filter-status-pill" id="filter-inativos-btn" data-type="INACTIVE" title="Exibir veículos desativados / lixeira">🚫 Desativados (<span id="inativos-count">0</span>)</button>
       </div>
 
@@ -658,6 +659,7 @@
             <select id="novo-veiculo-tipo" class="admin-form-input" required>
               <option value="BEV">⚡ 100% Elétrico (BEV)</option>
               <option value="PHEV">🔋 Híbrido Plug-in (PHEV)</option>
+              <option value="REEV">🔄 Autonomia Estendida (REEV)</option>
             </select>
           </div>
 
@@ -733,6 +735,7 @@
             <select id="sugerir-tipo" class="admin-form-input">
               <option value="BEV">⚡ 100% Elétrico (BEV)</option>
               <option value="PHEV">🔋 Híbrido Plug-in (PHEV)</option>
+              <option value="REEV">🔄 Autonomia Estendida (REEV)</option>
               <option value="">❓ Não sei informar</option>
             </select>
           </div>
@@ -806,7 +809,7 @@
       <div class="modal-header">
         <div class="modal-title-box">
           <h3>🔄 Sincronização com eletricos.app</h3>
-          <p>Varredura automática e importação de modelos BEV e PHEV homologados</p>
+          <p>Varredura automática e importação de modelos BEV, PHEV e REEV homologados</p>
         </div>
         <button type="button" class="modal-close-btn" id="close-sync-modal">✕</button>
       </div>
@@ -825,7 +828,7 @@
         <div class="sync-uptodate-box">
           <div class="sync-big-emoji">🎉</div>
           <h4>Catálogo 100% Atualizado!</h4>
-          <p>Todos os modelos 100% elétricos (BEV) e híbridos plug-in (PHEV) encontrados na fonte externa já constam cadastrados na aplicação.</p>
+          <p>Todos os modelos 100% elétricos (BEV), híbridos plug-in (PHEV) e autonomia estendida (REEV) encontrados na fonte externa já constam cadastrados na aplicação.</p>
           <div class="sync-kpi-row">
             <div class="sync-kpi-card">
               <span class="kpi-label">Veículos na Fonte</span>
@@ -900,8 +903,8 @@
   <div id="app-toast" class="app-toast" role="alert" aria-live="polite"></div>
 
   <!-- Adaptador de API e Script da Aplicação -->
-  <script src="js/api.js"></script>
-  <script src="js/app.js"></script>
-  <script src="js/pwa.js"></script>
+  <script src="js/api.js?v=20261016_3"></script>
+  <script src="js/app.js?v=20261016_3"></script>
+  <script src="js/pwa.js?v=20261016_3"></script>
 </body>
 </html>

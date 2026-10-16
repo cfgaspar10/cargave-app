@@ -60,9 +60,10 @@ async function criarVeiculo(req, res) {
       return res.status(400).json({ erro: 'Todos os campos obrigatórios devem ser preenchidos.' });
     }
 
-    const tipoPadronizado = String(type).toUpperCase();
-    if (!['BEV', 'PHEV'].includes(tipoPadronizado)) {
-      return res.status(400).json({ erro: 'O tipo deve ser "BEV" (100% Elétrico) ou "PHEV" (Híbrido Plug-in).' });
+    let tipoPadronizado = String(type).toUpperCase();
+    if (tipoPadronizado === 'EREV') tipoPadronizado = 'REEV';
+    if (!['BEV', 'PHEV', 'REEV'].includes(tipoPadronizado)) {
+      return res.status(400).json({ erro: 'O tipo deve ser "BEV" (100% Elétrico), "PHEV" (Híbrido Plug-in) ou "REEV" (Autonomia Estendida).' });
     }
 
     const id = idCustomizado && idCustomizado.trim() !== '' 
@@ -108,7 +109,14 @@ async function atualizarVeiculo(req, res) {
     const dataToUpdate = {};
     if (brand !== undefined) dataToUpdate.brand = brand.trim();
     if (model !== undefined) dataToUpdate.model = model.trim();
-    if (type !== undefined) dataToUpdate.type = String(type).toUpperCase();
+    if (type !== undefined) {
+      let t = String(type).toUpperCase();
+      if (t === 'EREV') t = 'REEV';
+      if (!['BEV', 'PHEV', 'REEV'].includes(t)) {
+        return res.status(400).json({ erro: 'O tipo deve ser "BEV" (100% Elétrico), "PHEV" (Híbrido Plug-in) ou "REEV" (Autonomia Estendida).' });
+      }
+      dataToUpdate.type = t;
+    }
     if (battery !== undefined) dataToUpdate.battery = parseFloat(battery);
     if (maxAc !== undefined) dataToUpdate.maxAc = parseFloat(maxAc);
     if (maxDc !== undefined) dataToUpdate.maxDc = parseFloat(maxDc);

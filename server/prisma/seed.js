@@ -814,7 +814,7 @@ const VEICULOS = [
   },
   {
     "id": "leapmotor_c10_ultra_hibrido_reev_15_plug_in_phev",
-    "type": "PHEV",
+    "type": "EREV",
     "brand": "Leapmotor",
     "model": "C10 Ultra Híbrido - REEV 1.5 Plug-in",
     "battery": 28.4,

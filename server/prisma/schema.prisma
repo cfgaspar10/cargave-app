@@ -10,7 +10,7 @@ generator client {
 
 model Veiculo {
   id        String   @id
-  type      String   // BEV ou PHEV
+  type      String   // BEV, PHEV ou EREV
   brand     String
   model     String
   battery   Float    // Capacidade da bateria em kWh
@@ -30,7 +30,7 @@ model SolicitacaoVeiculo {
   userEmail   String?  // E-mail para contato
   brand       String   // Marca
   model       String   // Modelo / Versão
-  type        String?  // BEV ou PHEV
+  type        String?  // BEV, PHEV ou EREV
   battery     Float?   // Bateria estimada em kWh
   sourceUrl   String?  // Link de referência ou ficha técnica
   notes       String?  // Observações do usuário
