@@ -1,5 +1,5 @@
 // ==============================================================================
-// kWhub - Integração PWA no Frontend
+// CargaVE - Integração PWA no Frontend
 // Registro de Service Worker, Prompt de Instalação e Notificações
 // Suporte Completo: Android, Apple (iOS/iPadOS/macOS) e Desktop
 // Compatível com Raiz (PROD) e Subcaminhos de Proxy Reverso (HML /app-hml e /app)
@@ -11,12 +11,16 @@
   let deferredInstallPrompt = null;
 
   function getContextBasePath() {
+    if (window.location.pathname.startsWith('/cargave-hml')) return '/cargave-hml';
+    if (window.location.pathname.startsWith('/cargave')) return '/cargave';
     if (window.location.pathname.startsWith('/kwhub-hml')) return '/kwhub-hml';
     if (window.location.pathname.startsWith('/kwhub')) return '/kwhub';
     if (window.location.pathname.startsWith('/ev-calculator')) return '/ev-calculator';
     if (window.location.pathname.startsWith('/app-hml')) return '/app-hml';
     if (window.location.pathname.startsWith('/app')) return '/app';
     const redirect = new URLSearchParams(window.location.search).get('redirect');
+    if (redirect && redirect.startsWith('/cargave-hml')) return '/cargave-hml';
+    if (redirect && redirect.startsWith('/cargave')) return '/cargave';
     if (redirect && redirect.startsWith('/kwhub-hml')) return '/kwhub-hml';
     if (redirect && redirect.startsWith('/kwhub')) return '/kwhub';
     if (redirect && redirect.startsWith('/ev-calculator')) return '/ev-calculator';
@@ -126,19 +130,19 @@
 
     // Caso Apple iOS (Safari)
     if (isIOS()) {
-      alert('Para instalar o kWhub no seu iPhone ou iPad:\n\n1. Toque no botão "Compartilhar" (ícone com quadrado e seta para cima ⎋ na barra do Safari);\n2. Role as opções e selecione "Adicionar à Tela de Início" ➕;\n3. Toque em "Adicionar" no canto superior direito.');
+      alert('Para instalar o CargaVE no seu iPhone ou iPad:\n\n1. Toque no botão "Compartilhar" (ícone com quadrado e seta para cima ⎋ na barra do Safari);\n2. Role as opções e selecione "Adicionar à Tela de Início" ➕;\n3. Toque em "Adicionar" no canto superior direito.');
       return;
     }
 
     // Se já estiver em modo standalone
     if (isStandalone()) {
-      alert('O kWhub já está instalado e rodando como aplicativo em seu dispositivo!');
+      alert('O CargaVE já está instalado e rodando como aplicativo em seu dispositivo!');
       return;
     }
 
     // Caso Android Chrome sem prompt automático disparado de imediato
     if (/Android/i.test(navigator.userAgent)) {
-      alert('Para instalar o kWhub no Android:\n\n1. Toque no menu de três pontos (⋮) no canto superior do navegador;\n2. Selecione a opção "Instalar aplicativo" ou "Adicionar à tela inicial".');
+      alert('Para instalar o CargaVE no Android:\n\n1. Toque no menu de três pontos (⋮) no canto superior do navegador;\n2. Selecione a opção "Instalar aplicativo" ou "Adicionar à tela inicial".');
       return;
     }
 
@@ -148,7 +152,7 @@
 
   // 6. Confirmação de Instalação Realizada
   window.addEventListener('appinstalled', () => {
-    console.log('[kWhub PWA] Aplicativo instalado com êxito!');
+    console.log('[CargaVE PWA] Aplicativo instalado com êxito!');
     deferredInstallPrompt = null;
     atualizarBotoesInstalacao(false);
   });

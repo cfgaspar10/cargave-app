@@ -1,7 +1,7 @@
 {
-  "name": "kwhub-server",
+  "name": "cargave-server",
   "version": "1.0.0",
-  "description": "Backend API para kWhub - Central de Inteligência em Recarga VE",
+  "description": "Backend API para CargaVE - Central de Inteligência em Recarga VE",
   "main": "src/index.js",
   "scripts": {
     "start": "node src/index.js",

@@ -1,0 +1,24 @@
+{
+  "name": "cargave",
+  "version": "1.0.0",
+  "description": "CargaVE - Central & Calculadora Inteligente de Recarga VE",
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cfgaspar10/cargave-app.git"
+  },
+  "keywords": [
+    "cargave",
+    "ve",
+    "ev",
+    "charging-calculator",
+    "pbev",
+    "inmetro"
+  ],
+  "author": "cfgaspar10",
+  "license": "ISC",
+  "scripts": {
+    "server:start": "npm --prefix server start",
+    "server:dev": "npm --prefix server run dev"
+  }
+}

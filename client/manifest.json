@@ -1,8 +1,8 @@
 {
   "$schema": "https://json.schemastore.org/web-manifest-combined.json",
   "id": "./",
-  "name": "kWhub - Central & Calculadora de Recarga VE",
-  "short_name": "kWhub",
+  "name": "CargaVE - Central & Calculadora de Recarga VE",
+  "short_name": "CargaVE",
   "description": "Central inteligente para simulação, planejamento de recarga, autonomia e custos de veículos elétricos e híbridos.",
   "start_url": "./",
   "scope": "./",

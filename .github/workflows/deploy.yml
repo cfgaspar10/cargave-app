@@ -1,4 +1,4 @@
-name: Deploy Contínuo kWhub
+name: Deploy Contínuo CargaVE
 
 on:
   push:
@@ -28,11 +28,13 @@ jobs:
       - name: Executar Deploy na VPS (${{ github.ref_name }})
         run: |
           if [ "${{ github.ref_name }}" = "develop" ]; then
-            TARGET_DIR="~/stacks/kwhub-hml"
+            TARGET_DIR="~/stacks/cargave-hml"
+            LEGACY_DIR="~/stacks/kwhub-hml"
             TARGET_BRANCH="develop"
             AMBIENTE="Homologação (HML)"
           elif [ "${{ github.ref_name }}" = "main" ]; then
-            TARGET_DIR="~/stacks/kwhub-prod"
+            TARGET_DIR="~/stacks/cargave-prod"
+            LEGACY_DIR="~/stacks/kwhub-prod"
             TARGET_BRANCH="main"
             AMBIENTE="Produção (PROD)"
           else
@@ -41,12 +43,19 @@ jobs:
           fi
 
           echo "🚀 Iniciando deploy automático em: $AMBIENTE"
-          echo "📁 Diretório alvo: $TARGET_DIR (Branch: $TARGET_BRANCH)"
 
           ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} << EOF
             set -e
-            echo "==> Entrando no diretório $TARGET_DIR..."
-            cd $TARGET_DIR
+            if [ -d "$TARGET_DIR" ]; then
+              ACTUAL_DIR="$TARGET_DIR"
+            elif [ -d "$LEGACY_DIR" ]; then
+              ACTUAL_DIR="$LEGACY_DIR"
+            else
+              ACTUAL_DIR="$TARGET_DIR"
+            fi
+
+            echo "==> Entrando no diretório \$ACTUAL_DIR..."
+            cd "\$ACTUAL_DIR"
 
             echo "==> Garantindo branch correta e baixando atualizações ($TARGET_BRANCH)..."
             git checkout $TARGET_BRANCH
@@ -56,7 +65,7 @@ jobs:
             docker compose up -d --build app-server
 
             echo "==> Status dos contêineres:"
-            docker ps --filter name=kwhub --format "table {{.Names}}\t{{.Status}}\t{{.Ports}}"
+            docker ps --filter name=cargave --filter name=kwhub --format "table {{.Names}}\t{{.Status}}\t{{.Ports}}"
           EOF
 
           echo "✅ Deploy concluído com sucesso para $AMBIENTE!"

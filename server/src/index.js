@@ -3,6 +3,7 @@ const cors = require('cors');
 const helmet = require('helmet');
 const cookieParser = require('cookie-parser');
 const path = require('path');
+const { version: APP_VERSION } = require('../package.json');
 require('dotenv').config();
 
 const app = express();
@@ -20,7 +21,8 @@ app.use(express.json());
 app.get('/health', (req, res) => {
   res.json({
     status: 'ok',
-    app: 'kWhub',
+    app: 'CargaVE',
+    versao: APP_VERSION,
     timestamp: new Date().toISOString()
   });
 });
@@ -28,12 +30,21 @@ app.get('/health', (req, res) => {
 // Router de API
 const apiRouter = express.Router();
 
+// Rota dedicada de versão
+apiRouter.get('/versao', (req, res) => {
+  res.json({
+    app: 'CargaVE',
+    versao: APP_VERSION,
+    timestamp: new Date().toISOString()
+  });
+});
+
 // Índice descritivo das rotas da API
 apiRouter.get('/', (req, res) => {
   res.json({
-    nome: 'kWhub API',
-    versao: '1.0.0',
-    descricao: 'API REST para simulação, recarga e catálogo de veículos elétricos (kWhub)',
+    nome: 'CargaVE API',
+    versao: APP_VERSION,
+    descricao: 'API REST para simulação, recarga e catálogo de veículos elétricos (CargaVE)',
     endpoints: [
       {
         metodo: 'GET',
@@ -114,8 +125,10 @@ apiRouter.use('/veiculos', require('./routes/veiculos.routes'));
 apiRouter.use('/solicitacoes', require('./routes/solicitacoes.routes'));
 apiRouter.use('/sync', require('./routes/sync.routes'));
 
-// Atende API na raiz e em subcaminhos suportados pelo proxy reverso
+// Atende API na raiz e em subcaminhos suportados pelo proxy reverso (incluindo alias legados)
 app.use('/api', apiRouter);
+app.use('/cargave/api', apiRouter);
+app.use('/cargave-hml/api', apiRouter);
 app.use('/kwhub/api', apiRouter);
 app.use('/kwhub-hml/api', apiRouter);
 app.use('/ev-calculator/api', apiRouter);
@@ -132,6 +145,8 @@ const handleServiceWorker = (req, res) => {
   res.sendFile(path.join(clientPath, 'sw.js'));
 };
 app.get('/sw.js', handleServiceWorker);
+app.get('/cargave/sw.js', handleServiceWorker);
+app.get('/cargave-hml/sw.js', handleServiceWorker);
 app.get('/kwhub/sw.js', handleServiceWorker);
 app.get('/kwhub-hml/sw.js', handleServiceWorker);
 app.get('/ev-calculator/sw.js', handleServiceWorker);
@@ -139,6 +154,8 @@ app.get('/app/sw.js', handleServiceWorker);
 app.get('/app-hml/sw.js', handleServiceWorker);
 
 app.use(express.static(clientPath));
+app.use('/cargave', express.static(clientPath));
+app.use('/cargave-hml', express.static(clientPath));
 app.use('/kwhub', express.static(clientPath));
 app.use('/kwhub-hml', express.static(clientPath));
 app.use('/ev-calculator', express.static(clientPath));
@@ -152,6 +169,6 @@ app.get('*', (req, res) => {
 
 // Inicialização do servidor
 app.listen(PORT, '0.0.0.0', () => {
-  console.log(`⚡ kWhub Server rodando na porta ${PORT}`);
+  console.log(`⚡ CargaVE Server v${APP_VERSION} rodando na porta ${PORT}`);
   console.log(`📁 Servindo frontend estático de: ${clientPath}`);
 });

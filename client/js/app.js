@@ -673,8 +673,10 @@
     }
 
     // Chaves de Persistência Local (Offline First)
-    const STORAGE_KEY_SAVED_VEHICLE = 'kwhub_saved_vehicle';
-    const STORAGE_KEY_TARIFF = 'kwhub_user_tariff';
+    const STORAGE_KEY_SAVED_VEHICLE = 'cargave_saved_vehicle';
+    const STORAGE_KEY_TARIFF = 'cargave_user_tariff';
+    const LEGACY_STORAGE_KEY_SAVED_VEHICLE = 'kwhub_saved_vehicle';
+    const LEGACY_STORAGE_KEY_TARIFF = 'kwhub_user_tariff';
 
     let toastTimeout = null;
     function showToast(mensagem, tipo = 'info') {
@@ -690,7 +692,11 @@
 
     function getSavedVehicle() {
       try {
-        const raw = localStorage.getItem(STORAGE_KEY_SAVED_VEHICLE);
+        let raw = localStorage.getItem(STORAGE_KEY_SAVED_VEHICLE);
+        if (!raw) {
+          raw = localStorage.getItem(LEGACY_STORAGE_KEY_SAVED_VEHICLE);
+          if (raw) localStorage.setItem(STORAGE_KEY_SAVED_VEHICLE, raw);
+        }
         if (!raw) return null;
         const v = JSON.parse(raw);
         return (v && typeof v.battery === 'number') ? v : null;
@@ -705,6 +711,7 @@
           localStorage.setItem(STORAGE_KEY_SAVED_VEHICLE, JSON.stringify(v));
         } else {
           localStorage.removeItem(STORAGE_KEY_SAVED_VEHICLE);
+          localStorage.removeItem(LEGACY_STORAGE_KEY_SAVED_VEHICLE);
         }
       } catch (e) {
         console.warn('Erro ao salvar veículo no localStorage:', e);
@@ -1952,13 +1959,32 @@
       });
     });
 
-    // Restaurar tarifa salva do usuário
+    // Restaurar tarifa salva do usuário (com suporte à chave legado)
     try {
-      const savedTariff = localStorage.getItem(STORAGE_KEY_TARIFF);
+      let savedTariff = localStorage.getItem(STORAGE_KEY_TARIFF);
+      if (!savedTariff) {
+        savedTariff = localStorage.getItem(LEGACY_STORAGE_KEY_TARIFF);
+        if (savedTariff) localStorage.setItem(STORAGE_KEY_TARIFF, savedTariff);
+      }
       if (savedTariff) {
         inputTariff.value = savedTariff;
       }
     } catch (e) {}
+
+    // Atualização dinâmica da versão exibida no rodapé via API
+    async function carregarVersaoApp() {
+      try {
+        const elVersao = document.getElementById('app-version');
+        if (!elVersao || !window.EV_API || !window.EV_API.obterVersao) return;
+        const info = await window.EV_API.obterVersao();
+        if (info && info.versao) {
+          elVersao.textContent = 'v' + info.versao;
+        }
+      } catch (e) {
+        // Silencioso em caso offline: a versão inicial já está no HTML
+      }
+    }
+    carregarVersaoApp();
 
     initTheme();
     initVehicleModal();
@@ -2632,25 +2658,25 @@
 
       switch (tipoMensagem) {
         case 'APROVADA':
-          assunto = `Boas notícias! O veículo que você sugeriu já está disponível no kWhub ⚡`;
-          corpo = `Olá, ${nome}!\n\nTemos ótimas notícias! A sua sugestão para inclusão do veículo ${veiculo} foi analisada e ele já se encontra disponível no catálogo oficial do kWhub.\n\nAgora você já pode simular o tempo de carregamento (em tomada comum, wallbox ou recarga rápida DC), custo de energia e consumo de viagem!\n\n🔗 Acesse agora e confira:\n${urlApp}\n\nMuito obrigado por colaborar com a comunidade de mobilidade elétrica!\n\nAtenciosamente,\nEquipe kWhub\n${urlApp}`;
+          assunto = `Boas notícias! O veículo que você sugeriu já está disponível no CargaVE ⚡`;
+          corpo = `Olá, ${nome}!\n\nTemos ótimas notícias! A sua sugestão para inclusão do veículo ${veiculo} foi analisada e ele já se encontra disponível no catálogo oficial do CargaVE.\n\nAgora você já pode simular o tempo de carregamento (em tomada comum, wallbox ou recarga rápida DC), custo de energia e consumo de viagem!\n\n🔗 Acesse agora e confira:\n${urlApp}\n\nMuito obrigado por colaborar com a comunidade de mobilidade elétrica!\n\nAtenciosamente,\nEquipe CargaVE\n${urlApp}`;
           break;
 
         case 'REJEITADA':
-          assunto = `Atualização sobre sua sugestão de veículo (${veiculo}) - kWhub`;
+          assunto = `Atualização sobre sua sugestão de veículo (${veiculo}) - CargaVE`;
           const motivoTexto = s.adminNotes ? `\nMotivo informado: ${s.adminNotes}\n` : '';
-          corpo = `Olá, ${nome}!\n\nAgradecemos pelo envio da sugestão do modelo ${veiculo}.\n\nNo momento, não conseguimos homologar este modelo em nosso catálogo pelo seguinte motivo:${motivoTexto || '\nDados técnicos de bateria ainda não homologados oficialmente pelo Inmetro / PBEV no Brasil.'}\n\nAssim que os dados oficiais forem publicados pelas montadoras, realizaremos a inclusão.\n\nAtenciosamente,\nEquipe kWhub\n${urlApp}`;
+          corpo = `Olá, ${nome}!\n\nAgradecemos pelo envio da sugestão do modelo ${veiculo}.\n\nNo momento, não conseguimos homologar este modelo em nosso catálogo pelo seguinte motivo:${motivoTexto || '\nDados técnicos de bateria ainda não homologados oficialmente pelo Inmetro / PBEV no Brasil.'}\n\nAssim que os dados oficiais forem publicados pelas montadoras, realizaremos a inclusão.\n\nAtenciosamente,\nEquipe CargaVE\n${urlApp}`;
           break;
 
         case 'JA_EXISTE':
-          assunto = `Sobre a sua sugestão do ${veiculo} - kWhub`;
-          corpo = `Olá, ${nome}!\n\nObrigado por entrar em contato e sugerir o veículo ${veiculo}.\n\nIdentificamos que este modelo (ou versão correspondente) já se encontra disponível no catálogo do kWhub!\n\nPara encontrá-lo, basta digitar o nome no campo de busca ou selecionar a montadora ${s.brand} no filtro.\n\n🔗 Acesse e faça sua simulação:\n${urlApp}\n\nCaso note qualquer divergência nas especificações técnicas cadastradas, fique à vontade para nos responder por este e-mail.\n\nAtenciosamente,\nEquipe kWhub\n${urlApp}`;
+          assunto = `Sobre a sua sugestão do ${veiculo} - CargaVE`;
+          corpo = `Olá, ${nome}!\n\nObrigado por entrar em contato e sugerir o veículo ${veiculo}.\n\nIdentificamos que este modelo (ou versão correspondente) já se encontra disponível no catálogo do CargaVE!\n\nPara encontrá-lo, basta digitar o nome no campo de busca ou selecionar a montadora ${s.brand} no filtro.\n\n🔗 Acesse e faça sua simulação:\n${urlApp}\n\nCaso note qualquer divergência nas especificações técnicas cadastradas, fique à vontade para nos responder por este e-mail.\n\nAtenciosamente,\nEquipe CargaVE\n${urlApp}`;
           break;
 
         case 'PENDENTE':
         default:
-          assunto = `Recebemos sua sugestão de veículo (${veiculo}) - kWhub ⏳`;
-          corpo = `Olá, ${nome}!\n\nConfirmamos o recebimento da sua sugestão para inclusão do veículo ${veiculo} no kWhub.\n\nNossa equipe técnica já está analisando as especificações oficiais de bateria e potência de recarga (AC/DC) para homologar o modelo no catálogo.\n\nAssim que o veículo for incluído, enviaremos uma nova notificação por aqui.\n\nObrigado pela sua colaboração!\n\nAtenciosamente,\nEquipe kWhub\n${urlApp}`;
+          assunto = `Recebemos sua sugestão de veículo (${veiculo}) - CargaVE ⏳`;
+          corpo = `Olá, ${nome}!\n\nConfirmamos o recebimento da sua sugestão para inclusão do veículo ${veiculo} no CargaVE.\n\nNossa equipe técnica já está analisando as especificações oficiais de bateria e potência de recarga (AC/DC) para homologar o modelo no catálogo.\n\nAssim que o veículo for incluído, enviaremos uma nova notificação por aqui.\n\nObrigado pela sua colaboração!\n\nAtenciosamente,\nEquipe CargaVE\n${urlApp}`;
           break;
       }
 

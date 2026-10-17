@@ -1,0 +1,47 @@
+name: Release Automático (SemVer)
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  release-please:
+    name: Gerar Release e Changelog
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Executar Release-Please
+        id: release
+        uses: googleapis/release-please-action@v4
+        with:
+          config-file: release-please-config.json
+          manifest-file: .release-please-manifest.json
+
+      # Se uma nova release foi publicada (o PR de release foi mergeado na main)
+      - name: Checkout do código pós-release
+        if: ${{ steps.release.outputs.release_created }}
+        uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - name: Sincronizar versão no client/index.html
+        if: ${{ steps.release.outputs.release_created }}
+        run: |
+          NEW_VERSION="${{ steps.release.outputs.version }}"
+          echo "Sincronizando client/index.html para a versão: v$NEW_VERSION"
+          sed -i -E "s/id=\"app-version\">v[0-9]+\.[0-9]+\.[0-9]+/id=\"app-version\">v$NEW_VERSION/g" client/index.html
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          if ! git diff --quiet client/index.html; then
+            git add client/index.html
+            git commit -m "chore(release): atualizar badge da interface para v$NEW_VERSION [skip ci]"
+            git push origin main
+          fi

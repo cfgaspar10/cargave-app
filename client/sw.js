@@ -1,10 +1,10 @@
 // ==============================================================================
-// kWhub - Service Worker PWA (Progressive Web App)
+// CargaVE - Service Worker PWA (Progressive Web App)
 // Gerenciamento de Cache, Operação Offline e Suporte a Push Notifications
 // Compatível com Raiz (PROD) e Subcaminhos de Proxy Reverso (HML /app-hml e /app)
 // ==============================================================================
 
-const CACHE_NAME = 'kwhub-cache-v6';
+const CACHE_NAME = 'cargave-cache-v1';
 
 // Detecta dinamicamente o prefixo base onde o SW foi instalado
 // Exemplo: se self.location.pathname for "/app-hml/sw.js", basePath será "/app-hml"
@@ -31,16 +31,16 @@ const STATIC_ASSETS = [
 self.addEventListener('install', event => {
   event.waitUntil(
     caches.open(CACHE_NAME).then(async cache => {
-      console.log('[kWhub SW] Pré-cacheando ativos estáticos com basePath:', basePath || '/');
+      console.log('[CargaVE SW] Pré-cacheando ativos estáticos com basePath:', basePath || '/');
       try {
         await cache.addAll(STATIC_ASSETS);
       } catch (err) {
-        console.warn('[kWhub SW] Aviso em addAll. Gravando individualmente no cache:', err);
+        console.warn('[CargaVE SW] Aviso em addAll. Gravando individualmente no cache:', err);
         for (const asset of STATIC_ASSETS) {
           try {
             await cache.add(asset);
           } catch (e) {
-            console.warn('[kWhub SW] Item estático não cacheado:', asset);
+            console.warn('[CargaVE SW] Item estático não cacheado:', asset);
           }
         }
       }
@@ -57,7 +57,7 @@ self.addEventListener('activate', event => {
       return Promise.all(
         cacheNames.map(cache => {
           if (cache !== CACHE_NAME) {
-            console.log('[kWhub SW] Removendo cache obsoleto:', cache);
+            console.log('[CargaVE SW] Removendo cache obsoleto:', cache);
             return caches.delete(cache);
           }
         })
@@ -101,7 +101,7 @@ self.addEventListener('fetch', event => {
                             (await caches.match(basePath + '/')) ||
                             (await caches.match(event.request));
         if (cachedIndex) return cachedIndex;
-        return new Response('kWhub Offline: Sem conexão com a internet', {
+        return new Response('CargaVE Offline: Sem conexão com a internet', {
           status: 503,
           statusText: 'Offline',
           headers: { 'Content-Type': 'text/plain; charset=utf-8' }
@@ -132,7 +132,7 @@ self.addEventListener('fetch', event => {
 // Suporte a Push Notifications (Notificações de Novos Veículos Homologados)
 self.addEventListener('push', event => {
   let notificationData = {
-    title: 'kWhub',
+    title: 'CargaVE',
     body: 'Novo veículo homologado disponível na calculadora!',
     icon: (basePath || '') + '/assets/icons/icon-192x192.png',
     badge: (basePath || '') + '/assets/icons/favicon-32x32.png',
@@ -155,7 +155,7 @@ self.addEventListener('push', event => {
     data: notificationData.data,
     vibrate: [100, 50, 100],
     actions: [
-      { action: 'open_app', title: 'Abrir kWhub' }
+      { action: 'open_app', title: 'Abrir CargaVE' }
     ]
   };
 

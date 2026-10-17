@@ -26,13 +26,23 @@ log "=========================================================="
 log "INÍCIO DA ROTINA DE BACKUP — kWhub POSTGRESQL"
 log "=========================================================="
 
-# 1. Backup do Banco de Produção (kwhub-prod-db)
-PROD_CONTAINER="kwhub-prod-db"
-PROD_USER="kwhub_user"
-PROD_DB="kwhub_prod_db"
-PROD_FILE="$BACKUP_DIR/kwhub_prod_${TIMESTAMP}.sql.gz"
+# 1. Backup do Banco de Produção (cargave-prod-db ou kwhub-prod-db)
+PROD_CONTAINER=""
+for c in "cargave-prod-db" "kwhub-prod-db"; do
+  if docker ps --format '{{.Names}}' | grep -q "^${c}$"; then
+    PROD_CONTAINER="$c"
+    break
+  fi
+done
 
-if docker ps --format '{{.Names}}' | grep -q "^${PROD_CONTAINER}$"; then
+if [ -n "$PROD_CONTAINER" ]; then
+  PROD_USER="${POSTGRES_USER:-cargave_user}"
+  # Se for o legado, tenta usar kwhub_user
+  if [ "$PROD_CONTAINER" = "kwhub-prod-db" ]; then PROD_USER="kwhub_user"; fi
+  PROD_DB="${POSTGRES_DB:-cargave_prod_db}"
+  if [ "$PROD_CONTAINER" = "kwhub-prod-db" ]; then PROD_DB="kwhub_prod_db"; fi
+  PROD_FILE="$BACKUP_DIR/cargave_prod_${TIMESTAMP}.sql.gz"
+
   log "==> [PRODUÇÃO] Iniciando dump de '${PROD_DB}' via contêiner '${PROD_CONTAINER}'..."
   docker exec -i "$PROD_CONTAINER" pg_dump -U "$PROD_USER" -d "$PROD_DB" | gzip > "$PROD_FILE"
   
@@ -44,16 +54,25 @@ if docker ps --format '{{.Names}}' | grep -q "^${PROD_CONTAINER}$"; then
     rm -f "$PROD_FILE"
   fi
 else
-  log "==> [AVISO] Contêiner '$PROD_CONTAINER' não está em execução. Pulando backup de produção."
+  log "==> [AVISO] Contêiner de produção (cargave-prod-db / kwhub-prod-db) não está em execução. Pulando backup de produção."
 fi
 
-# 2. Backup do Banco de Homologação (kwhub-hml-db)
-HML_CONTAINER="kwhub-hml-db"
-HML_USER="kwhub_user"
-HML_DB="kwhub_hml_db"
-HML_FILE="$BACKUP_DIR/kwhub_hml_${TIMESTAMP}.sql.gz"
+# 2. Backup do Banco de Homologação (cargave-hml-db ou kwhub-hml-db)
+HML_CONTAINER=""
+for c in "cargave-hml-db" "kwhub-hml-db"; do
+  if docker ps --format '{{.Names}}' | grep -q "^${c}$"; then
+    HML_CONTAINER="$c"
+    break
+  fi
+done
 
-if docker ps --format '{{.Names}}' | grep -q "^${HML_CONTAINER}$"; then
+if [ -n "$HML_CONTAINER" ]; then
+  HML_USER="${POSTGRES_USER:-cargave_user}"
+  if [ "$HML_CONTAINER" = "kwhub-hml-db" ]; then HML_USER="kwhub_user"; fi
+  HML_DB="${POSTGRES_DB:-cargave_hml_db}"
+  if [ "$HML_CONTAINER" = "kwhub-hml-db" ]; then HML_DB="kwhub_hml_db"; fi
+  HML_FILE="$BACKUP_DIR/cargave_hml_${TIMESTAMP}.sql.gz"
+
   log "==> [HOMOLOGAÇÃO] Iniciando dump de '${HML_DB}' via contêiner '${HML_CONTAINER}'..."
   docker exec -i "$HML_CONTAINER" pg_dump -U "$HML_USER" -d "$HML_DB" | gzip > "$HML_FILE"
   
@@ -65,7 +84,7 @@ if docker ps --format '{{.Names}}' | grep -q "^${HML_CONTAINER}$"; then
     rm -f "$HML_FILE"
   fi
 else
-  log "==> [AVISO] Contêiner '$HML_CONTAINER' não está em execução. Pulando backup de homologação."
+  log "==> [AVISO] Contêiner de homologação (cargave-hml-db / kwhub-hml-db) não está em execução. Pulando backup de homologação."
 fi
 
 # 3. Política de Retenção (Excluir backups com mais de 15 dias)

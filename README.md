@@ -1,4 +1,4 @@
-# ⚡ kWhub (Central & Calculadora de Recarga VE)
+# ⚡ CargaVE (Central & Calculadora de Recarga VE)
 
 Aplicação web interativa para simulação, planejamento e dimensionamento de recargas para veículos elétricos (BEV - *Battery Electric Vehicles*) e híbridos plug-in (PHEV - *Plug-in Hybrid Electric Vehicles*), homologada com a base oficial de veículos e parâmetros do Programa Brasileiro de Etiquetagem Veicular (PBEV / Inmetro).
 
@@ -6,7 +6,7 @@ Aplicação web interativa para simulação, planejamento e dimensionamento de r
 
 ## 📌 Visão Geral
 
-O **kWhub** permite a condutores, frotistas e entusiastas calcular com precisão:
+O **CargaVE** permite a condutores, frotistas e entusiastas calcular com precisão:
 - **Tempo estimado de recarga** em corrente alternada (AC - tomadas e wallboxes) e corrente contínua (DC - carregadores ultra-rápidos).
 - **Curva e limitação de potência** de acordo com a capacidade máxima aceita por cada veículo.
 - **Custo financeiro da recarga** e autonomia recuperada com base no consumo médio (kWh/100 km).
@@ -180,6 +180,7 @@ O ciclo de vida do software segue o modelo de ramificação integrado à esteira
 
 ## 📚 Documentação Complementar
 
+- [Guia de Controle de Versionamento (SemVer & Releases)](docs/controle_de_versionamento.md): Convenções de commits, padrão SemVer e esteira automatizada no GitHub Actions.
 - [Guia Definitivo de Migração GAS para VPS](guia_migracao_gas_para_vps.md): Blueprint de arquitetura e segurança.
 - [Plano de Implementação e Cronograma](docs/plano_implementacao_e_cronograma.md): Cronograma detalhado em 10 atividades e matriz de riscos.
 - [Guia dos Ambientes HML e PROD](docs/guia_ambientes_hml_prod.md): Configurações de Stacks, Nginx, SSL e Secrets do GitHub Actions.
@@ -188,4 +189,4 @@ O ciclo de vida do software segue o modelo de ramificação integrado à esteira
 
 ## 📄 Licença e Manutenção
 
-Projeto mantido para dimensionamento e mobilidade elétrica. Repositório oficial: [cfgaspar10/kwhub-app](https://github.com/cfgaspar10/kwhub-app).
+Projeto mantido para dimensionamento e mobilidade elétrica. Repositório oficial: [cfgaspar10/cargave-app](https://github.com/cfgaspar10/cargave-app).
