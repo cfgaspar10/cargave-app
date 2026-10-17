@@ -28,13 +28,13 @@ jobs:
       - name: Executar Deploy na VPS (${{ github.ref_name }})
         run: |
           if [ "${{ github.ref_name }}" = "develop" ]; then
-            TARGET_DIR="~/stacks/cargave-hml"
-            LEGACY_DIR="~/stacks/kwhub-hml"
+            STACK_NAME="cargave-hml"
+            LEGACY_STACK="kwhub-hml"
             TARGET_BRANCH="develop"
             AMBIENTE="Homologação (HML)"
           elif [ "${{ github.ref_name }}" = "main" ]; then
-            TARGET_DIR="~/stacks/cargave-prod"
-            LEGACY_DIR="~/stacks/kwhub-prod"
+            STACK_NAME="cargave-prod"
+            LEGACY_STACK="kwhub-prod"
             TARGET_BRANCH="main"
             AMBIENTE="Produção (PROD)"
           else
@@ -44,18 +44,19 @@ jobs:
 
           echo "🚀 Iniciando deploy automático em: $AMBIENTE"
 
-          ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} << EOF
+          ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} \
+            "STACK_NAME='$STACK_NAME' LEGACY_STACK='$LEGACY_STACK' TARGET_BRANCH='$TARGET_BRANCH' bash -s" << 'EOF'
             set -e
-            if [ -d "$TARGET_DIR" ]; then
-              ACTUAL_DIR="$TARGET_DIR"
-            elif [ -d "$LEGACY_DIR" ]; then
-              ACTUAL_DIR="$LEGACY_DIR"
+            if [ -d "$HOME/stacks/$STACK_NAME" ]; then
+              TARGET_DIR="$HOME/stacks/$STACK_NAME"
+            elif [ -d "$HOME/stacks/$LEGACY_STACK" ]; then
+              TARGET_DIR="$HOME/stacks/$LEGACY_STACK"
             else
-              ACTUAL_DIR="$TARGET_DIR"
+              TARGET_DIR="$HOME/stacks/$STACK_NAME"
             fi
 
-            echo "==> Entrando no diretório \$ACTUAL_DIR..."
-            cd "\$ACTUAL_DIR"
+            echo "==> Entrando no diretório $TARGET_DIR..."
+            cd -P "$TARGET_DIR"
 
             echo "==> Garantindo branch correta e baixando atualizações ($TARGET_BRANCH)..."
             git checkout $TARGET_BRANCH
@@ -66,6 +67,6 @@ jobs:
 
             echo "==> Status dos contêineres:"
             docker ps --filter name=cargave --filter name=kwhub --format "table {{.Names}}\t{{.Status}}\t{{.Ports}}"
-          EOF
+EOF
 
           echo "✅ Deploy concluído com sucesso para $AMBIENTE!"
