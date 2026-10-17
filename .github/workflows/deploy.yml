@@ -13,6 +13,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Checkout do repositório
+        uses: actions/checkout@v4
+
       - name: Conectar à rede privada Tailscale
         uses: tailscale/github-action@v3
         with:
@@ -45,28 +48,6 @@ jobs:
           echo "🚀 Iniciando deploy automático em: $AMBIENTE"
 
           ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} \
-            "STACK_NAME='$STACK_NAME' LEGACY_STACK='$LEGACY_STACK' TARGET_BRANCH='$TARGET_BRANCH' bash -s" << 'EOF'
-            set -e
-            if [ -d "$HOME/stacks/$STACK_NAME" ]; then
-              TARGET_DIR="$HOME/stacks/$STACK_NAME"
-            elif [ -d "$HOME/stacks/$LEGACY_STACK" ]; then
-              TARGET_DIR="$HOME/stacks/$LEGACY_STACK"
-            else
-              TARGET_DIR="$HOME/stacks/$STACK_NAME"
-            fi
-
-            echo "==> Entrando no diretório $TARGET_DIR..."
-            cd -P "$TARGET_DIR"
-
-            echo "==> Garantindo branch correta e baixando atualizações ($TARGET_BRANCH)..."
-            git checkout $TARGET_BRANCH
-            git pull origin $TARGET_BRANCH
-
-            echo "==> Recriando o contêiner app-server..."
-            docker compose up -d --build app-server
-
-            echo "==> Status dos contêineres:"
-            docker ps --filter name=cargave --filter name=kwhub --format "table {{.Names}}\t{{.Status}}\t{{.Ports}}"
-EOF
+            "bash -s -- '$STACK_NAME' '$LEGACY_STACK' '$TARGET_BRANCH'" < scripts/deploy_vps.sh
 
           echo "✅ Deploy concluído com sucesso para $AMBIENTE!"
