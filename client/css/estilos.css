@@ -590,12 +590,14 @@
       gap: 4px;
       overflow-x: auto;
       scrollbar-width: none;
+      -webkit-overflow-scrolling: touch;
       padding: 1px 0;
     }
     .presets-row::-webkit-scrollbar {
       display: none;
     }
     .preset-chip {
+      flex-shrink: 0;
       background: var(--bg-input);
       border: 1px solid var(--border-color);
       border-radius: 5px;

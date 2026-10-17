@@ -603,10 +603,17 @@
         const maxDc = v.maxDc || 0;
 
         presets.push({ label: '2.2 kW (Tomada)', val: 2.2 });
-        if (maxAc >= 6.6 && maxAc !== 3.3) {
-          presets.push({ label: '3.7 kW', val: 3.7 });
+        if (maxAc > 6.6) {
+          presets.push({ label: '6.6 kW', val: 6.6 });
+          presets.push({ label: maxAc + ' kW (Máx AC)', val: maxAc });
+        } else if (maxAc === 6.6) {
+          presets.push({ label: '6.6 kW (Máx AC)', val: 6.6 });
+        } else {
+          if (maxAc > 3.3) {
+            presets.push({ label: '3.7 kW', val: 3.7 });
+          }
+          presets.push({ label: maxAc + ' kW (Máx AC)', val: maxAc });
         }
-        presets.push({ label: maxAc + ' kW (Máx AC)', val: maxAc });
 
         if (maxDc > 0) {
           if (maxDc <= 22) {
@@ -619,18 +626,27 @@
             presets.push({ label: maxDc + ' kW (Máx DC)', val: maxDc });
           } else {
             presets.push({ label: '50 kW (DC)', val: 50 });
-            if (maxDc > 50) {
-              presets.push({ label: Math.min(maxDc, 150) + ' kW (DC)', val: Math.min(maxDc, 150) });
+            if (maxDc >= 80) {
+              if (maxDc > 80) {
+                presets.push({ label: '80 kW (DC)', val: 80 });
+                presets.push({ label: Math.min(maxDc, 150) + ' kW (Máx DC)', val: Math.min(maxDc, 150) });
+              } else {
+                presets.push({ label: '80 kW (Máx DC)', val: 80 });
+              }
+            } else if (maxDc > 50) {
+              presets.push({ label: maxDc + ' kW (Máx DC)', val: maxDc });
             }
           }
         }
       } else {
         presets = [
           { label: '2.2 kW (Tomada)', val: 2.2 },
-          { label: '7.4 kW (Wallbox)', val: 7.4 },
+          { label: '6.6 kW', val: 6.6 },
+          { label: '7.4 kW', val: 7.4 },
           { label: '11 kW', val: 11 },
           { label: '22 kW', val: 22 },
-          { label: '50 kW (DC)', val: 50 }
+          { label: '50 kW (DC)', val: 50 },
+          { label: '80 kW (DC)', val: 80 }
         ];
       }
 
@@ -793,7 +809,7 @@
       sliderBattery.value = v.battery;
       inputBattery.value = formatPt(v.battery, 2);
 
-      const defaultChargerPower = v.maxAc;
+      const defaultChargerPower = (v.maxAc && v.maxAc < 6.6) ? v.maxAc : 6.6;
       sliderCharger.value = defaultChargerPower;
       inputCharger.value = formatPt(defaultChargerPower, 1);
 
@@ -842,8 +858,8 @@
 
     function resetAllSettings() {
       clearVehicleSelection();
-      sliderCharger.value = 7.4;
-      inputCharger.value = '7,4';
+      sliderCharger.value = 6.6;
+      inputCharger.value = '6,6';
       sliderBattery.value = 60.5;
       inputBattery.value = '60,5';
       sliderStart.value = 20;
@@ -852,6 +868,10 @@
       inputTarget.value = '80';
       inputTariff.value = '1,79';
 
+      document.querySelectorAll('#charger-presets .preset-chip').forEach(c => {
+        const cVal = parseFloat(c.getAttribute('data-val'));
+        c.classList.toggle('active', Math.abs(6.6 - cVal) < 0.15);
+      });
       document.querySelectorAll('#start-presets .preset-chip').forEach(c => {
         c.classList.toggle('active', c.dataset.val === '20');
       });
@@ -1191,7 +1211,7 @@
       resTime.textContent = formatDuration(hours);
       resCost.textContent = 'R$ ' + cost.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
 
-      const steps = [25, 50, 75, 80, 100];
+      const steps = [25, 50, 75, 80, 90, 100];
       let rowsHtml = '';
 
       steps.forEach(step => {
@@ -1236,6 +1256,17 @@
       inputStart.value = startSoc;
       inputTarget.value = targetSoc;
 
+      document.querySelectorAll('#charger-presets .preset-chip').forEach(c => {
+        const cVal = parseFloat(c.getAttribute('data-val'));
+        c.classList.toggle('active', Math.abs(charger - cVal) < 0.15);
+      });
+      document.querySelectorAll('#start-presets .preset-chip').forEach(c => {
+        c.classList.toggle('active', parseInt(c.dataset.val, 10) === startSoc);
+      });
+      document.querySelectorAll('#target-presets .preset-chip').forEach(c => {
+        c.classList.toggle('active', parseInt(c.dataset.val, 10) === targetSoc);
+      });
+
       if (sliderTripBattery) sliderTripBattery.value = battery;
       if (inputTripBattery) inputTripBattery.value = formatPt(battery, 2);
 
@@ -1258,6 +1289,17 @@
       sliderBattery.value = Math.min(Math.max(battery, 5.0), 150.0);
       sliderStart.value = Math.min(Math.max(startSoc, 0), 100);
       sliderTarget.value = Math.min(Math.max(targetSoc, 0), 100);
+
+      document.querySelectorAll('#charger-presets .preset-chip').forEach(c => {
+        const cVal = parseFloat(c.getAttribute('data-val'));
+        c.classList.toggle('active', Math.abs(charger - cVal) < 0.15);
+      });
+      document.querySelectorAll('#start-presets .preset-chip').forEach(c => {
+        c.classList.toggle('active', parseInt(c.dataset.val, 10) === startSoc);
+      });
+      document.querySelectorAll('#target-presets .preset-chip').forEach(c => {
+        c.classList.toggle('active', parseInt(c.dataset.val, 10) === targetSoc);
+      });
 
       if (sliderTripBattery) sliderTripBattery.value = sliderBattery.value;
       if (inputTripBattery) inputTripBattery.value = formatPt(battery, 2);
