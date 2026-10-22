@@ -414,6 +414,19 @@
       updateChargerPresets(currentVehicle);
     }
 
+    const POPULAR_BRANDS = [
+      'BYD',
+      'GWM',
+      'Volvo',
+      'Geely',
+      'Omoda',
+      'Jaecoo',
+      'GAC',
+      'Leapmotor',
+      'Zeekr',
+      'Caoa Chery'
+    ];
+
     function renderBrandPills() {
       const availableVehicles = (selectedTypeFilter === 'INACTIVE')
         ? VEHICLE_DATA.filter(v => v.active === false)
@@ -429,7 +442,15 @@
       const brands = ['ALL', ...new Set(availableVehicles.map(v => v.brand))].sort((a, b) => {
         if (a === 'ALL') return -1;
         if (b === 'ALL') return 1;
-        return a.localeCompare(b);
+
+        const idxA = POPULAR_BRANDS.indexOf(a);
+        const idxB = POPULAR_BRANDS.indexOf(b);
+
+        if (idxA !== -1 && idxB !== -1) return idxA - idxB;
+        if (idxA !== -1) return -1;
+        if (idxB !== -1) return 1;
+
+        return a.localeCompare(b, 'pt-BR', { sensitivity: 'base' });
       });
 
       brandPillsContainer.innerHTML = '';
@@ -444,10 +465,16 @@
           selectedBrandFilter = brand;
           document.querySelectorAll('.brand-pill').forEach(p => p.classList.remove('active'));
           pill.classList.add('active');
+          pill.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'nearest' });
           renderModelsList();
+          updateResetFiltersBtnVisibility();
         });
         brandPillsContainer.appendChild(pill);
       });
+
+      if (selectedBrandFilter === 'ALL') {
+        brandPillsContainer.scrollLeft = 0;
+      }
     }
 
     function renderModelsList() {
@@ -1071,6 +1098,61 @@
         modalSearchInput.blur();
       }
     }, { passive: true });
+
+    // Rolagem horizontal via roda do mouse (Scroll Wheel) e clique/arraste no desktop para o carrossel de marcas e tipos
+    function enableHorizontalWheelScroll(containerEl) {
+      if (!containerEl) return;
+
+      containerEl.addEventListener('wheel', function(e) {
+        if (this.scrollWidth <= this.clientWidth) return;
+        if (Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
+          e.preventDefault();
+          const delta = (e.deltaMode === 1) ? e.deltaY * 25 : e.deltaY;
+          this.scrollLeft += delta;
+        }
+      }, { passive: false });
+
+      let isMouseDown = false;
+      let hasDragged = false;
+      let startX = 0;
+      let startScrollLeft = 0;
+
+      containerEl.addEventListener('mousedown', function(e) {
+        if (e.button !== 0 || this.scrollWidth <= this.clientWidth) return;
+        isMouseDown = true;
+        hasDragged = false;
+        startX = e.pageX - this.offsetLeft;
+        startScrollLeft = this.scrollLeft;
+      });
+
+      window.addEventListener('mousemove', function(e) {
+        if (!isMouseDown) return;
+        const x = e.pageX - containerEl.offsetLeft;
+        const walk = x - startX;
+        if (Math.abs(walk) > 5) {
+          hasDragged = true;
+          containerEl.classList.add('is-dragging');
+          containerEl.scrollLeft = startScrollLeft - walk;
+        }
+      });
+
+      window.addEventListener('mouseup', function() {
+        if (!isMouseDown) return;
+        isMouseDown = false;
+        containerEl.classList.remove('is-dragging');
+      });
+
+      containerEl.addEventListener('click', function(e) {
+        if (hasDragged) {
+          e.stopPropagation();
+          e.preventDefault();
+          hasDragged = false;
+        }
+      }, true);
+    }
+
+    enableHorizontalWheelScroll(brandPillsContainer);
+    enableHorizontalWheelScroll(document.querySelector('.filter-pills-row'));
 
     document.querySelectorAll('.filter-type-pill').forEach(btn => {
       btn.addEventListener('click', function() {

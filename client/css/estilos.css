@@ -910,11 +910,41 @@
       padding: 0 14px 10px 14px;
       overflow-x: auto;
       border-bottom: 1px solid var(--border-color);
-      scrollbar-width: none;
       flex-shrink: 0;
     }
-    .brand-pills-container::-webkit-scrollbar {
-      display: none;
+    @media (max-width: 519px) {
+      .brand-pills-container {
+        scrollbar-width: none;
+      }
+      .brand-pills-container::-webkit-scrollbar {
+        display: none;
+      }
+    }
+    @media (min-width: 520px) {
+      .brand-pills-container {
+        padding-bottom: 8px;
+        cursor: grab;
+      }
+      .brand-pills-container.is-dragging {
+        cursor: grabbing;
+        user-select: none;
+      }
+      .brand-pills-container::-webkit-scrollbar {
+        height: 8px;
+      }
+      .brand-pills-container::-webkit-scrollbar-track {
+        background: var(--bg-input);
+        border: 1px solid var(--border-color);
+        border-radius: var(--radius-full);
+        margin: 0 14px;
+      }
+      .brand-pills-container::-webkit-scrollbar-thumb {
+        background: #578FCA;
+        border-radius: var(--radius-full);
+      }
+      .brand-pills-container::-webkit-scrollbar-thumb:hover {
+        background: var(--accent-blue);
+      }
     }
     .brand-pill {
       background-color: var(--bg-input);
