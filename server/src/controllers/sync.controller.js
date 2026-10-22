@@ -72,6 +72,8 @@ class SyncController {
         pushService.enviarNotificacaoParaTodos({
           title: pushTitle,
           body: pushBody,
+          type: 'SYNC',
+          vehicleId: resultado.importados === 1 ? (veiculos[0].id || null) : null,
           tag: `sync-veiculos-${Date.now()}`
         }).catch(err => console.warn('[SyncController] Aviso ao enviar push de sincronização:', err.message));
       }

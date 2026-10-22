@@ -48,6 +48,17 @@ async function garantirTabelas() {
         CONSTRAINT "configuracoes_sistema_pkey" PRIMARY KEY ("chave")
       );
     `);
+    await prisma.$executeRawUnsafe(`
+      CREATE TABLE IF NOT EXISTS "notificacoes_historico" (
+        "id" SERIAL NOT NULL,
+        "title" TEXT NOT NULL,
+        "body" TEXT NOT NULL,
+        "type" TEXT NOT NULL DEFAULT 'INFO',
+        "vehicleId" TEXT,
+        "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+        CONSTRAINT "notificacoes_historico_pkey" PRIMARY KEY ("id")
+      );
+    `);
     tablesInitialized = true;
   } catch (err) {
     console.warn('[PushService] Aviso ao garantir tabelas de push:', err.message);
@@ -274,10 +285,73 @@ async function enviarParaInscricao(sub, payloadObj) {
 }
 
 /**
- * Dispara uma notificação Push para todos os dispositivos inscritos
+ * Registra uma notificação no histórico da Central de Notificações
+ */
+async function registrarHistoricoNotificacao({ title, body, type = 'INFO', vehicleId = null }) {
+  await garantirTabelas();
+  try {
+    const t = String(title || 'CargaVE').trim();
+    const b = String(body || '').trim();
+    const tp = String(type || 'INFO').trim().toUpperCase();
+    const vId = vehicleId ? String(vehicleId).trim() : null;
+
+    await prisma.$executeRaw`
+      INSERT INTO "notificacoes_historico" ("title", "body", "type", "vehicleId", "createdAt")
+      VALUES (${t}, ${b}, ${tp}, ${vId}, NOW())
+    `;
+  } catch (err) {
+    console.warn('[PushService] Aviso ao gravar histórico de notificação:', err.message);
+  }
+}
+
+/**
+ * Lista o histórico de notificações da Central de Notificações
+ */
+async function listarHistoricoNotificacoes(limite = 30) {
+  await garantirTabelas();
+  const lim = Math.min(Math.max(parseInt(limite, 10) || 30, 1), 100);
+  const rows = await prisma.$queryRaw`
+    SELECT "id", "title", "body", "type", "vehicleId", "createdAt"
+    FROM "notificacoes_historico"
+    ORDER BY "createdAt" DESC, "id" DESC
+    LIMIT ${lim}
+  `;
+  return rows || [];
+}
+
+/**
+ * Remove um item do histórico de notificações (Admin)
+ */
+async function removerHistoricoNotificacao(id) {
+  await garantirTabelas();
+  const numId = parseInt(id, 10);
+  if (isNaN(numId)) return;
+  await prisma.$executeRaw`
+    DELETE FROM "notificacoes_historico" WHERE "id" = ${numId}
+  `;
+}
+
+/**
+ * Dispara uma notificação Push para todos os dispositivos inscritos e salva no histórico
  */
 async function enviarNotificacaoParaTodos(dadosNotificacao) {
   await garantirTabelas();
+
+  const payload = {
+    title: dadosNotificacao.title || 'CargaVE',
+    body: dadosNotificacao.body || 'Nova atualização disponível no CargaVE!',
+    tag: dadosNotificacao.tag || 'cargave-update',
+    data: dadosNotificacao.data || '/'
+  };
+
+  if (dadosNotificacao.salvarHistorico !== false) {
+    await registrarHistoricoNotificacao({
+      title: payload.title,
+      body: payload.body,
+      type: dadosNotificacao.type || 'INFO',
+      vehicleId: dadosNotificacao.vehicleId || null
+    });
+  }
 
   const inscricoes = await prisma.$queryRaw`
     SELECT "endpoint", "p256dh", "auth"
@@ -288,13 +362,6 @@ async function enviarNotificacaoParaTodos(dadosNotificacao) {
   if (!inscricoes || inscricoes.length === 0) {
     return { total: 0, enviados: 0, removidos: 0, falhas: 0 };
   }
-
-  const payload = {
-    title: dadosNotificacao.title || 'CargaVE',
-    body: dadosNotificacao.body || 'Nova atualização disponível no CargaVE!',
-    tag: dadosNotificacao.tag || 'cargave-update',
-    data: dadosNotificacao.data || '/'
-  };
 
   let enviados = 0;
   let removidos = 0;
@@ -365,9 +432,21 @@ async function verificarEAnunciarNovaVersao(versaoAtual) {
         await enviarNotificacaoParaTodos({
           title: `⚡ CargaVE atualizado (v${versaoAtual})`,
           body: 'Uma nova atualização com melhorias e novidades já está disponível no seu aplicativo!',
+          type: 'VERSAO',
           tag: `cargave-version-${versaoAtual}`
         });
       }
+    }
+
+    // Garante que o histórico inicial tenha pelo menos o registro de boas-vindas da versão atual
+    const histCountRows = await prisma.$queryRaw`SELECT COUNT(*)::int AS total FROM "notificacoes_historico"`;
+    const totalHist = histCountRows && histCountRows[0] ? Number(histCountRows[0].total) : 0;
+    if (totalHist === 0) {
+      await registrarHistoricoNotificacao({
+        title: `⚡ CargaVE v${versaoAtual} ativo`,
+        body: 'Bem-vindo à Central de Notificações! Aqui ficam registrados os avisos de novos veículos adicionados ao catálogo, sincronizações e atualizações da calculadora.',
+        type: 'VERSAO'
+      });
     }
   } catch (err) {
     console.warn('[PushService] Aviso ao verificar versão para push:', err.message);
@@ -380,5 +459,8 @@ module.exports = {
   removerInscricao,
   enviarParaInscricao,
   enviarNotificacaoParaTodos,
+  registrarHistoricoNotificacao,
+  listarHistoricoNotificacoes,
+  removerHistoricoNotificacao,
   verificarEAnunciarNovaVersao
 };

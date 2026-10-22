@@ -272,6 +272,17 @@
         body: JSON.stringify({ title, body }),
         adminKey
       });
+    },
+
+    async listarHistoricoNotificacoes(limite = 30) {
+      return fetchAPI('/notificacoes/historico?limite=' + encodeURIComponent(limite));
+    },
+
+    async excluirHistoricoNotificacao(id, adminKey) {
+      return fetchAPI(`/notificacoes/historico/${encodeURIComponent(id)}`, {
+        method: 'DELETE',
+        adminKey
+      });
     }
   };
 

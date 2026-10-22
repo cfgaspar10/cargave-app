@@ -225,6 +225,7 @@
       color: var(--text-primary);
     }
     .notif-toggle-btn {
+      position: relative;
       transition: all 0.2s ease;
     }
     .notif-toggle-btn.is-subscribed {
@@ -235,6 +236,219 @@
     .notif-toggle-btn.is-subscribed:hover {
       border-color: var(--accent-mint);
       background: rgba(16, 185, 129, 0.24);
+    }
+    .notif-unread-badge {
+      position: absolute;
+      top: -4px;
+      right: -4px;
+      min-width: 15px;
+      height: 15px;
+      padding: 0 4px;
+      border-radius: var(--radius-full);
+      background: #EF4444;
+      color: #ffffff;
+      font-size: 9.5px;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1.5px solid var(--bg-main);
+      pointer-events: none;
+    }
+    .notif-unread-badge.hidden {
+      display: none !important;
+    }
+
+    /* Central de Notificações Modal */
+    .notif-center-body {
+      padding: 12px 14px 16px 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      overflow-y: auto;
+      max-height: 70vh;
+    }
+    .notif-push-status-card {
+      background: var(--bg-input);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 10px 12px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+    }
+    .notif-push-status-card.is-active {
+      border-color: rgba(16, 185, 129, 0.45);
+      background: rgba(16, 185, 129, 0.08);
+    }
+    .notif-push-status-info {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+    .notif-push-status-title {
+      font-size: 12.5px;
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+    .notif-push-status-desc {
+      font-size: 11px;
+      color: var(--text-muted);
+      line-height: 1.35;
+    }
+    .notif-push-action-btn {
+      white-space: nowrap;
+      flex-shrink: 0;
+      padding: 6px 12px;
+      font-size: 11.5px;
+      border-radius: var(--radius-full);
+    }
+    .notif-push-action-btn.is-unsubscribe {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      color: var(--text-secondary);
+    }
+    .notif-push-action-btn.is-unsubscribe:hover {
+      border-color: #EF4444;
+      color: #EF4444;
+    }
+    .notif-admin-broadcast-box {
+      background: var(--bg-input);
+      border: 1px dashed rgba(87, 143, 202, 0.45);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+    }
+    .notif-admin-header {
+      width: 100%;
+      background: transparent;
+      border: none;
+      color: var(--accent-blue-light);
+      font-size: 11.5px;
+      font-weight: 700;
+      padding: 8px 12px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+    }
+    .notif-admin-form {
+      padding: 0 12px 10px 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .notif-admin-form.hidden {
+      display: none !important;
+    }
+    .notif-admin-actions {
+      display: flex;
+      justify-content: flex-end;
+    }
+    .notif-history-section-title {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
+    .notif-history-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .notif-history-item {
+      background: var(--bg-input);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-sm);
+      padding: 10px 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      transition: border-color 0.15s ease;
+    }
+    .notif-history-item.is-unread {
+      border-left: 3px solid var(--accent-blue-light);
+      background: rgba(56, 189, 248, 0.05);
+    }
+    .notif-item-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+    }
+    .notif-type-badge {
+      font-size: 10px;
+      font-weight: 700;
+      padding: 2px 7px;
+      border-radius: var(--radius-full);
+      background: rgba(87, 143, 202, 0.15);
+      color: var(--accent-blue-light);
+    }
+    .notif-type-badge.type-NOVO_VEICULO {
+      background: rgba(16, 185, 129, 0.15);
+      color: var(--accent-mint);
+    }
+    .notif-type-badge.type-VERSAO {
+      background: rgba(168, 85, 247, 0.16);
+      color: #C084FC;
+    }
+    .notif-item-meta {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .notif-item-date {
+      font-size: 10.5px;
+      color: var(--text-muted);
+    }
+    .notif-delete-btn {
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      cursor: pointer;
+      font-size: 11px;
+      padding: 2px 4px;
+      border-radius: 4px;
+    }
+    .notif-delete-btn:hover {
+      color: #EF4444;
+      background: rgba(239, 68, 68, 0.1);
+    }
+    .notif-item-title {
+      font-size: 12.5px;
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+    .notif-item-body {
+      font-size: 11.5px;
+      color: var(--text-secondary);
+      line-height: 1.4;
+    }
+    .notif-vehicle-link-btn {
+      align-self: flex-start;
+      margin-top: 4px;
+      background: rgba(56, 189, 248, 0.12);
+      border: 1px solid rgba(56, 189, 248, 0.35);
+      color: var(--accent-blue-light);
+      font-size: 11px;
+      font-weight: 600;
+      padding: 3px 9px;
+      border-radius: var(--radius-full);
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+    .notif-vehicle-link-btn:hover {
+      background: var(--accent-blue);
+      border-color: var(--accent-blue);
+      color: #ffffff;
+    }
+    .notif-empty-state {
+      text-align: center;
+      padding: 24px 12px;
+      color: var(--text-muted);
+      font-size: 12px;
     }
 
     /* Topo: Veículo + Tarifa */

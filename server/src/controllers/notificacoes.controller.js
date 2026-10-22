@@ -74,11 +74,45 @@ async function cancelarInscricao(req, res) {
 }
 
 /**
+ * Lista o histórico de notificações para a Central de Notificações
+ */
+async function listarHistorico(req, res) {
+  try {
+    const { limite } = req.query;
+    const notificacoes = await pushService.listarHistoricoNotificacoes(limite || 30);
+    return res.json({
+      sucesso: true,
+      notificacoes
+    });
+  } catch (err) {
+    console.error('[NotificacoesController] Erro ao listar histórico de notificações:', err);
+    return res.status(500).json({ erro: 'Falha ao carregar histórico de notificações.' });
+  }
+}
+
+/**
+ * [Admin] Remove um item do histórico de notificações
+ */
+async function excluirHistorico(req, res) {
+  try {
+    const { id } = req.params;
+    await pushService.removerHistoricoNotificacao(id);
+    return res.json({
+      sucesso: true,
+      mensagem: 'Notificação removida do histórico.'
+    });
+  } catch (err) {
+    console.error('[NotificacoesController] Erro ao excluir histórico:', err);
+    return res.status(500).json({ erro: 'Falha ao excluir item do histórico.' });
+  }
+}
+
+/**
  * [Admin] Dispara uma notificação personalizada para todos os inscritos
  */
 async function dispararNotificacaoAdmin(req, res) {
   try {
-    const { title, body } = req.body;
+    const { title, body, type } = req.body;
     if (!title || !body) {
       return res.status(400).json({ erro: 'Informe título e mensagem para a notificação.' });
     }
@@ -86,12 +120,13 @@ async function dispararNotificacaoAdmin(req, res) {
     const resultado = await pushService.enviarNotificacaoParaTodos({
       title: String(title).trim(),
       body: String(body).trim(),
+      type: type || 'COMUNICADO',
       tag: 'cargave-admin-broadcast'
     });
 
     return res.json({
       sucesso: true,
-      mensagem: `Notificação enviada para ${resultado.enviados} de ${resultado.total} dispositivos ativos.`,
+      mensagem: `Comunicado registrado e enviado para ${resultado.enviados} de ${resultado.total} dispositivos ativos.`,
       resultado
     });
   } catch (err) {
@@ -104,5 +139,7 @@ module.exports = {
   obterChavePublica,
   inscreverDispositivo,
   cancelarInscricao,
+  listarHistorico,
+  excluirHistorico,
   dispararNotificacaoAdmin
 };

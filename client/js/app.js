@@ -858,6 +858,17 @@
       recalculateConsumption();
     }
 
+    window.selecionarVeiculoPorId = function(vehicleId) {
+      if (!vehicleId) return false;
+      const found = VEHICLE_DATA.find(v => v.id === vehicleId && v.active !== false);
+      if (found) {
+        selectVehicle(found, true);
+        showToast('🚗 ' + found.brand + ' ' + found.model + ' selecionado na calculadora!');
+        return true;
+      }
+      return false;
+    };
+
     function clearVehicleSelection() {
       currentVehicle = null;
       atualizarDisplayVeiculo();
@@ -2483,6 +2494,10 @@
             selectVehicle(res.veiculo);
           }
 
+          if (window.recarregarCentralNotificacoes) {
+            window.recarregarCentralNotificacoes();
+          }
+
           setTimeout(() => {
             modalNovoVeiculo.classList.remove('active');
             if (vehicleModal) vehicleModal.classList.remove('active');
@@ -3191,6 +3206,9 @@
                 renderVehicleCards(getFilteredVehicles());
                 renderBrandPills();
                 atualizarContadoresModal();
+              }
+              if (window.recarregarCentralNotificacoes) {
+                window.recarregarCentralNotificacoes();
               }
             } catch (e) {
               console.warn('Erro ao atualizar catálogo em memória:', e);

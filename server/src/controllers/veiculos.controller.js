@@ -95,6 +95,8 @@ async function criarVeiculo(req, res) {
     pushService.enviarNotificacaoParaTodos({
       title: '🚗 Novo veículo no CargaVE!',
       body: `${novoVeiculo.brand} ${novoVeiculo.model} (${novoVeiculo.type} • ${novoVeiculo.battery} kWh) já está disponível na calculadora!`,
+      type: 'NOVO_VEICULO',
+      vehicleId: novoVeiculo.id,
       tag: `novo-veiculo-${novoVeiculo.id}`
     }).catch(err => console.warn('[VeiculosController] Aviso ao enviar push de novo veículo:', err.message));
 

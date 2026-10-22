@@ -4,7 +4,7 @@
 // Compatível com Raiz (PROD) e Subcaminhos de Proxy Reverso (HML /app-hml e /app)
 // ==============================================================================
 
-const CACHE_NAME = 'cargave-cache-v4';
+const CACHE_NAME = 'cargave-cache-v5';
 
 // Detecta dinamicamente o prefixo base onde o SW foi instalado
 // Exemplo: se self.location.pathname for "/app-hml/sw.js", basePath será "/app-hml"

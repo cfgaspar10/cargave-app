@@ -25,7 +25,7 @@
   <link rel="icon" type="image/png" href="assets/favicon.png">
   
   <!-- Estilos desacoplados -->
-  <link rel="stylesheet" href="css/estilos.css?v=20261022_3">
+  <link rel="stylesheet" href="css/estilos.css?v=20261022_4">
 </head>
 <body>
 
@@ -49,7 +49,10 @@
       <button type="button" id="btn-instalar-pwa-header" class="reset-all-btn btn-instalar" title="Instalar CargaVE no seu celular ou computador" style="display: none;">📲 Instalar</button>
       <button type="button" id="btn-open-sugerir" class="reset-all-btn btn-sugerir" title="Não encontrou seu modelo? Sugira a inclusão">💡 Sugerir Veículo</button>
       <button type="button" id="btn-reset-all" class="reset-all-btn" title="Restaurar valores padrões da calculadora">🔄 Zerar</button>
-      <button type="button" id="btn-notificacoes-pwa" class="theme-toggle-btn notif-toggle-btn" title="Ativar notificações de novos veículos e atualizações" aria-label="Notificações">🔕</button>
+      <button type="button" id="btn-notificacoes-pwa" class="theme-toggle-btn notif-toggle-btn" title="Central de Notificações" aria-label="Central de Notificações">
+        <span id="notif-bell-icon">🔕</span>
+        <span id="notif-unread-badge" class="notif-unread-badge hidden">0</span>
+      </button>
       <button type="button" id="theme-toggle-btn" class="theme-toggle-btn" title="Alternar Tema (Claro / Escuro)">🌙</button>
     </div>
   </header>
@@ -900,12 +903,58 @@
     </div>
   </div>
 
+  <!-- Modal da Central de Notificações -->
+  <div class="modal-overlay" id="modal-central-notificacoes">
+    <div class="modal-sheet modal-dialog-medium">
+      <div class="modal-handle-bar"></div>
+      <div class="modal-header">
+        <div class="modal-title-box">
+          <h3>🔔 Central de Notificações</h3>
+          <p>Novos veículos, sincronizações e atualizações da calculadora</p>
+        </div>
+        <button type="button" class="modal-close-btn" id="close-central-notificacoes-modal" aria-label="Fechar">✕</button>
+      </div>
+
+      <div class="notif-center-body">
+        <!-- Card de Status / Chave Push no Aparelho -->
+        <div class="notif-push-status-card" id="notif-push-status-card">
+          <div class="notif-push-status-info">
+            <div class="notif-push-status-title" id="notif-push-status-title">🔕 Alertas Push desativados neste aparelho</div>
+            <div class="notif-push-status-desc" id="notif-push-status-desc">Ative para receber avisos no celular ou computador mesmo com o app fechado.</div>
+          </div>
+          <button type="button" class="btn-primary notif-push-action-btn" id="btn-toggle-push-modal">🔔 Ativar</button>
+        </div>
+
+        <!-- Bloco exclusivo Admin: Disparar Comunicado Manual -->
+        <div class="notif-admin-broadcast-box admin-only-element" id="notif-admin-broadcast-box">
+          <button type="button" class="notif-admin-header" id="btn-toggle-admin-broadcast">
+            <span>📣 Enviar Comunicado / Push para Todos (Admin)</span>
+            <span id="notif-admin-chevron">▼</span>
+          </button>
+          <form id="form-admin-broadcast" class="notif-admin-form hidden">
+            <input type="text" id="admin-broadcast-title" class="admin-form-input" placeholder="Título (ex: ⚡ Nova atualização disponível!)" required>
+            <textarea id="admin-broadcast-body" class="admin-form-input" rows="2" placeholder="Mensagem que aparecerá na notificação e no histórico..." required></textarea>
+            <div class="notif-admin-actions">
+              <button type="submit" class="btn-primary" id="btn-submit-admin-broadcast">🚀 Disparar Comunicado</button>
+            </div>
+          </form>
+        </div>
+
+        <!-- Lista de Histórico -->
+        <div class="notif-history-section-title">Histórico de Atualizações e Veículos</div>
+        <div id="notif-history-list" class="notif-history-list">
+          <!-- Renderizado dinamicamente via pwa.js -->
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- Toast de Notificações Rápidas -->
   <div id="app-toast" class="app-toast" role="alert" aria-live="polite"></div>
 
   <!-- Adaptador de API e Script da Aplicação -->
-  <script src="js/api.js?v=20261022_3"></script>
-  <script src="js/app.js?v=20261022_3"></script>
-  <script src="js/pwa.js?v=20261022_3"></script>
+  <script src="js/api.js?v=20261022_4"></script>
+  <script src="js/app.js?v=20261022_4"></script>
+  <script src="js/pwa.js?v=20261022_4"></script>
 </body>
 </html>
