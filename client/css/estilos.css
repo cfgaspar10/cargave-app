@@ -224,6 +224,18 @@
       border-color: var(--accent-blue);
       color: var(--text-primary);
     }
+    .notif-toggle-btn {
+      transition: all 0.2s ease;
+    }
+    .notif-toggle-btn.is-subscribed {
+      border-color: rgba(16, 185, 129, 0.55);
+      background: rgba(16, 185, 129, 0.14);
+      box-shadow: 0 0 8px rgba(16, 185, 129, 0.25);
+    }
+    .notif-toggle-btn.is-subscribed:hover {
+      border-color: var(--accent-mint);
+      background: rgba(16, 185, 129, 0.24);
+    }
 
     /* Topo: Veículo + Tarifa */
     .top-controls-grid {

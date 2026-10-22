@@ -1,5 +1,6 @@
 const { PrismaClient } = require('@prisma/client');
 const prisma = new PrismaClient();
+const pushService = require('../services/push.service');
 
 // Gera slug/id único baseado na marca e modelo
 function gerarIdVeiculo(brand, model) {
@@ -89,6 +90,13 @@ async function criarVeiculo(req, res) {
         active: true
       }
     });
+
+    // Dispara notificação push em segundo plano para todos os dispositivos inscritos
+    pushService.enviarNotificacaoParaTodos({
+      title: '🚗 Novo veículo no CargaVE!',
+      body: `${novoVeiculo.brand} ${novoVeiculo.model} (${novoVeiculo.type} • ${novoVeiculo.battery} kWh) já está disponível na calculadora!`,
+      tag: `novo-veiculo-${novoVeiculo.id}`
+    }).catch(err => console.warn('[VeiculosController] Aviso ao enviar push de novo veículo:', err.message));
 
     return res.status(201).json({
       mensagem: 'Veículo cadastrado com sucesso!',

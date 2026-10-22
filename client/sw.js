@@ -4,7 +4,7 @@
 // Compatível com Raiz (PROD) e Subcaminhos de Proxy Reverso (HML /app-hml e /app)
 // ==============================================================================
 
-const CACHE_NAME = 'cargave-cache-v3';
+const CACHE_NAME = 'cargave-cache-v4';
 
 // Detecta dinamicamente o prefixo base onde o SW foi instalado
 // Exemplo: se self.location.pathname for "/app-hml/sw.js", basePath será "/app-hml"
@@ -150,9 +150,11 @@ self.addEventListener('push', event => {
 
   const notificationOptions = {
     body: notificationData.body,
-    icon: notificationData.icon,
-    badge: notificationData.badge,
-    data: notificationData.data,
+    icon: notificationData.icon || (basePath || '') + '/assets/icons/icon-192x192.png',
+    badge: notificationData.badge || (basePath || '') + '/assets/icons/favicon-32x32.png',
+    tag: notificationData.tag || 'cargave-push',
+    renotify: true,
+    data: notificationData.data || (basePath || '') + '/',
     vibrate: [100, 50, 100],
     actions: [
       { action: 'open_app', title: 'Abrir CargaVE' }

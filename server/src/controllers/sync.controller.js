@@ -1,4 +1,5 @@
 const syncService = require('../services/sync.service');
+const pushService = require('../services/push.service');
 
 /**
  * Controller responsável pela sincronização do catálogo externo
@@ -59,6 +60,21 @@ class SyncController {
       const resultado = await syncService.importarVeiculos(veiculos, (progresso) => {
         enviarSSE('progresso', progresso);
       });
+
+      if (resultado.importados > 0) {
+        const pushTitle = resultado.importados === 1
+          ? '🚗 Novo veículo no CargaVE!'
+          : `🚗 ${resultado.importados} novos veículos no CargaVE!`;
+        const pushBody = resultado.importados === 1
+          ? `${veiculos[0].brand} ${veiculos[0].model} (${veiculos[0].type} • ${veiculos[0].battery} kWh) foi adicionado ao catálogo!`
+          : `O catálogo acaba de ser atualizado com ${resultado.importados} novos modelos elétricos e híbridos. Confira!`;
+
+        pushService.enviarNotificacaoParaTodos({
+          title: pushTitle,
+          body: pushBody,
+          tag: `sync-veiculos-${Date.now()}`
+        }).catch(err => console.warn('[SyncController] Aviso ao enviar push de sincronização:', err.message));
+      }
 
       enviarSSE('fim', {
         sucesso: true,

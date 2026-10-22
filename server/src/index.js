@@ -3,8 +3,33 @@ const cors = require('cors');
 const helmet = require('helmet');
 const cookieParser = require('cookie-parser');
 const path = require('path');
-const { version: APP_VERSION } = require('../package.json');
+const fs = require('fs');
+const { version: PKG_VERSION } = require('../package.json');
 require('dotenv').config();
+
+function obterVersaoMaisRecente() {
+  let versao = PKG_VERSION || '1.0.0';
+  try {
+    const htmlPath = path.resolve(__dirname, '../../client/index.html');
+    const htmlContent = fs.readFileSync(htmlPath, 'utf8');
+    const match = htmlContent.match(/id="app-version">v?([0-9]+\.[0-9]+\.[0-9]+)/i);
+    if (match && match[1]) {
+      const htmlVer = match[1];
+      const pA = htmlVer.split('.').map(n => parseInt(n, 10) || 0);
+      const pB = versao.split('.').map(n => parseInt(n, 10) || 0);
+      for (let i = 0; i < 3; i++) {
+        if ((pA[i] || 0) > (pB[i] || 0)) {
+          versao = htmlVer;
+          break;
+        }
+        if ((pA[i] || 0) < (pB[i] || 0)) break;
+      }
+    }
+  } catch (e) {}
+  return versao;
+}
+
+const APP_VERSION = obterVersaoMaisRecente();
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -124,6 +149,7 @@ apiRouter.get('/', (req, res) => {
 apiRouter.use('/veiculos', require('./routes/veiculos.routes'));
 apiRouter.use('/solicitacoes', require('./routes/solicitacoes.routes'));
 apiRouter.use('/sync', require('./routes/sync.routes'));
+apiRouter.use('/notificacoes', require('./routes/notificacoes.routes'));
 
 // Atende API na raiz e em subcaminhos suportados pelo proxy reverso (incluindo alias legados)
 app.use('/api', apiRouter);
@@ -168,7 +194,16 @@ app.get('*', (req, res) => {
 });
 
 // Inicialização do servidor
-app.listen(PORT, '0.0.0.0', () => {
+const pushService = require('./services/push.service');
+
+app.listen(PORT, '0.0.0.0', async () => {
   console.log(`⚡ CargaVE Server v${APP_VERSION} rodando na porta ${PORT}`);
   console.log(`📁 Servindo frontend estático de: ${clientPath}`);
+  try {
+    await pushService.obterChavesVapid();
+    await pushService.verificarEAnunciarNovaVersao(APP_VERSION);
+    console.log('🔔 Serviço de Notificações Web Push inicializado e tabelas prontas.');
+  } catch (err) {
+    console.warn('[PushService] Aviso na inicialização de push:', err.message);
+  }
 });

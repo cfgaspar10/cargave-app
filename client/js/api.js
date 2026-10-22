@@ -245,6 +245,33 @@
       } catch (err) {
         if (onErro) onErro({ mensagem: err.message });
       }
+    },
+
+    // Métodos de Notificações Web Push
+    async obterChaveVapid() {
+      return fetchAPI('/notificacoes/vapid-public-key');
+    },
+
+    async inscreverNotificacoes(subscription, enviarBoasVindas = true) {
+      return fetchAPI('/notificacoes/inscrever', {
+        method: 'POST',
+        body: JSON.stringify({ subscription, enviarBoasVindas })
+      });
+    },
+
+    async cancelarNotificacoes(endpoint) {
+      return fetchAPI('/notificacoes/cancelar', {
+        method: 'POST',
+        body: JSON.stringify({ endpoint })
+      });
+    },
+
+    async dispararNotificacaoAdmin(title, body, adminKey) {
+      return fetchAPI('/notificacoes/disparar', {
+        method: 'POST',
+        body: JSON.stringify({ title, body }),
+        adminKey
+      });
     }
   };
 
