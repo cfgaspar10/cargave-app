@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.2.0](https://github.com/cfgaspar10/cargave-app/compare/cargave-v1.1.0...cargave-v1.2.0) (2026-10-22)
+
+
+### ✨ Novas Funcionalidades
+
+* **ui:** aprimora navegação de marcas no desktop e prioriza montadoras populares ([49a4f4d](https://github.com/cfgaspar10/cargave-app/commit/49a4f4d2ab0463a3e21be601715155b8b42683c6))
+
+
+### 🔧 Tarefas e Manutenção
+
+* **release:** atualizar badge da interface para v1.1.0 [skip ci] ([43dcd85](https://github.com/cfgaspar10/cargave-app/commit/43dcd855a0256ef54506228448e81e72269ae5d8))
+
 ## [1.1.0](https://github.com/cfgaspar10/cargave-app/compare/cargave-v1.0.0...cargave-v1.1.0) (2026-10-17)
 
 
