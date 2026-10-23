@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.3.1](https://github.com/cfgaspar10/cargave-app/compare/cargave-v1.3.0...cargave-v1.3.1) (2026-10-23)
+
+
+### 🐛 Correções de Bugs
+
+* **pwa:** corrige redirecionamento do clique na notificação Push para o escopo /cargave/ ([d277608](https://github.com/cfgaspar10/cargave-app/commit/d27760830ef2191a6162e0e4c81740c7360ef057))
+
+
+### 🔧 Tarefas e Manutenção
+
+* **release:** atualizar badge da interface para v1.3.0 [skip ci] ([f3f7cdd](https://github.com/cfgaspar10/cargave-app/commit/f3f7cdd2d2193b66d0f227492e28e92c2af0893a))
+
 ## [1.3.0](https://github.com/cfgaspar10/cargave-app/compare/cargave-v1.2.0...cargave-v1.3.0) (2026-10-23)
 
 
