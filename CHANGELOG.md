@@ -1,5 +1,19 @@
 # Changelog
 
+## [1.3.0](https://github.com/cfgaspar10/cargave-app/compare/cargave-v1.2.0...cargave-v1.3.0) (2026-10-23)
+
+
+### ✨ Novas Funcionalidades
+
+* **pwa:** adiciona Central de Notificações com histórico, badge de não lidas e painel de comunicados ([f2c0d57](https://github.com/cfgaspar10/cargave-app/commit/f2c0d57a8d8b689ef9a4c95eaa232164b38a5054))
+* **pwa:** detalha modelos e adiciona botões individuais em notificações com múltiplos veículos ([3714c86](https://github.com/cfgaspar10/cargave-app/commit/3714c866e1ec25eeccd4e2cbef242b938c142210))
+* **pwa:** implementa sistema completo de notificações Web Push para novos veículos e atualizações ([ee0ae3b](https://github.com/cfgaspar10/cargave-app/commit/ee0ae3bc073ce8465d47c751893c5bfbdc47a13e))
+
+
+### 🔧 Tarefas e Manutenção
+
+* **release:** atualizar badge da interface para v1.2.0 [skip ci] ([f849bc2](https://github.com/cfgaspar10/cargave-app/commit/f849bc29fc2f080ea2ae310d7d9d14eae77b150d))
+
 ## [1.2.0](https://github.com/cfgaspar10/cargave-app/compare/cargave-v1.1.0...cargave-v1.2.0) (2026-10-22)
 
 
