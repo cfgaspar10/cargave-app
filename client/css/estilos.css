@@ -426,9 +426,14 @@
       color: var(--text-secondary);
       line-height: 1.4;
     }
+    .notif-vehicles-btns-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 4px;
+    }
     .notif-vehicle-link-btn {
       align-self: flex-start;
-      margin-top: 4px;
       background: rgba(56, 189, 248, 0.12);
       border: 1px solid rgba(56, 189, 248, 0.35);
       color: var(--accent-blue-light);

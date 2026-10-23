@@ -200,7 +200,30 @@
       const typeCode = escapeHtml(item.type || 'INFO');
       const labelTipo = obterLabelTipo(item.type);
       const dataStr = formatarDataNotificacao(item.createdAt);
-      const hasVehicle = Boolean(item.vehicleId);
+      const vehicleIds = String(item.vehicleId || '')
+        .split(',')
+        .map(s => s.trim())
+        .filter(Boolean);
+
+      let botoesVeiculosHtml = '';
+      if (vehicleIds.length === 1) {
+        const vObj = window.obterVeiculoPorId ? window.obterVeiculoPorId(vehicleIds[0]) : null;
+        const txtBtn = vObj
+          ? `🚗 Selecionar ${escapeHtml(vObj.brand + ' ' + vObj.model)} na calculadora →`
+          : '🚗 Selecionar veículo na calculadora →';
+        botoesVeiculosHtml = `
+          <div class="notif-vehicles-btns-row">
+            <button type="button" class="notif-vehicle-link-btn" data-select-vehicle="${escapeHtml(vehicleIds[0])}">${txtBtn}</button>
+          </div>
+        `;
+      } else if (vehicleIds.length > 1) {
+        const pillsHtml = vehicleIds.map(vId => {
+          const vObj = window.obterVeiculoPorId ? window.obterVeiculoPorId(vId) : null;
+          const label = vObj ? `${vObj.brand} ${vObj.model}` : vId;
+          return `<button type="button" class="notif-vehicle-link-btn" data-select-vehicle="${escapeHtml(vId)}">🚗 ${escapeHtml(label)} →</button>`;
+        }).join('');
+        botoesVeiculosHtml = `<div class="notif-vehicles-btns-row">${pillsHtml}</div>`;
+      }
 
       return `
         <div class="notif-history-item ${isUnread ? 'is-unread' : ''}" data-notif-id="${item.id}">
@@ -213,7 +236,7 @@
           </div>
           <div class="notif-item-title">${escapeHtml(item.title)}</div>
           <div class="notif-item-body">${escapeHtml(item.body)}</div>
-          ${hasVehicle ? `<button type="button" class="notif-vehicle-link-btn" data-select-vehicle="${escapeHtml(item.vehicleId)}">🚗 Selecionar veículo na calculadora →</button>` : ''}
+          ${botoesVeiculosHtml}
         </div>
       `;
     }).join('');

@@ -62,18 +62,32 @@ class SyncController {
       });
 
       if (resultado.importados > 0) {
+        const listaOk = Array.isArray(resultado.veiculosImportados) && resultado.veiculosImportados.length > 0
+          ? resultado.veiculosImportados
+          : veiculos;
+
         const pushTitle = resultado.importados === 1
           ? '🚗 Novo veículo no CargaVE!'
           : `🚗 ${resultado.importados} novos veículos no CargaVE!`;
+
+        const descModelos = listaOk
+          .map(v => `${v.brand} ${v.model} (${v.type} • ${v.battery} kWh)`)
+          .join(', ');
+
         const pushBody = resultado.importados === 1
-          ? `${veiculos[0].brand} ${veiculos[0].model} (${veiculos[0].type} • ${veiculos[0].battery} kWh) foi adicionado ao catálogo!`
-          : `O catálogo acaba de ser atualizado com ${resultado.importados} novos modelos elétricos e híbridos. Confira!`;
+          ? `${listaOk[0].brand} ${listaOk[0].model} (${listaOk[0].type} • ${listaOk[0].battery} kWh) foi adicionado ao catálogo!`
+          : `Adicionados ao catálogo: ${descModelos}.`;
+
+        const idsImportados = listaOk
+          .map(v => v.id || syncService.gerarIdVeiculo(v.brand, v.model))
+          .filter(Boolean)
+          .join(',');
 
         pushService.enviarNotificacaoParaTodos({
           title: pushTitle,
           body: pushBody,
           type: 'SYNC',
-          vehicleId: resultado.importados === 1 ? (veiculos[0].id || null) : null,
+          vehicleId: idsImportados || null,
           tag: `sync-veiculos-${Date.now()}`
         }).catch(err => console.warn('[SyncController] Aviso ao enviar push de sincronização:', err.message));
       }

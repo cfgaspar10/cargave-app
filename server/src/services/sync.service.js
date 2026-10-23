@@ -310,6 +310,7 @@ async function verificarNovidades() {
  */
 async function importarVeiculos(veiculosParaImportar, onProgress) {
   let importados = 0;
+  let veiculosImportados = [];
   let erros = [];
 
   const total = veiculosParaImportar.length;
@@ -347,6 +348,13 @@ async function importarVeiculos(veiculosParaImportar, onProgress) {
       });
 
       importados++;
+      veiculosImportados.push({
+        id: veiculoId,
+        brand: item.brand,
+        model: item.model,
+        type: item.type,
+        battery: Number(item.battery)
+      });
 
       if (onProgress) {
         onProgress({
@@ -379,6 +387,7 @@ async function importarVeiculos(veiculosParaImportar, onProgress) {
   return {
     total,
     importados,
+    veiculosImportados,
     erros
   };
 }

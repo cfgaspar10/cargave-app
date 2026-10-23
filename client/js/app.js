@@ -869,6 +869,11 @@
       return false;
     };
 
+    window.obterVeiculoPorId = function(vehicleId) {
+      if (!vehicleId) return null;
+      return VEHICLE_DATA.find(v => v.id === vehicleId && v.active !== false) || null;
+    };
+
     function clearVehicleSelection() {
       currentVehicle = null;
       atualizarDisplayVeiculo();
