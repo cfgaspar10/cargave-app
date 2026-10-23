@@ -4,7 +4,7 @@
 // Compatível com Raiz (PROD) e Subcaminhos de Proxy Reverso (HML /app-hml e /app)
 // ==============================================================================
 
-const CACHE_NAME = 'cargave-cache-v6';
+const CACHE_NAME = 'cargave-cache-v7';
 
 // Detecta dinamicamente o prefixo base onde o SW foi instalado
 // Exemplo: se self.location.pathname for "/app-hml/sw.js", basePath será "/app-hml"
@@ -129,20 +129,27 @@ self.addEventListener('fetch', event => {
   );
 });
 
-// Suporte a Push Notifications (Notificações de Novos Veículos Homologados)
+// Suporte a Push Notifications (Notificações de Novos Veículos Homologados e Atualizações)
 self.addEventListener('push', event => {
+  const scopeBase = (self.registration && self.registration.scope)
+    ? self.registration.scope
+    : (self.location.origin + (basePath || '') + '/');
+
   let notificationData = {
     title: 'CargaVE',
     body: 'Novo veículo homologado disponível na calculadora!',
     icon: (basePath || '') + '/assets/icons/icon-192x192.png',
     badge: (basePath || '') + '/assets/icons/favicon-32x32.png',
-    data: (basePath || '') + '/'
+    data: scopeBase + '?notificacoes=1'
   };
 
   if (event.data) {
     try {
       const parsed = event.data.json();
       notificationData = { ...notificationData, ...parsed };
+      if (!parsed.data || parsed.data === '/') {
+        notificationData.data = scopeBase + '?notificacoes=1';
+      }
     } catch (e) {
       notificationData.body = event.data.text();
     }
@@ -154,7 +161,7 @@ self.addEventListener('push', event => {
     badge: notificationData.badge || (basePath || '') + '/assets/icons/favicon-32x32.png',
     tag: notificationData.tag || 'cargave-push',
     renotify: true,
-    data: notificationData.data || (basePath || '') + '/',
+    data: notificationData.data || (scopeBase + '?notificacoes=1'),
     vibrate: [100, 50, 100],
     actions: [
       { action: 'open_app', title: 'Abrir CargaVE' }
@@ -166,15 +173,24 @@ self.addEventListener('push', event => {
   );
 });
 
-// Clique na Notificação Push
+// Clique na Notificação Push (abre o PWA no escopo correto /cargave/ e exibe a Central de Notificações)
 self.addEventListener('notificationclick', event => {
   event.notification.close();
-  const urlToOpen = event.notification.data || (basePath || '') + '/';
+
+  const scopeUrl = (self.registration && self.registration.scope)
+    ? self.registration.scope
+    : (self.location.origin + (basePath || '') + '/');
+
+  const rawDataUrl = event.notification.data;
+  const urlToOpen = (rawDataUrl && rawDataUrl !== '/')
+    ? rawDataUrl
+    : (scopeUrl + '?notificacoes=1');
 
   event.waitUntil(
     clients.matchAll({ type: 'window', includeUncontrolled: true }).then(windowClients => {
       for (let client of windowClients) {
-        if (client.url.includes(basePath || '/') && 'focus' in client) {
+        if (client.url.startsWith(scopeUrl) && 'focus' in client) {
+          client.postMessage({ type: 'OPEN_NOTIFICATIONS_CENTER' });
           return client.focus();
         }
       }

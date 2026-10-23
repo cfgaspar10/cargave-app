@@ -331,6 +331,21 @@
 
       carregarHistoricoNotificacoes(false);
 
+      // Se abriu a partir do clique em uma notificação push (?notificacoes=1), abre a Central automaticamente
+      const urlParams = new URLSearchParams(window.location.search);
+      if (urlParams.get('notificacoes') === '1') {
+        abrirModalCentralNotificacoes();
+        if (window.history && window.history.replaceState) {
+          window.history.replaceState({}, document.title, window.location.pathname);
+        }
+      }
+
+      navigator.serviceWorker.addEventListener('message', event => {
+        if (event.data && event.data.type === 'OPEN_NOTIFICATIONS_CENTER') {
+          abrirModalCentralNotificacoes();
+        }
+      });
+
       navigator.serviceWorker.register(swUrl, swOptions)
         .then(registration => {
           swRegistration = registration;

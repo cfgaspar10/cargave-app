@@ -340,9 +340,11 @@ async function enviarNotificacaoParaTodos(dadosNotificacao) {
   const payload = {
     title: dadosNotificacao.title || 'CargaVE',
     body: dadosNotificacao.body || 'Nova atualização disponível no CargaVE!',
-    tag: dadosNotificacao.tag || 'cargave-update',
-    data: dadosNotificacao.data || '/'
+    tag: dadosNotificacao.tag || 'cargave-update'
   };
+  if (dadosNotificacao.data && dadosNotificacao.data !== '/') {
+    payload.data = dadosNotificacao.data;
+  }
 
   if (dadosNotificacao.salvarHistorico !== false) {
     await registrarHistoricoNotificacao({
