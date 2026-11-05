@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.3.3](https://github.com/cfgaspar10/cargave-app/compare/cargave-v1.3.2...cargave-v1.3.3) (2026-11-05)
+
+
+### ♻️ Refatoração de Código
+
+* **catalogo:** higienizar base com dados oficiais do Carregados e corrigir classificacao ([40a99fd](https://github.com/cfgaspar10/cargave-app/commit/40a99fd49b139606bc0718fc04ca077f2b4e7989))
+
+
+### 🔧 Tarefas e Manutenção
+
+* **release:** atualizar badge da interface para v1.3.2 [skip ci] ([72c82ed](https://github.com/cfgaspar10/cargave-app/commit/72c82edc37d6ea6e1fcd4a95466fd468d72a6819))
+
 ## [1.3.2](https://github.com/cfgaspar10/cargave-app/compare/cargave-v1.3.1...cargave-v1.3.2) (2026-11-05)
 
 
