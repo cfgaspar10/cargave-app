@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.3.2](https://github.com/cfgaspar10/cargave-app/compare/cargave-v1.3.1...cargave-v1.3.2) (2026-11-05)
+
+
+### ♻️ Refatoração de Código
+
+* **ui:** redesenhar layout do topo, aba de recarga e fluxo de consumo ([948ec01](https://github.com/cfgaspar10/cargave-app/commit/948ec01ce8e25bac9f7e546a8d73a404925eee94))
+
+
+### 🔧 Tarefas e Manutenção
+
+* **release:** atualizar badge da interface para v1.3.1 [skip ci] ([f5f3519](https://github.com/cfgaspar10/cargave-app/commit/f5f3519d495518bcd21b36073f88e8b2e4013fbb))
+
 ## [1.3.1](https://github.com/cfgaspar10/cargave-app/compare/cargave-v1.3.0...cargave-v1.3.1) (2026-10-23)
 
 
