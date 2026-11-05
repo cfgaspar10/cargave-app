@@ -25,7 +25,7 @@
   <link rel="icon" type="image/png" href="assets/favicon.png">
   
   <!-- Estilos desacoplados -->
-  <link rel="stylesheet" href="css/estilos.css?v=20261022_5">
+  <link rel="stylesheet" href="css/estilos.css?v=20261104_5">
 </head>
 <body>
 
@@ -73,15 +73,30 @@
       </div>
     </button>
 
-    <!-- Tarifa de Energia no Topo -->
-    <div class="tariff-top-bar">
-      <div class="tariff-title-wrap">
-        <span class="tariff-title">💰 Tarifa de Energia</span>
+    <!-- Linha com Bateria e Tarifa de Energia (lado a lado) -->
+    <div class="top-params-grid">
+      <!-- Capacidade da Bateria -->
+      <div class="top-param-card">
+        <div class="top-param-title">
+          <span>🔋</span> Bateria
+        </div>
+        <div class="top-param-input-box">
+          <input type="text" id="input-battery" class="top-param-input" value="60,5" placeholder="60,5">
+          <span class="top-param-suffix">kWh</span>
+        </div>
+        <input type="range" id="slider-battery" min="5.0" max="150.0" step="0.01" value="60.5" style="display: none;" aria-hidden="true">
       </div>
-      <div class="tariff-input-box">
-        <span class="tariff-currency">R$</span>
-        <input type="text" id="input-tariff" class="tariff-input" value="1,79" placeholder="1,79">
-        <span class="tariff-currency">/kWh</span>
+
+      <!-- Tarifa de Energia -->
+      <div class="top-param-card">
+        <div class="top-param-title">
+          <span>💰</span> Tarifa
+        </div>
+        <div class="top-param-input-box">
+          <span class="top-param-prefix">R$</span>
+          <input type="text" id="input-tariff" class="top-param-input" value="1,79" placeholder="1,79">
+          <span class="top-param-suffix">/kWh</span>
+        </div>
       </div>
     </div>
 
@@ -118,22 +133,6 @@
       </div>
     </div>
 
-    <!-- Tabela de Estimativas (Sem os 60%) -->
-    <div class="table-card">
-      <div class="table-header-title">Estimativas por Meta de Carga</div>
-      <table>
-        <thead>
-          <tr>
-            <th>Meta</th>
-            <th>Energia</th>
-            <th>Tempo Estimado</th>
-            <th>Custo</th>
-          </tr>
-        </thead>
-        <tbody id="table-body"></tbody>
-      </table>
-    </div>
-
     <!-- Painel de Controles Compacto -->
     <div class="controls-panel">
       
@@ -149,17 +148,6 @@
         <div class="presets-row" id="charger-presets"></div>
         <div class="slider-container">
           <input type="range" id="slider-charger" min="1.0" max="150.0" step="0.1" value="6.6">
-        </div>
-      </div>
-
-      <!-- Capacidade da Bateria -->
-      <div class="control-item">
-        <div class="control-header-row">
-          <div class="control-title"><span class="emoji">🔋</span> Bateria (kWh)</div>
-          <input type="text" id="input-battery" class="pill-input" value="60,5">
-        </div>
-        <div class="slider-container">
-          <input type="range" id="slider-battery" min="5.0" max="150.0" step="0.01" value="60.5">
         </div>
       </div>
 
@@ -198,6 +186,22 @@
         </div>
       </div>
 
+    </div>
+
+    <!-- Tabela de Estimativas (Sem os 60%) -->
+    <div class="table-card">
+      <div class="table-header-title">Estimativas por Meta de Carga</div>
+      <table>
+        <thead>
+          <tr>
+            <th>Meta</th>
+            <th>Energia</th>
+            <th>Tempo Estimado</th>
+            <th>Custo</th>
+          </tr>
+        </thead>
+        <tbody id="table-body"></tbody>
+      </table>
     </div>
 
   </div>
@@ -256,46 +260,83 @@
 
       </div>
 
-      <!-- Status da Bateria: Exibido quando HOUVER veículo selecionado -->
-      <div class="info-card-consumption" id="trip-battery-info-card" style="display: none;">
-        <div>
-          <span>🔋 Bateria: </span>
-          <strong id="trip-battery-display">60,50 kWh</strong>
-        </div>
-        <span style="font-size: 10.5px; color: var(--text-muted);">(Sincronizada com o veículo)</span>
-      </div>
-
       <!-- Painel de Controles de Consumo -->
       <div class="controls-panel">
 
-        <!-- Capacidade da Bateria: Exibido quando NÃO houver veículo selecionado (Permite usuário informar) -->
-        <div class="control-item" id="trip-battery-control-item">
-          <div class="control-header-row">
-            <div class="control-title">
-              <span class="emoji">🔋</span> Bateria (kWh)
-              <span class="vehicle-limit-hint">(Personalizada)</span>
-            </div>
-            <input type="text" id="input-trip-battery" class="pill-input" value="60,5">
-          </div>
-          <div class="slider-container">
-            <input type="range" id="slider-trip-battery" min="5.0" max="150.0" step="0.01" value="60.5">
-          </div>
-        </div>
-
         <!-- Alternador de Método de Entrada de Consumo -->
         <div class="calc-method-toggle-row">
-          <button type="button" class="calc-method-btn active" id="btn-calc-mode-dashboard" data-calcmode="dashboard">
-            <span>📟</span> Consumo do Painel
+          <button type="button" class="calc-method-btn active" id="btn-calc-mode-odometer" data-calcmode="odometer">
+            <span>🚗</span> Por Distância
           </button>
-          <button type="button" class="calc-method-btn" id="btn-calc-mode-odometer" data-calcmode="odometer">
-            <span>📍</span> Por Trecho Rodado
+          <button type="button" class="calc-method-btn" id="btn-calc-mode-dashboard" data-calcmode="dashboard">
+            <span>📟</span> Consumo do Painel
           </button>
         </div>
 
         <!-- ==============================================
-             GRUPO 1: CONSUMO DO PAINEL (Computador de Bordo)
+             GRUPO 1: CÁLCULO POR DISTÂNCIA PERCORRIDA (Odômetro)
              ============================================== -->
-        <div id="group-calc-dashboard" class="calc-mode-group">
+        <div id="group-calc-odometer" class="calc-mode-group">
+
+          <!-- Distância Percorrida -->
+          <div class="control-item">
+            <div class="control-header-row">
+              <div class="control-title"><span class="emoji">📍</span> Distância Percorrida (km)</div>
+              <input type="text" id="input-trip-distance" class="pill-input" value="183">
+            </div>
+            <div class="presets-row" id="trip-distance-presets">
+              <button type="button" class="preset-chip" data-add="10">+10 km</button>
+              <button type="button" class="preset-chip" data-add="50">+50 km</button>
+              <button type="button" class="preset-chip" data-val="50">50 km</button>
+              <button type="button" class="preset-chip" data-val="100">100 km</button>
+              <button type="button" class="preset-chip active" data-val="183">183 km</button>
+              <button type="button" class="preset-chip" data-val="250">250 km</button>
+            </div>
+            <div class="slider-container">
+              <input type="range" id="slider-trip-distance" min="1" max="800" step="1" value="183">
+            </div>
+          </div>
+
+          <!-- Carga Inicial da Viagem -->
+          <div class="control-item">
+            <div class="control-header-row">
+              <div class="control-title"><span class="emoji">🔋</span> Carga Inicial (%)</div>
+              <input type="text" id="input-trip-start" class="pill-input" value="100">
+            </div>
+            <div class="presets-row" id="trip-start-presets">
+              <button type="button" class="preset-chip" data-val="80">80%</button>
+              <button type="button" class="preset-chip" data-val="90">90%</button>
+              <button type="button" class="preset-chip active" data-val="100">100% (Cheia)</button>
+            </div>
+            <div class="slider-container">
+              <input type="range" id="slider-trip-start" min="10" max="100" step="1" value="100">
+            </div>
+          </div>
+
+          <!-- Carga Restante Atual -->
+          <div class="control-item">
+            <div class="control-header-row">
+              <div class="control-title"><span class="emoji">📉</span> Carga Restante Atual (%)</div>
+              <input type="text" id="input-trip-current" class="pill-input" value="47">
+            </div>
+            <div class="presets-row" id="trip-current-presets">
+              <button type="button" class="preset-chip" data-val="20">20%</button>
+              <button type="button" class="preset-chip" data-val="30">30%</button>
+              <button type="button" class="preset-chip active" data-val="47">47%</button>
+              <button type="button" class="preset-chip" data-val="60">60%</button>
+              <button type="button" class="preset-chip" data-val="80">80%</button>
+            </div>
+            <div class="slider-container">
+              <input type="range" id="slider-trip-current" min="0" max="100" step="1" value="47">
+            </div>
+          </div>
+
+        </div>
+
+        <!-- ==============================================
+             GRUPO 2: CONSUMO DO PAINEL (Computador de Bordo)
+             ============================================== -->
+        <div id="group-calc-dashboard" class="calc-mode-group hidden">
           
           <!-- Consumo Informado no Painel -->
           <div class="control-item">
@@ -361,66 +402,6 @@
             </div>
             <div class="dashboard-sim-arrival-box" id="dashboard-arrival-box">
               <span>🎯</span> <span id="dashboard-arrival-text">Calculando projeção do trajeto...</span>
-            </div>
-          </div>
-
-        </div>
-
-        <!-- ==============================================
-             GRUPO 2: CÁLCULO POR TRAJETO PERCORRIDO (Odômetro)
-             ============================================== -->
-        <div id="group-calc-odometer" class="calc-mode-group hidden">
-
-          <!-- Distância Percorrida -->
-          <div class="control-item">
-            <div class="control-header-row">
-              <div class="control-title"><span class="emoji">📍</span> Distância Percorrida (km)</div>
-              <input type="text" id="input-trip-distance" class="pill-input" value="183">
-            </div>
-            <div class="presets-row" id="trip-distance-presets">
-              <button type="button" class="preset-chip" data-add="10">+10 km</button>
-              <button type="button" class="preset-chip" data-add="50">+50 km</button>
-              <button type="button" class="preset-chip" data-val="50">50 km</button>
-              <button type="button" class="preset-chip" data-val="100">100 km</button>
-              <button type="button" class="preset-chip active" data-val="183">183 km</button>
-              <button type="button" class="preset-chip" data-val="250">250 km</button>
-            </div>
-            <div class="slider-container">
-              <input type="range" id="slider-trip-distance" min="1" max="800" step="1" value="183">
-            </div>
-          </div>
-
-          <!-- Carga Inicial da Viagem -->
-          <div class="control-item">
-            <div class="control-header-row">
-              <div class="control-title"><span class="emoji">🔋</span> Carga Inicial (%)</div>
-              <input type="text" id="input-trip-start" class="pill-input" value="100">
-            </div>
-            <div class="presets-row" id="trip-start-presets">
-              <button type="button" class="preset-chip" data-val="80">80%</button>
-              <button type="button" class="preset-chip" data-val="90">90%</button>
-              <button type="button" class="preset-chip active" data-val="100">100% (Cheia)</button>
-            </div>
-            <div class="slider-container">
-              <input type="range" id="slider-trip-start" min="10" max="100" step="1" value="100">
-            </div>
-          </div>
-
-          <!-- Carga Restante Atual -->
-          <div class="control-item">
-            <div class="control-header-row">
-              <div class="control-title"><span class="emoji">📉</span> Carga Restante Atual (%)</div>
-              <input type="text" id="input-trip-current" class="pill-input" value="47">
-            </div>
-            <div class="presets-row" id="trip-current-presets">
-              <button type="button" class="preset-chip" data-val="20">20%</button>
-              <button type="button" class="preset-chip" data-val="30">30%</button>
-              <button type="button" class="preset-chip active" data-val="47">47%</button>
-              <button type="button" class="preset-chip" data-val="60">60%</button>
-              <button type="button" class="preset-chip" data-val="80">80%</button>
-            </div>
-            <div class="slider-container">
-              <input type="range" id="slider-trip-current" min="0" max="100" step="1" value="47">
             </div>
           </div>
 
@@ -953,8 +934,8 @@
   <div id="app-toast" class="app-toast" role="alert" aria-live="polite"></div>
 
   <!-- Adaptador de API e Script da Aplicação -->
-  <script src="js/api.js?v=20261022_6"></script>
-  <script src="js/app.js?v=20261022_6"></script>
-  <script src="js/pwa.js?v=20261022_6"></script>
+  <script src="js/api.js?v=20261104_5"></script>
+  <script src="js/app.js?v=20261104_5"></script>
+  <script src="js/pwa.js?v=20261104_5"></script>
 </body>
 </html>

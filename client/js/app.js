@@ -275,8 +275,8 @@
     const inputTripBattery = document.getElementById('input-trip-battery');
     const sliderTripBattery = document.getElementById('slider-trip-battery');
 
-    // Alternador de Método de Consumo (Painel vs Odômetro)
-    let tripCalcMode = 'dashboard';
+    // Alternador de Método de Consumo (Odômetro/Distância vs Painel)
+    let tripCalcMode = 'odometer';
     const btnCalcModeDashboard = document.getElementById('btn-calc-mode-dashboard');
     const btnCalcModeOdometer = document.getElementById('btn-calc-mode-odometer');
     const groupCalcDashboard = document.getElementById('group-calc-dashboard');
@@ -1316,7 +1316,7 @@
       resTime.textContent = formatDuration(hours);
       resCost.textContent = 'R$ ' + cost.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
 
-      const steps = [25, 50, 75, 80, 90, 100];
+      const steps = [25, 50, 80, 90, 100];
       let rowsHtml = '';
 
       steps.forEach(step => {
@@ -1420,12 +1420,11 @@
     // Lógica e Eventos da Aba de Autonomia & Consumo
     // ============================================================
     function recalculateConsumption() {
-      let battery;
+      let battery = currentVehicle ? currentVehicle.battery : (parsePtNumber(inputBattery.value) || 60.5);
+      if (tripBatteryInfoCard) tripBatteryInfoCard.style.display = 'none';
+      if (tripBatteryControlItem) tripBatteryControlItem.style.display = 'none';
+
       if (currentVehicle) {
-        if (tripBatteryInfoCard) tripBatteryInfoCard.style.display = 'flex';
-        if (tripBatteryControlItem) tripBatteryControlItem.style.display = 'none';
-        battery = currentVehicle.battery;
-        if (tripBatteryDisplay) tripBatteryDisplay.textContent = formatPt(battery, 2) + ' kWh (' + currentVehicle.brand + ' ' + currentVehicle.model + ')';
         if (sliderTripBattery) sliderTripBattery.value = battery;
         if (inputTripBattery) inputTripBattery.value = formatPt(battery, 2);
 
@@ -1437,9 +1436,6 @@
           btnPresetPbev.dataset.val = officialKwhPer100.toFixed(1);
         }
       } else {
-        if (tripBatteryInfoCard) tripBatteryInfoCard.style.display = 'none';
-        if (tripBatteryControlItem) tripBatteryControlItem.style.display = 'flex';
-        battery = parsePtNumber(inputTripBattery ? inputTripBattery.value : inputBattery.value) || 60.5;
         if (btnPresetPbev) btnPresetPbev.style.display = 'none';
       }
 

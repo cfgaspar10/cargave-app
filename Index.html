@@ -270,48 +270,59 @@
       color: #ffffff;
     }
 
-    /* Tarifa Superior */
-    .tariff-top-bar {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+    /* Linha com Tarifa e Bateria lado a lado */
+    .top-params-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+    .top-param-card {
       background: var(--bg-card);
       border: 1px solid var(--border-color);
       border-radius: var(--radius-md);
-      padding: 6px 12px;
+      padding: 6px 10px;
       box-shadow: var(--card-shadow);
-    }
-    .tariff-title-wrap {
       display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-    .tariff-title {
-      font-size: 12.5px;
-      font-weight: 600;
-      color: var(--text-secondary);
-    }
-    .tariff-input-box {
-      display: flex;
+      justify-content: space-between;
       align-items: center;
       gap: 4px;
     }
-    .tariff-currency {
+    .top-param-title {
       font-size: 12px;
+      font-weight: 600;
+      color: var(--text-secondary);
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      white-space: nowrap;
+    }
+    .top-param-input-box {
+      display: flex;
+      align-items: center;
+      gap: 3px;
+      flex-shrink: 0;
+    }
+    .top-param-prefix, .top-param-suffix {
+      font-size: 11.5px;
       color: var(--text-muted);
       font-weight: 600;
+      white-space: nowrap;
     }
-    .tariff-input {
+    .top-param-input {
       background-color: var(--bg-input);
       border: 1px solid var(--border-color);
       border-radius: var(--radius-sm);
-      width: 68px;
-      padding: 4px 6px;
+      width: 52px;
+      padding: 3px 5px;
       text-align: right;
-      font-size: 13px;
+      font-size: 12.5px;
       font-weight: 600;
       color: var(--text-primary);
       outline: none;
+      font-variant-numeric: tabular-nums;
+    }
+    .top-param-input:focus {
+      border-color: var(--border-focus);
     }
     .tariff-input:focus {
       border-color: var(--border-focus);
@@ -443,16 +454,17 @@
       font-weight: 700;
     }
     tr.selected td:first-child {
-      color: var(--accent-blue);
+      color: var(--accent-blue-light);
     }
     .badge-target {
       font-size: 9px;
       background: var(--accent-blue);
       color: #ffffff;
-      padding: 1px 4px;
-      border-radius: 3px;
-      margin-left: 3px;
-      font-weight: 600;
+      padding: 2px 5px;
+      border-radius: 4px;
+      margin-left: 4px;
+      font-weight: 700;
+      letter-spacing: 0.2px;
     }
 
     /* Painel de Controles */
@@ -549,6 +561,7 @@
       border-color: var(--accent-blue);
       color: #ffffff;
       font-weight: 600;
+      box-shadow: 0 1px 4px rgba(37, 99, 235, 0.35);
     }
 
     /* Sliders */
@@ -574,9 +587,13 @@
       height: 18px;
       border-radius: 50%;
       background: #ffffff;
-      border: 2.5px solid var(--thumb-border);
-      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.25);
+      border: 3px solid var(--thumb-border);
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.35);
       cursor: pointer;
+    }
+    input[type=range]:active::-webkit-slider-thumb {
+      transform: scale(1.15);
+      box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.3);
     }
     input[type=range]:active::-webkit-slider-thumb {
       transform: scale(1.15);
@@ -1327,15 +1344,30 @@
       </div>
     </button>
 
-    <!-- Tarifa de Energia no Topo -->
-    <div class="tariff-top-bar">
-      <div class="tariff-title-wrap">
-        <span class="tariff-title">💰 Tarifa de Energia</span>
+    <!-- Linha com Bateria e Tarifa de Energia (lado a lado) -->
+    <div class="top-params-grid">
+      <!-- Capacidade da Bateria -->
+      <div class="top-param-card">
+        <div class="top-param-title">
+          <span>🔋</span> Bateria
+        </div>
+        <div class="top-param-input-box">
+          <input type="text" id="input-battery" class="top-param-input" value="60,5" placeholder="60,5">
+          <span class="top-param-suffix">kWh</span>
+        </div>
+        <input type="range" id="slider-battery" min="5.0" max="150.0" step="0.01" value="60.5" style="display: none;" aria-hidden="true">
       </div>
-      <div class="tariff-input-box">
-        <span class="tariff-currency">R$</span>
-        <input type="text" id="input-tariff" class="tariff-input" value="1,79" placeholder="1,79">
-        <span class="tariff-currency">/kWh</span>
+
+      <!-- Tarifa de Energia -->
+      <div class="top-param-card">
+        <div class="top-param-title">
+          <span>💰</span> Tarifa
+        </div>
+        <div class="top-param-input-box">
+          <span class="top-param-prefix">R$</span>
+          <input type="text" id="input-tariff" class="top-param-input" value="1,79" placeholder="1,79">
+          <span class="top-param-suffix">/kWh</span>
+        </div>
       </div>
     </div>
 
@@ -1372,22 +1404,6 @@
       </div>
     </div>
 
-    <!-- Tabela de Estimativas (Sem os 60%) -->
-    <div class="table-card">
-      <div class="table-header-title">Estimativas por Meta de Carga</div>
-      <table>
-        <thead>
-          <tr>
-            <th>Meta</th>
-            <th>Energia</th>
-            <th>Tempo Estimado</th>
-            <th>Custo</th>
-          </tr>
-        </thead>
-        <tbody id="table-body"></tbody>
-      </table>
-    </div>
-
     <!-- Painel de Controles Compacto -->
     <div class="controls-panel">
       
@@ -1403,17 +1419,6 @@
         <div class="presets-row" id="charger-presets"></div>
         <div class="slider-container">
           <input type="range" id="slider-charger" min="1.0" max="150.0" step="0.1" value="6.6">
-        </div>
-      </div>
-
-      <!-- Capacidade da Bateria -->
-      <div class="control-item">
-        <div class="control-header-row">
-          <div class="control-title"><span class="emoji">🔋</span> Bateria (kWh)</div>
-          <input type="text" id="input-battery" class="pill-input" value="60,5">
-        </div>
-        <div class="slider-container">
-          <input type="range" id="slider-battery" min="5.0" max="150.0" step="0.01" value="60.5">
         </div>
       </div>
 
@@ -1452,6 +1457,22 @@
         </div>
       </div>
 
+    </div>
+
+    <!-- Tabela de Estimativas (Sem os 60%) -->
+    <div class="table-card">
+      <div class="table-header-title">Estimativas por Meta de Carga</div>
+      <table>
+        <thead>
+          <tr>
+            <th>Meta</th>
+            <th>Energia</th>
+            <th>Tempo Estimado</th>
+            <th>Custo</th>
+          </tr>
+        </thead>
+        <tbody id="table-body"></tbody>
+      </table>
     </div>
 
   </div>
@@ -1510,31 +1531,8 @@
 
       </div>
 
-      <!-- Status da Bateria: Exibido quando HOUVER veículo selecionado -->
-      <div class="info-card-consumption" id="trip-battery-info-card" style="display: none;">
-        <div>
-          <span>🔋 Bateria: </span>
-          <strong id="trip-battery-display">60,50 kWh</strong>
-        </div>
-        <span style="font-size: 10.5px; color: var(--text-muted);">(Sincronizada com o veículo)</span>
-      </div>
-
       <!-- Painel de Controles de Consumo -->
       <div class="controls-panel">
-
-        <!-- Capacidade da Bateria: Exibido quando NÃO houver veículo selecionado (Permite usuário informar) -->
-        <div class="control-item" id="trip-battery-control-item">
-          <div class="control-header-row">
-            <div class="control-title">
-              <span class="emoji">🔋</span> Bateria (kWh)
-              <span class="vehicle-limit-hint">(Personalizada)</span>
-            </div>
-            <input type="text" id="input-trip-battery" class="pill-input" value="60,5">
-          </div>
-          <div class="slider-container">
-            <input type="range" id="slider-trip-battery" min="5.0" max="150.0" step="0.01" value="60.5">
-          </div>
-        </div>
 
         <!-- Distância Percorrida -->
         <div class="control-item">
@@ -2676,7 +2674,7 @@
       resTime.textContent = formatDuration(hours);
       resCost.textContent = 'R$ ' + cost.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
 
-      const steps = [25, 50, 75, 80, 90, 100];
+      const steps = [25, 50, 80, 90, 100];
       let rowsHtml = '';
 
       steps.forEach(step => {
@@ -2777,18 +2775,13 @@
     // Lógica e Eventos da Aba de Autonomia & Consumo
     // ============================================================
     function recalculateConsumption() {
-      let battery;
+      let battery = currentVehicle ? currentVehicle.battery : (parsePtNumber(inputBattery.value) || 60.5);
+      if (tripBatteryInfoCard) tripBatteryInfoCard.style.display = 'none';
+      if (tripBatteryControlItem) tripBatteryControlItem.style.display = 'none';
+
       if (currentVehicle) {
-        if (tripBatteryInfoCard) tripBatteryInfoCard.style.display = 'flex';
-        if (tripBatteryControlItem) tripBatteryControlItem.style.display = 'none';
-        battery = currentVehicle.battery;
-        if (tripBatteryDisplay) tripBatteryDisplay.textContent = formatPt(battery, 2) + ' kWh (' + currentVehicle.brand + ' ' + currentVehicle.model + ')';
         if (sliderTripBattery) sliderTripBattery.value = battery;
         if (inputTripBattery) inputTripBattery.value = formatPt(battery, 2);
-      } else {
-        if (tripBatteryInfoCard) tripBatteryInfoCard.style.display = 'none';
-        if (tripBatteryControlItem) tripBatteryControlItem.style.display = 'flex';
-        battery = parsePtNumber(inputTripBattery ? inputTripBattery.value : inputBattery.value) || 60.5;
       }
 
       const distance = parsePtNumber(inputTripDistance.value);
