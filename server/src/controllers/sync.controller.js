@@ -13,6 +13,7 @@ class SyncController {
       const resultado = await syncService.verificarNovidades();
       return res.json({
         sucesso: true,
+        fonte: resultado.fonte,
         totalRemoto: resultado.totalRemoto,
         totalExistentes: resultado.totalExistentes,
         totalNovos: resultado.totalNovos,
@@ -22,7 +23,7 @@ class SyncController {
       console.error('Erro ao verificar catálogo remoto:', err);
       return res.status(500).json({
         sucesso: false,
-        erro: 'Falha ao consultar fonte externa eletricos.app: ' + err.message
+        erro: 'Falha ao consultar fonte externa de veículos: ' + err.message
       });
     }
   }

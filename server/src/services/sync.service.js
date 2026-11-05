@@ -26,9 +26,45 @@ function gerarIdVeiculo(brand, model) {
 }
 
 /**
+ * Tabela de especificações oficiais de recarga homologadas para o Brasil
+ */
+const POTENCIAS_HOMOLOGADAS = {
+  // BAIC
+  'baic_arcfox_t1': { maxAc: 6.6, maxDc: 89.0 },
+  'baic_arcfox_t1_pro': { maxAc: 6.6, maxDc: 89.0 },
+  'baic_arcfox_t1_max': { maxAc: 6.6, maxDc: 89.0 },
+
+  // Geely
+  'geely_ex2': { maxAc: 6.6, maxDc: 70.0 },
+  'geely_ex2_pro': { maxAc: 6.6, maxDc: 70.0 },
+  'geely_ex2_max': { maxAc: 6.6, maxDc: 70.0 },
+  'geely_ex5_pro': { maxAc: 11.0, maxDc: 100.0 },
+  'geely_ex5_max': { maxAc: 11.0, maxDc: 100.0 },
+  'geely_ex5_em_i_pro': { maxAc: 6.6, maxDc: 30.0 },
+  'geely_ex5_em_i_max': { maxAc: 6.6, maxDc: 30.0 },
+  'geely_ex5_em_i_ultra': { maxAc: 6.6, maxDc: 30.0 },
+
+  // GAC
+  'gac_aion_es_plus': { maxAc: 6.6, maxDc: 60.0 },
+  'gac_aion_ut_elite': { maxAc: 6.6, maxDc: 87.0 },
+  'gac_aion_ut_premium': { maxAc: 6.6, maxDc: 64.0 },
+  'gac_aion_v_elite': { maxAc: 11.0, maxDc: 180.0 },
+  'gac_hyptec_ht_elite': { maxAc: 11.0, maxDc: 150.0 },
+  'gac_hyptec_ht_ultra': { maxAc: 11.0, maxDc: 200.0 }
+};
+
+/**
  * Estima potências máximas de recarga AC e DC baseadas na química, bateria e categoria
  */
-function calibrarPotenciasRecarga(tipo, bateria, marca) {
+function calibrarPotenciasRecarga(tipo, bateria, marca, modeloId = '') {
+  // 1. Checa potências homologadas conhecidas
+  const idChave = (modeloId || '').toLowerCase();
+  for (const [chave, pot] of Object.entries(POTENCIAS_HOMOLOGADAS)) {
+    if (idChave.includes(chave) || chave.includes(idChave)) {
+      return { maxAc: pot.maxAc, maxDc: pot.maxDc };
+    }
+  }
+
   const brandNorm = (marca || '').toLowerCase();
   const bat = Number(bateria) || 0;
 
@@ -54,12 +90,12 @@ function calibrarPotenciasRecarga(tipo, bateria, marca) {
     if (bat < 25) {
       return { maxAc: 6.6, maxDc: bat > 18 ? 18.0 : 0.0 };
     }
-    // Baterias grandes em PHEV (30-45 kWh - ex: GWM Haval/Wey, BYD Shark/Song, Jetour)
+    // Baterias grandes em PHEV (30-45 kWh)
     return { maxAc: 6.6, maxDc: bat >= 35 ? 50.0 : 30.0 };
   }
 
   // 100% Elétricos (BEV)
-  const isPremiumHighSpeed = ['audi', 'porsche', 'zeekr', 'avatr', 'denza'].some(p => brandNorm.includes(p));
+  const isPremiumHighSpeed = ['audi', 'porsche', 'zeekr', 'avatr', 'denza', 'lucid', 'lotus'].some(p => brandNorm.includes(p));
 
   if (isPremiumHighSpeed) {
     if (bat >= 90) {
@@ -69,10 +105,10 @@ function calibrarPotenciasRecarga(tipo, bateria, marca) {
   }
 
   if (bat <= 40) {
-    return { maxAc: 6.6, maxDc: 40.0 };
+    return { maxAc: 6.6, maxDc: 70.0 };
   }
   if (bat <= 65) {
-    return { maxAc: 7.0, maxDc: 80.0 };
+    return { maxAc: 7.0, maxDc: 85.0 };
   }
   if (bat <= 85) {
     return { maxAc: 11.0, maxDc: 150.0 };
@@ -81,9 +117,174 @@ function calibrarPotenciasRecarga(tipo, bateria, marca) {
 }
 
 /**
- * Realiza requisição HTTPS para obter o catálogo do eletricos.app
+ * Auxiliar para requisição HTTPS com JSON
  */
-function baixarCatalogoHtml() {
+function fetchHttpsJson(url) {
+  return new Promise((resolve, reject) => {
+    const req = https.get(url, {
+      timeout: 12000,
+      headers: {
+        'User-Agent': 'CargaVE/1.3 (https://cargave.app; Central de Recarga)',
+        'Accept': 'application/json'
+      }
+    }, (res) => {
+      if (res.statusCode < 200 || res.statusCode >= 300) {
+        return reject(new Error(`Status HTTP ${res.statusCode} ao consultar ${url}`));
+      }
+      let rawData = '';
+      res.on('data', chunk => rawData += chunk);
+      res.on('end', () => {
+        try {
+          resolve(JSON.parse(rawData));
+        } catch (e) {
+          reject(new Error(`Resposta JSON inválida de ${url}: ${e.message}`));
+        }
+      });
+    });
+
+    req.on('timeout', () => {
+      req.destroy();
+      reject(new Error('Tempo limite esgotado (timeout 12s) ao consultar Carregados API.'));
+    });
+
+    req.on('error', (err) => {
+      reject(new Error(`Falha de conexão com Carregados API: ${err.message}`));
+    });
+  });
+}
+
+/**
+ * Determina com precisão o tipo de propulsão (BEV, PHEV ou REEV)
+ */
+function determinarTipoVeiculo(marca, modelo, bateria, autonomia, conectorIds = []) {
+  const full = `${marca} ${modelo}`.toLowerCase();
+
+  if (/\b(reev|erev|estendida|extensor|super hybrid|super híbrido)\b/i.test(full)) {
+    return 'REEV';
+  }
+
+  const phevKeywords = [
+    'phev', 'plug-in', 'plugin', 'hybrid', 'hibrido', 'híbrido',
+    'em-i', 'em-p', 'dm-i', 'dm-p', 'dht', 'hi4', 'tfsie', 'tfsi e',
+    'e-hybrid', '4xe', 'e-tech plug', '450h+', 'gte', 'shs-p'
+  ];
+
+  if (phevKeywords.some(k => full.includes(k))) {
+    if (!full.includes('bev') && !full.includes('100% elétrico')) {
+      return 'PHEV';
+    }
+  }
+
+  const bat = Number(bateria) || 0;
+  const rng = Number(autonomia) || 0;
+  if (bat > 0 && bat <= 35 && rng > 0 && rng <= 140) {
+    if (!conectorIds.includes(20) || (bat <= 22 && rng <= 100)) {
+      return 'PHEV';
+    }
+  }
+
+  return 'BEV';
+}
+
+/**
+ * Consulta a API pública do Carregados (https://carregados.com.br/api/public/vehicles)
+ * Pagina todos os veículos e expande variantes para obter dados padronizados Inmetro PBEV.
+ */
+async function buscarCatalogoCarregados() {
+  const listaVeiculos = [];
+  const idsVistos = new Set();
+  let page = 1;
+  const maxPages = 6; // Proteção contra loops
+
+  while (page <= maxPages) {
+    const url = `https://carregados.com.br/api/public/vehicles?limit=100&page=${page}`;
+    const data = await fetchHttpsJson(url);
+    const vehicles = Array.isArray(data.vehicles) ? data.vehicles : [];
+
+    for (const v of vehicles) {
+      const make = (v.make || '').trim();
+      const baseModel = (v.model || '').trim();
+      const variants = Array.isArray(v.variants) ? v.variants : [];
+      const conns = Array.isArray(v.connectors) ? v.connectors.map(c => c.id) : [];
+
+      if (variants.length > 0) {
+        for (const variant of variants) {
+          const varName = (variant.name || '').trim();
+          let modelFinal = baseModel;
+          if (varName && !baseModel.toLowerCase().includes(varName.toLowerCase())) {
+            modelFinal = `${baseModel} ${varName}`;
+          }
+
+          const battery = Number(variant.batteryCapacityKwh || v.batteryCapacityKwh) || 0;
+          const range = Number(variant.ratedRangeKm || v.ratedRangeKm) || 0;
+
+          if (battery > 0 || range > 0) {
+            let idSugerido = gerarIdVeiculo(make, modelFinal);
+            if (idsVistos.has(idSugerido)) {
+              idSugerido = `${idSugerido}_${Math.round(battery)}kwh`;
+              if (idsVistos.has(idSugerido)) continue;
+            }
+            idsVistos.add(idSugerido);
+
+            const tipoPadronizado = determinarTipoVeiculo(make, modelFinal, battery, range, conns);
+            const pot = calibrarPotenciasRecarga(tipoPadronizado, battery, make, idSugerido);
+
+            listaVeiculos.push({
+              id: idSugerido,
+              brand: make,
+              model: modelFinal,
+              type: tipoPadronizado,
+              battery: Number(battery.toFixed(2)),
+              range: Math.round(range),
+              maxAc: pot.maxAc,
+              maxDc: pot.maxDc,
+              source: 'carregados.com.br'
+            });
+          }
+        }
+      } else {
+        const battery = Number(v.batteryCapacityKwh) || 0;
+        const range = Number(v.ratedRangeKm) || 0;
+
+        if (battery > 0 || range > 0) {
+          let idSugerido = gerarIdVeiculo(make, baseModel);
+          if (idsVistos.has(idSugerido)) {
+            idSugerido = `${idSugerido}_${Math.round(battery)}kwh`;
+            if (idsVistos.has(idSugerido)) continue;
+          }
+          idsVistos.add(idSugerido);
+
+          const tipoPadronizado = determinarTipoVeiculo(make, baseModel, battery, range, conns);
+          const pot = calibrarPotenciasRecarga(tipoPadronizado, battery, make, idSugerido);
+
+          listaVeiculos.push({
+            id: idSugerido,
+            brand: make,
+            model: baseModel,
+            type: tipoPadronizado,
+            battery: Number(battery.toFixed(2)),
+            range: Math.round(range),
+            maxAc: pot.maxAc,
+            maxDc: pot.maxDc,
+            source: 'carregados.com.br'
+          });
+        }
+      }
+    }
+
+    if (!data.pagination || !data.pagination.hasMore) {
+      break;
+    }
+    page++;
+  }
+
+  return listaVeiculos;
+}
+
+/**
+ * Fallback: Realiza requisição HTTPS para obter o catálogo do eletricos.app
+ */
+function baixarCatalogoHtmlFallback() {
   return new Promise((resolve, reject) => {
     const options = {
       hostname: 'www.eletricos.app',
@@ -109,7 +310,7 @@ function baixarCatalogoHtml() {
 
     req.on('timeout', () => {
       req.destroy();
-      reject(new Error('Tempo limite de conexão esgotado ao contatar eletricos.app (timeout 15s).'));
+      reject(new Error('Tempo limite esgotado ao contatar eletricos.app (timeout 15s).'));
     });
 
     req.on('error', (err) => {
@@ -121,9 +322,9 @@ function baixarCatalogoHtml() {
 }
 
 /**
- * Extrai veículos BEV, PHEV e EREV a partir do conteúdo HTML/RSC do eletricos.app
+ * Fallback: Extrai veículos BEV, PHEV e EREV a partir do conteúdo HTML do eletricos.app
  */
-function extrairVeiculosDoHtml(html) {
+function extrairVeiculosDoHtmlFallback(html) {
   const secoes = html.split('<a class="block" href="/veiculo/');
   const veiculos = [];
 
@@ -145,19 +346,12 @@ function extrairVeiculosDoHtml(html) {
     const modeloMatch = trechoCard.match(/<h3 class="text-xl font-bold text-foreground group-hover:text-primary transition-colors mb-1">([^<]+)<\/h3>/);
     const modelo = modeloMatch ? modeloMatch[1].trim() : '';
 
-    const anoMatch = trechoCard.match(/<p class="text-muted-foreground text-sm">([0-9]{4})/);
-    const ano = anoMatch ? anoMatch[1] : '';
-
-    const precoMatch = trechoCard.match(/<div class="text-2xl font-bold">(R\$[^<]+)<\/div>/);
-    const preco = precoMatch ? precoMatch[1].trim() : '';
-
     const autMatch = trechoCard.match(/Autonomia<\/div><div class="font-bold text-sm ">([0-9]+)\s*km<\/div>/);
     const range = autMatch ? parseInt(autMatch[1], 10) : 0;
 
     const batMatch = trechoCard.match(/Bateria<\/div><div class="font-bold text-sm ">([0-9]+(?:,[0-9]+)?)\s*kWh<\/div>/);
     const battery = batMatch ? parseFloat(batMatch[1].replace(',', '.')) : 0;
 
-    // Classificação estrita: BEV, PHEV ou REEV (Autonomia Estendida)
     let tipoPadronizado = null;
     const tipoTextoLower = tipoTexto.toLowerCase();
     const slugLower = slug.toLowerCase();
@@ -171,9 +365,7 @@ function extrairVeiculosDoHtml(html) {
       tipoTextoLower.includes('erev') ||
       tipoTextoLower.includes('reev') ||
       slugLower.includes('erev') ||
-      slugLower.includes('reev') ||
-      modeloLower.includes('erev') ||
-      modeloLower.includes('reev')
+      slugLower.includes('reev')
     ) {
       tipoPadronizado = 'REEV';
     } else if (
@@ -186,22 +378,19 @@ function extrairVeiculosDoHtml(html) {
     }
 
     if (tipoPadronizado && marca && modelo) {
-      const potencias = calibrarPotenciasRecarga(tipoPadronizado, battery, marca);
       const idSugerido = slug ? slug.replace(/-/g, '_') : gerarIdVeiculo(marca, modelo);
+      const potencias = calibrarPotenciasRecarga(tipoPadronizado, battery, marca, idSugerido);
 
       veiculos.push({
         id: idSugerido,
         brand: marca,
         model: modelo,
-        year: ano,
         type: tipoPadronizado,
-        battery: battery || (tipoPadronizado === 'BEV' ? 60 : (tipoPadronizado === 'REEV' || tipoPadronizado === 'EREV' ? 28 : 18)),
-        range: range || (tipoPadronizado === 'BEV' ? 300 : (tipoPadronizado === 'REEV' || tipoPadronizado === 'EREV' ? 140 : 60)),
+        battery: battery || (tipoPadronizado === 'BEV' ? 60 : (tipoPadronizado === 'REEV' ? 28 : 18)),
+        range: range || (tipoPadronizado === 'BEV' ? 300 : (tipoPadronizado === 'REEV' ? 140 : 60)),
         maxAc: potencias.maxAc,
         maxDc: potencias.maxDc,
-        price: preco,
-        slug,
-        sourceUrl: `https://www.eletricos.app/veiculo/${slug}`
+        source: 'eletricos.app'
       });
     }
   }
@@ -210,8 +399,25 @@ function extrairVeiculosDoHtml(html) {
 }
 
 /**
- * Conjunto de termos de propulsão e conectores genéricos
- * que não devem ser usados sozinhos para associar modelos diferentes.
+ * Obtém catálogo remoto priorizando a API pública do Carregados com fallback para eletricos.app
+ */
+async function obterCatalogoRemoto() {
+  try {
+    const carregados = await buscarCatalogoCarregados();
+    if (carregados && carregados.length > 0) {
+      return { fonte: 'carregados.com.br (API REST)', veiculos: carregados };
+    }
+  } catch (err) {
+    console.warn('[SyncService] Aviso: Carregados API indisponível, acionando fallback eletricos.app:', err.message);
+  }
+
+  const html = await baixarCatalogoHtmlFallback();
+  const veiculosFallback = extrairVeiculosDoHtmlFallback(html);
+  return { fonte: 'eletricos.app (HTML Fallback)', veiculos: veiculosFallback };
+}
+
+/**
+ * Termos comuns de propulsão
  */
 const TERMOS_PROPULSAO = new Set([
   'hibrido', 'híbrido', 'reev', 'erev', 'phev', 'bev', 'ev',
@@ -225,20 +431,20 @@ function extrairTokensModelo(modeloStr) {
     .replace(/[\u0300-\u036f]/g, '')
     .replace(/[^a-z0-9\s]/g, ' ')
     .split(/\s+/)
-    .filter(t => t.length >= 2 && !TERMOS_PROPULSAO.has(t));
+    .filter(t => t.length >= 1 && !TERMOS_PROPULSAO.has(t));
 }
 
 /**
  * Compara veículos extraídos com o banco de dados do sistema
+ * Identifica tanto modelos NÃO CADASTRADOS quanto modelos COM DIVERGÊNCIAS de bateria/autonomia.
  */
 async function verificarNovidades() {
-  const html = await baixarCatalogoHtml();
-  const veiculosRemotos = extrairVeiculosDoHtml(html);
-
+  const { fonte, veiculos: veiculosRemotos } = await obterCatalogoRemoto();
   const veiculosLocais = await prisma.veiculo.findMany();
 
   const novos = [];
   const existentes = [];
+  const divergentes = [];
 
   for (const vRemoto of veiculosRemotos) {
     const marcaNorm = normalizarTexto(vRemoto.brand);
@@ -271,15 +477,8 @@ async function verificarNovidades() {
       const tokensRemoto = extrairTokensModelo(vRemoto.model);
 
       if (tokensLocal.length > 0 && tokensRemoto.length > 0) {
-        // O identificador base (primeiro termo, ex: 'b10', 'c10', 'dolphin') DEVE coincidir
-        if (tokensLocal[0] !== tokensRemoto[0]) {
-          return false;
-        }
-
-        // Se ambos compartilham o nome base e termos distintivos principais
-        const palavrasComuns = tokensRemoto.filter(p => tokensLocal.includes(p));
-        const minEsperado = Math.min(tokensLocal.length, tokensRemoto.length);
-        if (palavrasComuns.length >= 2 || palavrasComuns.length >= minEsperado) {
+        // Se ambos têm exatamente os mesmos tokens distintivos
+        if (tokensLocal.length === tokensRemoto.length && tokensLocal.every(t => tokensRemoto.includes(t))) {
           return true;
         }
       }
@@ -288,20 +487,41 @@ async function verificarNovidades() {
     });
 
     if (matchLocal) {
-      existentes.push({
-        remoto: vRemoto,
-        localId: matchLocal.id
-      });
+      // Checa se as especificações técnicas divergem
+      const difBateria = Math.abs((matchLocal.battery || 0) - (vRemoto.battery || 0));
+      const difRange = Math.abs((matchLocal.range || 0) - (vRemoto.range || 0));
+
+      if (difBateria > 1.0 || difRange > 20) {
+        // Veículo com dados desatualizados ou incorretos no banco
+        divergentes.push({
+          ...vRemoto,
+          id: matchLocal.id,
+          isDivergencia: true,
+          descricaoDivergencia: `Atualizar: Banco (${matchLocal.battery} kWh • ${matchLocal.range} km) ➔ Homologado (${vRemoto.battery} kWh • ${vRemoto.range} km)`
+        });
+      } else {
+        existentes.push({
+          remoto: vRemoto,
+          localId: matchLocal.id
+        });
+      }
     } else {
       novos.push(vRemoto);
     }
   }
 
+  // Lista unificada para o modal: primeiro os novos, seguidos das atualizações recomendadas
+  const listaParaApresentacao = [
+    ...novos,
+    ...divergentes
+  ].sort((a, b) => a.brand.localeCompare(b.brand) || a.model.localeCompare(b.model));
+
   return {
+    fonte,
     totalRemoto: veiculosRemotos.length,
     totalExistentes: existentes.length,
-    totalNovos: novos.length,
-    novos: novos.sort((a, b) => a.brand.localeCompare(b.brand) || a.model.localeCompare(b.model))
+    totalNovos: listaParaApresentacao.length,
+    novos: listaParaApresentacao
   };
 }
 
@@ -363,7 +583,7 @@ async function importarVeiculos(veiculosParaImportar, onProgress) {
           percent: percentual,
           veiculo: `${item.brand} ${item.model}`,
           status: 'sucesso',
-          mensagem: `[${i + 1}/${total}] Importado: ${item.brand} ${item.model} (${item.type})`
+          mensagem: `[${i + 1}/${total}] Salvo: ${item.brand} ${item.model} (${item.type} • ${item.battery} kWh • ${item.range} km)`
         });
       }
     } catch (err) {
@@ -375,12 +595,11 @@ async function importarVeiculos(veiculosParaImportar, onProgress) {
           percent: percentual,
           veiculo: `${item.brand} ${item.model}`,
           status: 'erro',
-          mensagem: `[${i + 1}/${total}] Erro ao importar ${item.brand} ${item.model}: ${err.message}`
+          mensagem: `[${i + 1}/${total}] Erro ao salvar ${item.brand} ${item.model}: ${err.message}`
         });
       }
     }
 
-    // Pequena pausa assíncrona para permitir emissão fluida de eventos SSE
     await new Promise(r => setTimeout(r, 40));
   }
 
@@ -396,5 +615,6 @@ module.exports = {
   verificarNovidades,
   importarVeiculos,
   gerarIdVeiculo,
-  calibrarPotenciasRecarga
+  calibrarPotenciasRecarga,
+  buscarCatalogoCarregados
 };
