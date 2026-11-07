@@ -411,7 +411,7 @@
   },
   {
     "id": "byd_atto_8",
-    "type": "BEV",
+    "type": "PHEV",
     "brand": "BYD",
     "model": "Atto 8",
     "battery": 35.6,
@@ -521,7 +521,7 @@
   },
   {
     "id": "byd_shark_gl",
-    "type": "BEV",
+    "type": "PHEV",
     "brand": "BYD",
     "model": "Shark GL",
     "battery": 29.6,
@@ -531,7 +531,7 @@
   },
   {
     "id": "byd_shark_gs",
-    "type": "BEV",
+    "type": "PHEV",
     "brand": "BYD",
     "model": "Shark GS",
     "battery": 29.6,
@@ -901,7 +901,7 @@
   },
   {
     "id": "denza_b5_gl_dm",
-    "type": "BEV",
+    "type": "PHEV",
     "brand": "Denza",
     "model": "B5 GL DM",
     "battery": 31.8,
@@ -911,7 +911,7 @@
   },
   {
     "id": "denza_b5_gs_dm",
-    "type": "BEV",
+    "type": "PHEV",
     "brand": "Denza",
     "model": "B5 GS DM",
     "battery": 31.8,
@@ -1161,7 +1161,7 @@
   },
   {
     "id": "gac_gs9_ultra",
-    "type": "BEV",
+    "type": "PHEV",
     "brand": "GAC",
     "model": "GS9 Ultra",
     "battery": 44.5,
@@ -1441,7 +1441,7 @@
   },
   {
     "id": "gwm_wey_07_dark_edition",
-    "type": "BEV",
+    "type": "PHEV",
     "brand": "GWM",
     "model": "WEY 07 Dark Edition",
     "battery": 42.5,
@@ -1761,7 +1761,7 @@
   },
   {
     "id": "jetour_t1_advance",
-    "type": "BEV",
+    "type": "PHEV",
     "brand": "JETOUR",
     "model": "T1 Advance",
     "battery": 26.7,
@@ -1771,7 +1771,7 @@
   },
   {
     "id": "jetour_t1_premium",
-    "type": "BEV",
+    "type": "PHEV",
     "brand": "JETOUR",
     "model": "T1 Premium",
     "battery": 26.7,
@@ -1781,7 +1781,7 @@
   },
   {
     "id": "jetour_t2_advance",
-    "type": "BEV",
+    "type": "PHEV",
     "brand": "JETOUR",
     "model": "T2 Advance",
     "battery": 26.7,
@@ -1791,7 +1791,7 @@
   },
   {
     "id": "jetour_t2_premium",
-    "type": "BEV",
+    "type": "PHEV",
     "brand": "JETOUR",
     "model": "T2 Premium",
     "battery": 26.7,

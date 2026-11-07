@@ -142,17 +142,29 @@ function fetchHttpsJson(url) {
 /**
  * Determina com precisão o tipo de propulsão (BEV, PHEV ou REEV)
  */
-function determinarTipoVeiculo(marca, modelo, bateria, autonomia, conectorIds = []) {
+function determinarTipoVeiculo(marca, modelo, bateria, autonomia, conectorIds = [], powertrain = null) {
+  // 1. Respeita informação oficial de propulsão quando fornecida pela API
+  if (powertrain) {
+    const pw = String(powertrain).toLowerCase();
+    if (pw.includes('plug_in_hybrid') || pw.includes('phev')) return 'PHEV';
+    if (pw.includes('extended_range') || pw.includes('reev') || pw.includes('erev')) return 'REEV';
+    if (pw.includes('battery_electric') || pw.includes('bev')) return 'BEV';
+  }
+
   const full = `${marca} ${modelo}`.toLowerCase();
 
+  // 2. REEV / EREV (Extensor de Autonomia)
   if (/\b(reev|erev|estendida|extensor|super hybrid|super híbrido)\b/i.test(full)) {
     return 'REEV';
   }
 
+  // 3. Palavras-chave inequívocas de Híbridos Plug-in (PHEV)
   const phevKeywords = [
     'phev', 'plug-in', 'plugin', 'hybrid', 'hibrido', 'híbrido',
     'em-i', 'em-p', 'dm-i', 'dm-p', 'dht', 'hi4', 'tfsie', 'tfsi e',
-    'e-hybrid', '4xe', 'e-tech plug', '450h+', 'gte', 'shs-p'
+    'e-hybrid', '4xe', 'e-tech plug', '450h+', 'gte', 'shs-p',
+    'wey', 'shark', 'dmo', 'i-dm', 'idm', 't1 advance', 't1 premium',
+    't2 advance', 't2 premium', 'gs9', 'atto 8'
   ];
 
   if (phevKeywords.some(k => full.includes(k))) {
@@ -161,12 +173,22 @@ function determinarTipoVeiculo(marca, modelo, bateria, autonomia, conectorIds = 
     }
   }
 
+  // Se tem a sigla DM (Dual Mode da BYD / Denza)
+  if (/\bdm\b/i.test(full) || full.includes('_dm')) {
+    return 'PHEV';
+  }
+
+  // 4. Regra física de autonomia elétrica para PHEV:
+  // Subcompactos elétricos legítimos de bateria pequena
+  const subcompactosUrbanos = ['icar', 'kwid', 'e-js1', 'e-jt', 'e-js4', 'dolphin', '500e'];
+  const isSubcompacto = subcompactosUrbanos.some(s => full.includes(s));
+
   const bat = Number(bateria) || 0;
   const rng = Number(autonomia) || 0;
-  if (bat > 0 && bat <= 35 && rng > 0 && rng <= 140) {
-    if (!conectorIds.includes(20) || (bat <= 22 && rng <= 100)) {
-      return 'PHEV';
-    }
+
+  // Qualquer veículo com autonomia <= 160 km e bateria <= 50 kWh que não seja subcompacto urbano é PHEV
+  if (!isSubcompacto && bat > 0 && rng > 0 && rng <= 160 && bat <= 50) {
+    return 'PHEV';
   }
 
   return 'BEV';
