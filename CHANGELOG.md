@@ -1,5 +1,18 @@
 # Changelog
 
+## [1.3.4](https://github.com/cfgaspar10/cargave-app/compare/cargave-v1.3.3...cargave-v1.3.4) (2026-11-07)
+
+
+### 🐛 Correções de Bugs
+
+* **veiculos:** corrigir potencias de recarga AC e DC do modelos bev/phev e homologar base oficial ([d988856](https://github.com/cfgaspar10/cargave-app/commit/d9888565cb262ddb1cb53c8bcf565f39eb918cdb))
+* **veiculos:** reclassificar GWM WEY 07 e modelos hibridos como PHEV ([805cc32](https://github.com/cfgaspar10/cargave-app/commit/805cc320da6a0ff2e3601d6863c629f07858f611))
+
+
+### 🔧 Tarefas e Manutenção
+
+* **release:** atualizar badge da interface para v1.3.3 [skip ci] ([f9270ff](https://github.com/cfgaspar10/cargave-app/commit/f9270ff636f17fda190cbc3939fa0818726e1388))
+
 ## [1.3.3](https://github.com/cfgaspar10/cargave-app/compare/cargave-v1.3.2...cargave-v1.3.3) (2026-11-05)
 
 
