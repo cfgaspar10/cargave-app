@@ -1,0 +1,1454 @@
+{
+  "audi_a6_avant_e_tron": {
+    "maxAc": 11,
+    "maxDc": 270
+  },
+  "audi_a6_sportback_e_tron_performance_black": {
+    "maxAc": 11,
+    "maxDc": 270
+  },
+  "audi_a6_sportback_e_tron_s_line": {
+    "maxAc": 11,
+    "maxDc": 270
+  },
+  "audi_q5_sportback_tfsie_55_tfsi_e_quattro_performance": {
+    "maxAc": 7.4,
+    "maxDc": 0
+  },
+  "audi_q5_sportback_tfsie_55_tfsi_e_quattro_performance_black": {
+    "maxAc": 7.4,
+    "maxDc": 0
+  },
+  "audi_q5_tfsie_55_tfsi_e_quattro_performance": {
+    "maxAc": 7.4,
+    "maxDc": 0
+  },
+  "audi_q5_tfsie_55_tfsi_e_quattro_performance_black": {
+    "maxAc": 7.4,
+    "maxDc": 0
+  },
+  "audi_q6_sportback_e_tron_quattro_performance_black": {
+    "maxAc": 11,
+    "maxDc": 270
+  },
+  "audi_q6_sportback_e_tron_quattro_s_line": {
+    "maxAc": 11,
+    "maxDc": 270
+  },
+  "audi_q6_e_tron_quattro_dynamic": {
+    "maxAc": 11,
+    "maxDc": 270
+  },
+  "audi_q6_e_tron_quattro_performance": {
+    "maxAc": 11,
+    "maxDc": 270
+  },
+  "audi_q6_e_tron_quattro_performance_black": {
+    "maxAc": 11,
+    "maxDc": 270
+  },
+  "audi_q6_e_tron_quattro_s_line": {
+    "maxAc": 11,
+    "maxDc": 270
+  },
+  "audi_q6_e_tron_rwd_performance": {
+    "maxAc": 11,
+    "maxDc": 270
+  },
+  "audi_q8_e_tron_55_launch_edition": {
+    "maxAc": 11,
+    "maxDc": 150
+  },
+  "audi_q8_e_tron_55_performance_black": {
+    "maxAc": 11,
+    "maxDc": 150
+  },
+  "audi_q8_e_tron_sportback_55_launch_edition": {
+    "maxAc": 11,
+    "maxDc": 150
+  },
+  "audi_q8_e_tron_sportback_55_performance_black": {
+    "maxAc": 11,
+    "maxDc": 150
+  },
+  "audi_rs_e_tron_gt": {
+    "maxAc": 11,
+    "maxDc": 270
+  },
+  "audi_rs_e_tron_gt_performance": {
+    "maxAc": 11,
+    "maxDc": 320
+  },
+  "audi_sq6_sportback_e_tron": {
+    "maxAc": 11,
+    "maxDc": 270
+  },
+  "audi_sq8_e_tron_sportback": {
+    "maxAc": 11,
+    "maxDc": 150
+  },
+  "audi_e_tron_performance": {
+    "maxAc": 11,
+    "maxDc": 150
+  },
+  "audi_e_tron_performance_black": {
+    "maxAc": 11,
+    "maxDc": 150
+  },
+  "audi_e_tron_gt": {
+    "maxAc": 11,
+    "maxDc": 270
+  },
+  "audi_e_tron_s_sportback": {
+    "maxAc": 11,
+    "maxDc": 150
+  },
+  "audi_e_tron_sportback_performance": {
+    "maxAc": 11,
+    "maxDc": 150
+  },
+  "audi_e_tron_sportback_performance_black": {
+    "maxAc": 11,
+    "maxDc": 150
+  },
+  "baic_arcfox_t1_max": {
+    "maxAc": 6.6,
+    "maxDc": 89
+  },
+  "baic_arcfox_t1_pro": {
+    "maxAc": 6.6,
+    "maxDc": 89
+  },
+  "bmw_330e_m_sport": {
+    "maxAc": 11,
+    "maxDc": 0
+  },
+  "bmw_530e_m_sport": {
+    "maxAc": 11,
+    "maxDc": 0
+  },
+  "bmw_x5_xdrive50e_m_sport": {
+    "maxAc": 11,
+    "maxDc": 0
+  },
+  "bmw_i4_m50_xdrive": {
+    "maxAc": 11,
+    "maxDc": 205
+  },
+  "bmw_i4_edrive40_m_sport": {
+    "maxAc": 11,
+    "maxDc": 205
+  },
+  "bmw_i7_xdrive60_m_sport": {
+    "maxAc": 11,
+    "maxDc": 195
+  },
+  "bmw_ix1_xdrive30": {
+    "maxAc": 11,
+    "maxDc": 130
+  },
+  "bmw_ix2_xdrive30_m_sport": {
+    "maxAc": 11,
+    "maxDc": 130
+  },
+  "bmw_ix3_50_xdrive": {
+    "maxAc": 22,
+    "maxDc": 400
+  },
+  "byd_atto_2_dm_i_flex_gl": {
+    "maxAc": 3.3,
+    "maxDc": 0
+  },
+  "byd_atto_2_dm_i_flex_gs": {
+    "maxAc": 6.6,
+    "maxDc": 0
+  },
+  "byd_atto_8": {
+    "maxAc": 6.6,
+    "maxDc": 72
+  },
+  "byd_dolphin_gs": {
+    "maxAc": 7,
+    "maxDc": 60
+  },
+  "byd_dolphin_mini_gl": {
+    "maxAc": 6.6,
+    "maxDc": 30
+  },
+  "byd_dolphin_mini_gs": {
+    "maxAc": 6.6,
+    "maxDc": 40
+  },
+  "byd_dolphin_plus_310ev": {
+    "maxAc": 11,
+    "maxDc": 88
+  },
+  "byd_dolphin_special_edition_se_290ev": {
+    "maxAc": 6.6,
+    "maxDc": 80
+  },
+  "byd_han_awd_gs_680ev": {
+    "maxAc": 7,
+    "maxDc": 120
+  },
+  "byd_king_dm_i_gl": {
+    "maxAc": 3.3,
+    "maxDc": 0
+  },
+  "byd_king_dm_i_gs": {
+    "maxAc": 6.6,
+    "maxDc": 0
+  },
+  "byd_seal_awd_gs_590ev": {
+    "maxAc": 11,
+    "maxDc": 150
+  },
+  "byd_sealion_7_gs_690ev": {
+    "maxAc": 11,
+    "maxDc": 150
+  },
+  "byd_shark_gl": {
+    "maxAc": 6.6,
+    "maxDc": 55
+  },
+  "byd_shark_gs": {
+    "maxAc": 6.6,
+    "maxDc": 55
+  },
+  "byd_song_plus_dm_i_2027_1_5t": {
+    "maxAc": 6.6,
+    "maxDc": 18
+  },
+  "byd_song_plus_dm_i_gs": {
+    "maxAc": 6.6,
+    "maxDc": 0
+  },
+  "byd_song_plus_dm_i_premium": {
+    "maxAc": 6.6,
+    "maxDc": 18
+  },
+  "byd_song_pro_dm_i_flex_gl": {
+    "maxAc": 6.6,
+    "maxDc": 0
+  },
+  "byd_song_pro_dm_i_flex_gs": {
+    "maxAc": 6.6,
+    "maxDc": 0
+  },
+  "byd_tan_awd_gs_700ev": {
+    "maxAc": 11,
+    "maxDc": 170
+  },
+  "byd_yuan_plus_awd": {
+    "maxAc": 11,
+    "maxDc": 205
+  },
+  "byd_yuan_pro_gs_290ev": {
+    "maxAc": 6.6,
+    "maxDc": 65
+  },
+  "caoa_changan_avatr_11_4_lugares": {
+    "maxAc": 11,
+    "maxDc": 240
+  },
+  "caoa_changan_avatr_11_5_lugares": {
+    "maxAc": 11,
+    "maxDc": 240
+  },
+  "caoa_chery_tiggo_7_pro_phev": {
+    "maxAc": 3.3,
+    "maxDc": 50
+  },
+  "caoa_chery_tiggo_8_pro_phev": {
+    "maxAc": 3.3,
+    "maxDc": 50
+  },
+  "caoa_chery_tiggo_9_phev": {
+    "maxAc": 6.6,
+    "maxDc": 0
+  },
+  "caoa_chery_icar_tec": {
+    "maxAc": 6.6,
+    "maxDc": 30
+  },
+  "gac_hyptec_ht_elite": {
+    "maxAc": 11,
+    "maxDc": 180
+  },
+  "gac_hyptec_ht_ultra": {
+    "maxAc": 11,
+    "maxDc": 180
+  },
+  "gmc_hummer_ev_pickup_2026_2x": {
+    "maxAc": 19.2,
+    "maxDc": 300
+  },
+  "gmc_hummer_ev_pickup_2026_2x_extreme_off_road": {
+    "maxAc": 19.2,
+    "maxDc": 300
+  },
+  "gmc_hummer_ev_pickup_2026_3x_20_module": {
+    "maxAc": 19.2,
+    "maxDc": 300
+  },
+  "gmc_hummer_ev_pickup_2026_3x_20_module_extreme_off_road": {
+    "maxAc": 19.2,
+    "maxDc": 300
+  },
+  "gmc_hummer_ev_pickup_2026_3x_24_module": {
+    "maxAc": 19.2,
+    "maxDc": 350
+  },
+  "gmc_hummer_ev_pickup_2026_3x_24_module_extreme_off_road": {
+    "maxAc": 19.2,
+    "maxDc": 350
+  },
+  "gmc_hummer_ev_suv_2026_2x": {
+    "maxAc": 19.2,
+    "maxDc": 300
+  },
+  "gmc_hummer_ev_suv_2026_2x_extreme_off_road": {
+    "maxAc": 19.2,
+    "maxDc": 300
+  },
+  "gmc_hummer_ev_suv_2026_3x": {
+    "maxAc": 19.2,
+    "maxDc": 300
+  },
+  "gmc_hummer_ev_suv_2026_3x_extreme_off_road": {
+    "maxAc": 19.2,
+    "maxDc": 300
+  },
+  "gmc_sierra_ev_2026_at4_extended_range": {
+    "maxAc": 11.5,
+    "maxDc": 300
+  },
+  "gmc_sierra_ev_2026_at4_max_range": {
+    "maxAc": 11.5,
+    "maxDc": 350
+  },
+  "gmc_sierra_ev_2026_denali_extended_range": {
+    "maxAc": 11.5,
+    "maxDc": 300
+  },
+  "gmc_sierra_ev_2026_denali_max_range": {
+    "maxAc": 11.5,
+    "maxDc": 350
+  },
+  "gmc_sierra_ev_2026_denali_standard_range": {
+    "maxAc": 11.5,
+    "maxDc": 220
+  },
+  "gmc_sierra_ev_2026_elevation_extended_range": {
+    "maxAc": 11.5,
+    "maxDc": 300
+  },
+  "gmc_sierra_ev_2026_elevation_standard_range": {
+    "maxAc": 11.5,
+    "maxDc": 220
+  },
+  "gwm_haval_h6_phev_flex_gt_flex": {
+    "maxAc": 6.6,
+    "maxDc": 48
+  },
+  "gwm_haval_h6_phev_flex_phev19_flex": {
+    "maxAc": 6.6,
+    "maxDc": 33
+  },
+  "gwm_haval_h6_phev_flex_phev35_flex": {
+    "maxAc": 6.6,
+    "maxDc": 48
+  },
+  "gwm_haval_h7_phev_flex_hi4_awd": {
+    "maxAc": 6.6,
+    "maxDc": 41
+  },
+  "gwm_ora_03_bev58": {
+    "maxAc": 11,
+    "maxDc": 64
+  },
+  "gwm_ora_03_gt_bev63": {
+    "maxAc": 11,
+    "maxDc": 67
+  },
+  "gwm_ora_5": {
+    "maxAc": 11,
+    "maxDc": 120
+  },
+  "gwm_tank_300_phev_flex_hi4_t": {
+    "maxAc": 6.6,
+    "maxDc": 50
+  },
+  "gwm_wey_07_dark_edition": {
+    "maxAc": 6.6,
+    "maxDc": 60
+  },
+  "geely_ex2_max": {
+    "maxAc": 7,
+    "maxDc": 50
+  },
+  "geely_ex2_pro": {
+    "maxAc": 7,
+    "maxDc": 50
+  },
+  "geely_ex5_max": {
+    "maxAc": 11,
+    "maxDc": 80
+  },
+  "geely_ex5_pro": {
+    "maxAc": 11,
+    "maxDc": 80
+  },
+  "geely_ex5_em_i_max": {
+    "maxAc": 6.6,
+    "maxDc": 30
+  },
+  "geely_ex5_em_i_pro": {
+    "maxAc": 6.6,
+    "maxDc": 30
+  },
+  "geely_ex5_em_i_ultra": {
+    "maxAc": 6.6,
+    "maxDc": 60
+  },
+  "hyundai_ioniq_5_signature_awd": {
+    "maxAc": 11,
+    "maxDc": 220
+  },
+  "hyundai_kona_ev_ev39": {
+    "maxAc": 7.2,
+    "maxDc": 100
+  },
+  "jac_e_j7": {
+    "maxAc": 11,
+    "maxDc": 100
+  },
+  "jac_e_js1": {
+    "maxAc": 6,
+    "maxDc": 20
+  },
+  "jac_e_js1_e_js1_ext": {
+    "maxAc": 6.5,
+    "maxDc": 20
+  },
+  "jac_e_js1_city_cargo": {
+    "maxAc": 6,
+    "maxDc": 20
+  },
+  "jac_e_js4": {
+    "maxAc": 6,
+    "maxDc": 100
+  },
+  "jac_e_jt12_5_chassi": {
+    "maxAc": 6,
+    "maxDc": 75
+  },
+  "jac_e_jt18_chassi": {
+    "maxAc": 11,
+    "maxDc": 100
+  },
+  "jac_e_jt3_5_chassi": {
+    "maxAc": 11,
+    "maxDc": 100
+  },
+  "jac_e_jt9_5_chassi": {
+    "maxAc": 6,
+    "maxDc": 75
+  },
+  "jac_e_jv12_cargo": {
+    "maxAc": 6,
+    "maxDc": 70
+  },
+  "jac_e_jv12_vip_15_passageiros_motorista": {
+    "maxAc": 6.6,
+    "maxDc": 100
+  },
+  "jac_e_jv5_5_cargo": {
+    "maxAc": 6,
+    "maxDc": 40
+  },
+  "jac_e_jv7l_6_passageiros_motorista": {
+    "maxAc": 6,
+    "maxDc": 40
+  },
+  "jac_e_jvcc_chassi_cabine": {
+    "maxAc": 6,
+    "maxDc": 70
+  },
+  "jac_ev_hunter_4x4": {
+    "maxAc": 11,
+    "maxDc": 100
+  },
+  "jac_iev1200t_chassi": {
+    "maxAc": 11,
+    "maxDc": 100
+  },
+  "jac_iev330p": {
+    "maxAc": 11,
+    "maxDc": 100
+  },
+  "jaecoo_7_shs_p_elite": {
+    "maxAc": 6.6,
+    "maxDc": 40
+  },
+  "jaecoo_7_shs_p_luxury": {
+    "maxAc": 6.6,
+    "maxDc": 40
+  },
+  "jaecoo_7_shs_p_prestige": {
+    "maxAc": 6.6,
+    "maxDc": 40
+  },
+  "jetour_s06_advance": {
+    "maxAc": 6.6,
+    "maxDc": 40
+  },
+  "jetour_s06_premium": {
+    "maxAc": 6.6,
+    "maxDc": 40
+  },
+  "jetour_t1_advance": {
+    "maxAc": 6.6,
+    "maxDc": 40
+  },
+  "mercedes_eqe_300_300_amg_line": {
+    "maxAc": 11,
+    "maxDc": 170
+  },
+  "mercedes_eqe_300_suv_300_amg_line": {
+    "maxAc": 22,
+    "maxDc": 170
+  },
+  "mercedes_eqe_350_350_amg_line": {
+    "maxAc": 22,
+    "maxDc": 170
+  },
+  "mercedes_eqe_350_suv_350_amg_line": {
+    "maxAc": 22,
+    "maxDc": 170
+  },
+  "mercedes_eqs_450_4matic_suv": {
+    "maxAc": 11,
+    "maxDc": 200
+  },
+  "mercedes_eqs_450_suv": {
+    "maxAc": 11,
+    "maxDc": 200
+  },
+  "mercedes_mercedes_amg_c_63_s_e_performance": {
+    "maxAc": 3.7,
+    "maxDc": 0
+  },
+  "mercedes_mercedes_amg_c_63_s_e_performance_f1_edition": {
+    "maxAc": 3.7,
+    "maxDc": 0
+  },
+  "mercedes_mercedes_amg_eqe_53_4matic_suv": {
+    "maxAc": 22,
+    "maxDc": 170
+  },
+  "mercedes_mercedes_amg_eqs_53_4matic": {
+    "maxAc": 11,
+    "maxDc": 200
+  },
+  "mercedes_mercedes_amg_glc_63_s_e_performance_coupe": {
+    "maxAc": 3.7,
+    "maxDc": 0
+  },
+  "mercedes_mercedes_amg_gt_63_s_e_performance_coupe_2_portas": {
+    "maxAc": 3.7,
+    "maxDc": 0
+  },
+  "mercedes_mercedes_amg_gt_63_s_e_performance_coupe_4_portas": {
+    "maxAc": 3.7,
+    "maxDc": 0
+  },
+  "mercedes_mercedes_amg_s_63_e_performance": {
+    "maxAc": 3.7,
+    "maxDc": 0
+  },
+  "mercedes_mercedes_amg_sl_63_s_e_performance": {
+    "maxAc": 3.7,
+    "maxDc": 0
+  },
+  "mercedes_esprinter_320_chassi_81_kwh": {
+    "maxAc": 11,
+    "maxDc": 115
+  },
+  "mercedes_esprinter_320_furgao_81_kwh": {
+    "maxAc": 11,
+    "maxDc": 115
+  },
+  "mercedes_esprinter_furgao_113_kwh": {
+    "maxAc": 11,
+    "maxDc": 115
+  },
+  "mini_aceman": {
+    "maxAc": 11,
+    "maxDc": 70
+  },
+  "mini_aceman_jcw_e": {
+    "maxAc": 11,
+    "maxDc": 95
+  },
+  "mini_aceman_se": {
+    "maxAc": 11,
+    "maxDc": 95
+  },
+  "mini_cooper_eletrico": {
+    "maxAc": 11,
+    "maxDc": 75
+  },
+  "mini_cooper_eletrico_cooper_se": {
+    "maxAc": 11,
+    "maxDc": 95
+  },
+  "mini_cooper_eletrico_jcw_e": {
+    "maxAc": 11,
+    "maxDc": 95
+  },
+  "mini_countryman_se_all4_exclusive": {
+    "maxAc": 11,
+    "maxDc": 130
+  },
+  "mini_countryman_se_all4_top": {
+    "maxAc": 11,
+    "maxDc": 130
+  },
+  "mitsubishi_outlander_phev_hpe_s": {
+    "maxAc": 3.5,
+    "maxDc": 0
+  },
+  "mitsubishi_outlander_phev_signature": {
+    "maxAc": 3.5,
+    "maxDc": 0
+  },
+  "neta_aya_comfort": {
+    "maxAc": 6.6,
+    "maxDc": 60
+  },
+  "neta_aya_luxury": {
+    "maxAc": 6.6,
+    "maxDc": 60
+  },
+  "neta_x_400_comfort": {
+    "maxAc": 6.6,
+    "maxDc": 65
+  },
+  "neta_x_500_comfort": {
+    "maxAc": 6.6,
+    "maxDc": 88.8
+  },
+  "neta_x_500_luxury": {
+    "maxAc": 6.6,
+    "maxDc": 88.8
+  },
+  "nissan_ariya_eng_2wd": {
+    "maxAc": 7.4,
+    "maxDc": 130
+  },
+  "nissan_ariya_eng_awd": {
+    "maxAc": 7.4,
+    "maxDc": 130
+  },
+  "nissan_ariya_plt_awd_engpl_awd": {
+    "maxAc": 7.4,
+    "maxDc": 130
+  },
+  "nissan_leaf_tekna": {
+    "maxAc": 6.6,
+    "maxDc": 50
+  },
+  "omoda_7_shs_p_luxury": {
+    "maxAc": 6.6,
+    "maxDc": 40
+  },
+  "omoda_7_shs_p_prestige": {
+    "maxAc": 6.6,
+    "maxDc": 40
+  },
+  "omoda_e5": {
+    "maxAc": 11,
+    "maxDc": 120
+  },
+  "peugeot_e_2008_gt": {
+    "maxAc": 11,
+    "maxDc": 100
+  },
+  "peugeot_e_208_gt": {
+    "maxAc": 11,
+    "maxDc": 100
+  },
+  "peugeot_e_expert_cargo": {
+    "maxAc": 11,
+    "maxDc": 100
+  },
+  "porsche_cayenne_e_hybrid_base": {
+    "maxAc": 11,
+    "maxDc": 0
+  },
+  "porsche_cayenne_e_hybrid_coupe": {
+    "maxAc": 11,
+    "maxDc": 0
+  },
+  "porsche_cayenne_e_hybrid": {
+    "maxAc": 11,
+    "maxDc": 0
+  },
+  "porsche_cayenne_e_hybrid_s_e_hybrid": {
+    "maxAc": 11,
+    "maxDc": 0
+  },
+  "porsche_cayenne_e_hybrid_turbo_e_hybrid": {
+    "maxAc": 11,
+    "maxDc": 0
+  },
+  "porsche_cayenne_e_hybrid_turbo_s": {
+    "maxAc": 11,
+    "maxDc": 0
+  },
+  "porsche_cayenne_e_hybrid_turbo_s_coupe": {
+    "maxAc": 11,
+    "maxDc": 0
+  },
+  "porsche_cayenne_electric": {
+    "maxAc": 11,
+    "maxDc": 400
+  },
+  "porsche_cayenne_electric_cayenne_electric_coupe": {
+    "maxAc": 11,
+    "maxDc": 400
+  },
+  "porsche_cayenne_electric_cayenne_s_electric": {
+    "maxAc": 11,
+    "maxDc": 400
+  },
+  "porsche_cayenne_electric_cayenne_s_electric_coupe": {
+    "maxAc": 11,
+    "maxDc": 400
+  },
+  "porsche_cayenne_electric_cayenne_turbo_electric": {
+    "maxAc": 11,
+    "maxDc": 400
+  },
+  "porsche_cayenne_electric_cayenne_turbo_electric_coupe": {
+    "maxAc": 11,
+    "maxDc": 400
+  },
+  "porsche_macan_electric_macan_4": {
+    "maxAc": 11,
+    "maxDc": 270
+  },
+  "porsche_macan_electric_macan_4s": {
+    "maxAc": 11,
+    "maxDc": 270
+  },
+  "porsche_macan_electric_macan_gts": {
+    "maxAc": 11,
+    "maxDc": 270
+  },
+  "porsche_macan_electric_macan_turbo": {
+    "maxAc": 11,
+    "maxDc": 270
+  },
+  "volvo_ex40_plus_single_motor": {
+    "maxAc": 11,
+    "maxDc": 150
+  },
+  "volvo_ex40_ultra_twin_motor_performance": {
+    "maxAc": 11,
+    "maxDc": 150
+  },
+  "volvo_ex60_p10_awd": {
+    "maxAc": 22,
+    "maxDc": 370
+  },
+  "volvo_ex90_ultra_twin_motor_performance": {
+    "maxAc": 11,
+    "maxDc": 250
+  },
+  "volvo_xc60_plug_in_hybrid_plus_t8_awd": {
+    "maxAc": 6.4,
+    "maxDc": 0
+  },
+  "volvo_xc60_plug_in_hybrid_polestar_engineered_t8_awd": {
+    "maxAc": 6.4,
+    "maxDc": 0
+  },
+  "volvo_xc60_plug_in_hybrid_ultra_t8_awd": {
+    "maxAc": 6.4,
+    "maxDc": 0
+  },
+  "volvo_xc90_plug_in_hybrid_plus_t8_awd": {
+    "maxAc": 6.4,
+    "maxDc": 0
+  },
+  "volvo_xc90_plug_in_hybrid_ultra_t8_awd": {
+    "maxAc": 6.4,
+    "maxDc": 0
+  },
+  "xiaomi_su7_max": {
+    "maxAc": 11,
+    "maxDc": 100
+  },
+  "xiaomi_su7_pro": {
+    "maxAc": 11,
+    "maxDc": 100
+  },
+  "xiaomi_su7_standard": {
+    "maxAc": 11,
+    "maxDc": 100
+  },
+  "xiaomi_su7_ultra": {
+    "maxAc": 11,
+    "maxDc": 100
+  },
+  "xiaomi_yu7_max": {
+    "maxAc": 11,
+    "maxDc": 100
+  },
+  "xiaomi_yu7_pro": {
+    "maxAc": 11,
+    "maxDc": 100
+  },
+  "xiaomi_yu7_standard": {
+    "maxAc": 11,
+    "maxDc": 100
+  },
+  "zeekr_001_flagship_awd": {
+    "maxAc": 22,
+    "maxDc": 200
+  },
+  "zeekr_001_premium_awd": {
+    "maxAc": 22,
+    "maxDc": 200
+  },
+  "zeekr_7x_flagship_awd": {
+    "maxAc": 11,
+    "maxDc": 200
+  },
+  "zeekr_7x_premium_awd": {
+    "maxAc": 11,
+    "maxDc": 200
+  },
+  "zeekr_7x_premium_rwd": {
+    "maxAc": 11,
+    "maxDc": 200
+  },
+  "zeekr_x_flagship_awd": {
+    "maxAc": 11,
+    "maxDc": 150
+  },
+  "zeekr_x_premium_rwd": {
+    "maxAc": 11,
+    "maxDc": 150
+  },
+  "cadillac_escalade_iq_2026_luxury": {
+    "maxAc": 11.5,
+    "maxDc": 350
+  },
+  "cadillac_escalade_iq_2026_premium_luxury": {
+    "maxAc": 19.2,
+    "maxDc": 350
+  },
+  "cadillac_escalade_iq_2026_premium_sport": {
+    "maxAc": 19.2,
+    "maxDc": 350
+  },
+  "cadillac_escalade_iq_2026_sport": {
+    "maxAc": 11.5,
+    "maxDc": 350
+  },
+  "cadillac_lyriq_2026_awd": {
+    "maxAc": 19.2,
+    "maxDc": 190
+  },
+  "cadillac_lyriq_2026_lyriq_v": {
+    "maxAc": 11.5,
+    "maxDc": 190
+  },
+  "cadillac_lyriq_2026_lyriq_v_premium": {
+    "maxAc": 19.2,
+    "maxDc": 190
+  },
+  "cadillac_lyriq_2026_rwd": {
+    "maxAc": 11.5,
+    "maxDc": 190
+  },
+  "cadillac_lyriq_2026_signature_luxury": {
+    "maxAc": 21.1,
+    "maxDc": 132
+  },
+  "cadillac_vistiq_2027": {
+    "maxAc": 11,
+    "maxDc": 100
+  },
+  "chevrolet_blazer_ev_rs": {
+    "maxAc": 11.5,
+    "maxDc": 195
+  },
+  "chevrolet_bolt_euv_premier": {
+    "maxAc": 7.2,
+    "maxDc": 55
+  },
+  "chevrolet_bolt_ev": {
+    "maxAc": 7.2,
+    "maxDc": 55
+  },
+  "chevrolet_bolt_ev_premier": {
+    "maxAc": 7.2,
+    "maxDc": 55
+  },
+  "chevrolet_captiva_ev_premier": {
+    "maxAc": 11,
+    "maxDc": 100
+  },
+  "chevrolet_equinox_ev_eawd": {
+    "maxAc": 11.5,
+    "maxDc": 150
+  },
+  "chevrolet_silverado_ev_2026_lt_max_range": {
+    "maxAc": 19.2,
+    "maxDc": 350
+  },
+  "chevrolet_silverado_ev_2026_trail_boss_max_range": {
+    "maxAc": 19.2,
+    "maxDc": 350
+  },
+  "chevrolet_spark_euv_activ": {
+    "maxAc": 7,
+    "maxDc": 50
+  },
+  "citroen_e_jumpy_cargo": {
+    "maxAc": 11,
+    "maxDc": 100
+  },
+  "dfm_box_urban": {
+    "maxAc": 6.6,
+    "maxDc": 88
+  },
+  "dfm_vigo_urban_plus": {
+    "maxAc": 6.6,
+    "maxDc": 167
+  },
+  "denza_b5_gl_dm": {
+    "maxAc": 11,
+    "maxDc": 100
+  },
+  "denza_b5_gs_dm": {
+    "maxAc": 11,
+    "maxDc": 100
+  },
+  "denza_z9_gt_1210ev": {
+    "maxAc": 11,
+    "maxDc": 100
+  },
+  "ferrari_296_gtb": {
+    "maxAc": 7.4,
+    "maxDc": 0
+  },
+  "ferrari_296_gts": {
+    "maxAc": 6.6,
+    "maxDc": 0
+  },
+  "fiat_500e_icon": {
+    "maxAc": 11,
+    "maxDc": 85
+  },
+  "ford_e_transit_c35ebab": {
+    "maxAc": 11.3,
+    "maxDc": 115
+  },
+  "ford_e_transit_c35lbab": {
+    "maxAc": 11.3,
+    "maxDc": 115
+  },
+  "ford_e_transit_f35eaab": {
+    "maxAc": 11.3,
+    "maxDc": 115
+  },
+  "ford_e_transit_f35laab": {
+    "maxAc": 11.3,
+    "maxDc": 115
+  },
+  "ford_e_transit_f35lmab": {
+    "maxAc": 11.3,
+    "maxDc": 115
+  },
+  "ford_e_transit_f35maab": {
+    "maxAc": 11.3,
+    "maxDc": 115
+  },
+  "ford_e_transit_f35mmab": {
+    "maxAc": 11.3,
+    "maxDc": 115
+  },
+  "ford_f_150_lightning_2025_flash_extended_range": {
+    "maxAc": 11.3,
+    "maxDc": 100
+  },
+  "ford_f_150_lightning_2025_lariat_extended_range": {
+    "maxAc": 11.3,
+    "maxDc": 100
+  },
+  "ford_f_150_lightning_2025_platinum_extended_range": {
+    "maxAc": 11.3,
+    "maxDc": 100
+  },
+  "ford_f_150_lightning_2025_pro_extended_range_123_kwh": {
+    "maxAc": 11.3,
+    "maxDc": 100
+  },
+  "ford_f_150_lightning_2025_pro_extended_range_131_kwh": {
+    "maxAc": 11.3,
+    "maxDc": 100
+  },
+  "ford_f_150_lightning_2025_pro_standard_range": {
+    "maxAc": 11.3,
+    "maxDc": 100
+  },
+  "ford_mustang_mach_e_gt_performance": {
+    "maxAc": 11,
+    "maxDc": 150
+  },
+  "gac_aion_es_plus": {
+    "maxAc": 6.6,
+    "maxDc": 68
+  },
+  "gac_aion_ut_elite": {
+    "maxAc": 6.6,
+    "maxDc": 87
+  },
+  "gac_aion_ut_premium": {
+    "maxAc": 6.6,
+    "maxDc": 64
+  },
+  "gac_aion_v_elite": {
+    "maxAc": 6.6,
+    "maxDc": 180
+  },
+  "gac_aion_y_elite": {
+    "maxAc": 6.6,
+    "maxDc": 75
+  },
+  "gac_aion_y_premium": {
+    "maxAc": 6.6,
+    "maxDc": 75
+  },
+  "gac_gs9_ultra": {
+    "maxAc": 6,
+    "maxDc": 140
+  },
+  "jetour_t1_premium": {
+    "maxAc": 6.6,
+    "maxDc": 40
+  },
+  "jetour_t2_advance": {
+    "maxAc": 6.6,
+    "maxDc": 40
+  },
+  "jetour_t2_premium": {
+    "maxAc": 6.6,
+    "maxDc": 40
+  },
+  "jaguar_f_pace_p400e_r_dynamic_se": {
+    "maxAc": 6.6,
+    "maxDc": 35
+  },
+  "jaguar_i_pace_e400_first_edition": {
+    "maxAc": 11,
+    "maxDc": 100
+  },
+  "jaguar_i_pace_e400_hse": {
+    "maxAc": 11,
+    "maxDc": 100
+  },
+  "jaguar_i_pace_e400_s": {
+    "maxAc": 11,
+    "maxDc": 100
+  },
+  "jaguar_i_pace_e400_se": {
+    "maxAc": 11,
+    "maxDc": 100
+  },
+  "jeep_compass_4xe_serie_s": {
+    "maxAc": 7.2,
+    "maxDc": 0
+  },
+  "jeep_grand_cherokee_4xe": {
+    "maxAc": 7.2,
+    "maxDc": 0
+  },
+  "kia_ev5_air_2wd": {
+    "maxAc": 11,
+    "maxDc": 141
+  },
+  "kia_ev5_land_2wd": {
+    "maxAc": 11,
+    "maxDc": 141
+  },
+  "kia_ev9_gt_line_awd": {
+    "maxAc": 11,
+    "maxDc": 233
+  },
+  "lamborghini_revuelto": {
+    "maxAc": 6.6,
+    "maxDc": 0
+  },
+  "lamborghini_temerario": {
+    "maxAc": 7,
+    "maxDc": 0
+  },
+  "lamborghini_urus_se": {
+    "maxAc": 6.6,
+    "maxDc": 0
+  },
+  "land_rover_range_rover_phev": {
+    "maxAc": 7,
+    "maxDc": 43
+  },
+  "land_rover_range_rover_sport_phev": {
+    "maxAc": 7,
+    "maxDc": 43
+  },
+  "land_rover_range_rover_velar_phev": {
+    "maxAc": 7,
+    "maxDc": 0
+  },
+  "leapmotor_b10_life": {
+    "maxAc": 11,
+    "maxDc": 140
+  },
+  "leapmotor_b10_ultra_h_brido_reev": {
+    "maxAc": 6.6,
+    "maxDc": 0
+  },
+  "leapmotor_c10_bev": {
+    "maxAc": 11,
+    "maxDc": 84
+  },
+  "leapmotor_c10_reev": {
+    "maxAc": 6.6,
+    "maxDc": 65
+  },
+  "lexus_nx_450h": {
+    "maxAc": 6.6,
+    "maxDc": 0
+  },
+  "lexus_rx_450h": {
+    "maxAc": 6.6,
+    "maxDc": 0
+  },
+  "lexus_rz_500e_500e_awd": {
+    "maxAc": 22,
+    "maxDc": 150
+  },
+  "lucid_air_grand_touring": {
+    "maxAc": 19.2,
+    "maxDc": 300
+  },
+  "lucid_air_pure": {
+    "maxAc": 19.2,
+    "maxDc": 250
+  },
+  "lucid_air_sapphire": {
+    "maxAc": 19.2,
+    "maxDc": 300
+  },
+  "lucid_air_touring": {
+    "maxAc": 19.2,
+    "maxDc": 250
+  },
+  "lucid_gravity_grand_touring": {
+    "maxAc": 19.2,
+    "maxDc": 400
+  },
+  "lucid_gravity_touring": {
+    "maxAc": 19.2,
+    "maxDc": 300
+  },
+  "mg_motor_cyberster_awd_77kwh": {
+    "maxAc": 11,
+    "maxDc": 150
+  },
+  "mg_motor_mg_s5_comfort_rwd_62kwh": {
+    "maxAc": 11,
+    "maxDc": 150
+  },
+  "mg_motor_mg_s5_luxury_rwd_62kwh": {
+    "maxAc": 11,
+    "maxDc": 150
+  },
+  "mg_motor_mg4_comfort_rwd_64kwh": {
+    "maxAc": 11,
+    "maxDc": 135
+  },
+  "mg_motor_mg4_luxury_rwd_64kwh": {
+    "maxAc": 11,
+    "maxDc": 135
+  },
+  "mg_motor_mg4_xpower_awd_64kwh": {
+    "maxAc": 11,
+    "maxDc": 150
+  },
+  "mg_motor_mg4_urban_comfort_43kwh": {
+    "maxAc": 11,
+    "maxDc": 82
+  },
+  "mg_motor_mg4_urban_luxury_43kwh": {
+    "maxAc": 11,
+    "maxDc": 82
+  },
+  "mg_motor_mg4_urban_luxury_54kwh": {
+    "maxAc": 11,
+    "maxDc": 87
+  },
+  "maserati_grancabrio_folgore": {
+    "maxAc": 11,
+    "maxDc": 270
+  },
+  "maserati_granturismo_folgore": {
+    "maxAc": 11,
+    "maxDc": 270
+  },
+  "maserati_grecale_folgore": {
+    "maxAc": 11,
+    "maxDc": 150
+  },
+  "mclaren_artura_coupe": {
+    "maxAc": 7.4,
+    "maxDc": 0
+  },
+  "mclaren_artura_spider": {
+    "maxAc": 7.4,
+    "maxDc": 0
+  },
+  "mercedes_eqa_250_250_2023_2024": {
+    "maxAc": 11,
+    "maxDc": 100
+  },
+  "mercedes_eqa_250_250_2025": {
+    "maxAc": 11,
+    "maxDc": 100
+  },
+  "mercedes_eqb_250_250_2023": {
+    "maxAc": 11,
+    "maxDc": 100
+  },
+  "mercedes_eqb_250_250": {
+    "maxAc": 11,
+    "maxDc": 100
+  },
+  "mercedes_eqb_350_4matic": {
+    "maxAc": 11,
+    "maxDc": 100
+  },
+  "mercedes_eqc_400_4matic_400_4matic_2020_2021": {
+    "maxAc": 7.4,
+    "maxDc": 110
+  },
+  "mercedes_eqc_400_4matic_400_4matic_amg_line_2022_2023": {
+    "maxAc": 11,
+    "maxDc": 110
+  },
+  "porsche_panamera_e_hybrid_4_e_hybrid": {
+    "maxAc": 11,
+    "maxDc": 0
+  },
+  "porsche_panamera_e_hybrid_4s_e_hybrid": {
+    "maxAc": 11,
+    "maxDc": 0
+  },
+  "porsche_panamera_e_hybrid_turbo_e_hybrid": {
+    "maxAc": 11,
+    "maxDc": 0
+  },
+  "porsche_panamera_e_hybrid_turbo_s_e_hybrid": {
+    "maxAc": 11,
+    "maxDc": 0
+  },
+  "porsche_taycan_4_cross_turismo": {
+    "maxAc": 11,
+    "maxDc": 320
+  },
+  "porsche_taycan_4s": {
+    "maxAc": 11,
+    "maxDc": 320
+  },
+  "porsche_taycan_4s_cross_turismo": {
+    "maxAc": 11,
+    "maxDc": 320
+  },
+  "porsche_taycan_turbo_cross_turismo": {
+    "maxAc": 11,
+    "maxDc": 320
+  },
+  "porsche_taycan_turbo_s": {
+    "maxAc": 11,
+    "maxDc": 320
+  },
+  "renault_kangoo_e_tech_l2": {
+    "maxAc": 7.4,
+    "maxDc": 50
+  },
+  "renault_kwid_e_tech_intens": {
+    "maxAc": 7.4,
+    "maxDc": 30
+  },
+  "renault_megane_e_tech_ev60_220_optimum_charge": {
+    "maxAc": 22,
+    "maxDc": 130
+  },
+  "rivian_r1s_dual_large": {
+    "maxAc": 11.5,
+    "maxDc": 220
+  },
+  "rivian_r1s_dual_max": {
+    "maxAc": 11.5,
+    "maxDc": 220
+  },
+  "rivian_r1s_quad_max": {
+    "maxAc": 11.5,
+    "maxDc": 220
+  },
+  "rivian_r1s_tri_max": {
+    "maxAc": 11.5,
+    "maxDc": 220
+  },
+  "rivian_r1t_dual_large": {
+    "maxAc": 11.5,
+    "maxDc": 220
+  },
+  "rivian_r1t_dual_max": {
+    "maxAc": 11.5,
+    "maxDc": 220
+  },
+  "rivian_r1t_quad_max": {
+    "maxAc": 11.5,
+    "maxDc": 220
+  },
+  "rivian_r1t_tri_max": {
+    "maxAc": 11.5,
+    "maxDc": 220
+  },
+  "seres_3_elegance": {
+    "maxAc": 6.6,
+    "maxDc": 100
+  },
+  "suzuki_e_vitara_4sty_2wd": {
+    "maxAc": 11,
+    "maxDc": 150
+  },
+  "suzuki_e_vitara_4x4_allgrip_e": {
+    "maxAc": 11,
+    "maxDc": 150
+  },
+  "tesla_cybertruck_cyberbeast": {
+    "maxAc": 11.5,
+    "maxDc": 250
+  },
+  "tesla_cybertruck_premium_awd": {
+    "maxAc": 11.5,
+    "maxDc": 250
+  },
+  "tesla_model_3_2026_performance": {
+    "maxAc": 11,
+    "maxDc": 250
+  },
+  "tesla_model_3_2026_premium_long_range_awd": {
+    "maxAc": 11,
+    "maxDc": 250
+  },
+  "tesla_model_3_2026_premium_long_range_rwd": {
+    "maxAc": 11,
+    "maxDc": 170
+  },
+  "tesla_model_3_2026_rwd": {
+    "maxAc": 11,
+    "maxDc": 170
+  },
+  "tesla_model_s_long_range": {
+    "maxAc": 11,
+    "maxDc": 250
+  },
+  "tesla_model_s_plaid": {
+    "maxAc": 11,
+    "maxDc": 250
+  },
+  "tesla_model_x_long_range": {
+    "maxAc": 11,
+    "maxDc": 250
+  },
+  "tesla_model_x_plaid": {
+    "maxAc": 11,
+    "maxDc": 250
+  },
+  "tesla_model_y_2026_awd": {
+    "maxAc": 11,
+    "maxDc": 250
+  },
+  "tesla_model_y_2026_performance": {
+    "maxAc": 11,
+    "maxDc": 250
+  },
+  "tesla_model_y_2026_premium": {
+    "maxAc": 11,
+    "maxDc": 100
+  },
+  "tesla_model_y_2026_rwd": {
+    "maxAc": 11,
+    "maxDc": 170
+  },
+  "tesla_model_y_2027_l_premium": {
+    "maxAc": 11,
+    "maxDc": 100
+  },
+  "tesla_roadster_2008_2012": {
+    "maxAc": 11,
+    "maxDc": 100
+  },
+  "tesla_roadster_2008_2012_roadster_sport_2_5_sport": {
+    "maxAc": 11,
+    "maxDc": 100
+  },
+  "toyota_rav4_plug_in_hybrid_xse_plug_in_hybrid": {
+    "maxAc": 6.6,
+    "maxDc": 0
+  },
+  "volkswagen_id_4_pro_performance": {
+    "maxAc": 11,
+    "maxDc": 135
+  },
+  "volkswagen_id_buzz_pro": {
+    "maxAc": 11,
+    "maxDc": 135
+  },
+  "volvo_c40_recharge_p6_plus_single_motor": {
+    "maxAc": 11,
+    "maxDc": 150
+  },
+  "volvo_ec40_plus_single_motor": {
+    "maxAc": 11,
+    "maxDc": 150
+  },
+  "volvo_ec40_ultra_twin_motor_performance": {
+    "maxAc": 11,
+    "maxDc": 150
+  },
+  "volvo_es90_ultra_twin_motor_performance": {
+    "maxAc": 11,
+    "maxDc": 100
+  },
+  "volvo_ex30_cross_country_twin_motor": {
+    "maxAc": 11,
+    "maxDc": 153
+  },
+  "volvo_ex30_single_motor": {
+    "maxAc": 11,
+    "maxDc": 134
+  },
+  "volvo_ex30_twin_motor_performance": {
+    "maxAc": 11,
+    "maxDc": 153
+  }
+}

@@ -27,38 +27,24 @@ function gerarIdVeiculo(brand, model) {
 
 /**
  * Tabela de especificações oficiais de recarga homologadas para o Brasil
+ * Carregada do catálogo oficial consolidado do Carregados
  */
-const POTENCIAS_HOMOLOGADAS = {
-  // BAIC
-  'baic_arcfox_t1': { maxAc: 6.6, maxDc: 89.0 },
-  'baic_arcfox_t1_pro': { maxAc: 6.6, maxDc: 89.0 },
-  'baic_arcfox_t1_max': { maxAc: 6.6, maxDc: 89.0 },
-
-  // Geely
-  'geely_ex2': { maxAc: 6.6, maxDc: 70.0 },
-  'geely_ex2_pro': { maxAc: 6.6, maxDc: 70.0 },
-  'geely_ex2_max': { maxAc: 6.6, maxDc: 70.0 },
-  'geely_ex5_pro': { maxAc: 11.0, maxDc: 100.0 },
-  'geely_ex5_max': { maxAc: 11.0, maxDc: 100.0 },
-  'geely_ex5_em_i_pro': { maxAc: 6.6, maxDc: 30.0 },
-  'geely_ex5_em_i_max': { maxAc: 6.6, maxDc: 30.0 },
-  'geely_ex5_em_i_ultra': { maxAc: 6.6, maxDc: 30.0 },
-
-  // GAC
-  'gac_aion_es_plus': { maxAc: 6.6, maxDc: 60.0 },
-  'gac_aion_ut_elite': { maxAc: 6.6, maxDc: 87.0 },
-  'gac_aion_ut_premium': { maxAc: 6.6, maxDc: 64.0 },
-  'gac_aion_v_elite': { maxAc: 11.0, maxDc: 180.0 },
-  'gac_hyptec_ht_elite': { maxAc: 11.0, maxDc: 150.0 },
-  'gac_hyptec_ht_ultra': { maxAc: 11.0, maxDc: 200.0 }
-};
+let POTENCIAS_HOMOLOGADAS = {};
+try {
+  POTENCIAS_HOMOLOGADAS = require('./potencias_homologadas.json');
+} catch (e) {
+  POTENCIAS_HOMOLOGADAS = {};
+}
 
 /**
- * Estima potências máximas de recarga AC e DC baseadas na química, bateria e categoria
+ * Estima ou recupera potências máximas de recarga AC e DC baseadas na química, bateria e categoria
  */
 function calibrarPotenciasRecarga(tipo, bateria, marca, modeloId = '') {
-  // 1. Checa potências homologadas conhecidas
+  // 1. Checa potências homologadas conhecidas (busca direta ou parcial)
   const idChave = (modeloId || '').toLowerCase();
+  if (POTENCIAS_HOMOLOGADAS[idChave]) {
+    return { ...POTENCIAS_HOMOLOGADAS[idChave] };
+  }
   for (const [chave, pot] of Object.entries(POTENCIAS_HOMOLOGADAS)) {
     if (idChave.includes(chave) || chave.includes(idChave)) {
       return { maxAc: pot.maxAc, maxDc: pot.maxDc };
@@ -487,17 +473,25 @@ async function verificarNovidades() {
     });
 
     if (matchLocal) {
-      // Checa se as especificações técnicas divergem
+      // Checa se as especificações técnicas divergem (Bateria, Autonomia, AC ou DC)
       const difBateria = Math.abs((matchLocal.battery || 0) - (vRemoto.battery || 0));
       const difRange = Math.abs((matchLocal.range || 0) - (vRemoto.range || 0));
+      const difAc = Math.abs((matchLocal.maxAc || 0) - (vRemoto.maxAc || 0));
+      const difDc = Math.abs((matchLocal.maxDc || 0) - (vRemoto.maxDc || 0));
 
-      if (difBateria > 1.0 || difRange > 20) {
+      if (difBateria > 1.0 || difRange > 20 || difAc > 0.1 || difDc > 1.0) {
         // Veículo com dados desatualizados ou incorretos no banco
+        const alteracoes = [];
+        if (difBateria > 1.0) alteracoes.push(`Bateria: ${matchLocal.battery} ➔ ${vRemoto.battery} kWh`);
+        if (difRange > 20) alteracoes.push(`Autonomia: ${matchLocal.range} ➔ ${vRemoto.range} km`);
+        if (difAc > 0.1) alteracoes.push(`AC: ${matchLocal.maxAc} ➔ ${vRemoto.maxAc} kW`);
+        if (difDc > 1.0) alteracoes.push(`DC: ${matchLocal.maxDc} ➔ ${vRemoto.maxDc} kW`);
+
         divergentes.push({
           ...vRemoto,
           id: matchLocal.id,
           isDivergencia: true,
-          descricaoDivergencia: `Atualizar: Banco (${matchLocal.battery} kWh • ${matchLocal.range} km) ➔ Homologado (${vRemoto.battery} kWh • ${vRemoto.range} km)`
+          descricaoDivergencia: `Atualizar: ${alteracoes.join(' | ')}`
         });
       } else {
         existentes.push({

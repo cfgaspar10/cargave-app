@@ -11,9 +11,9 @@ const VEICULOS = [
     "type": "BEV",
     "brand": "Audi",
     "model": "A6 Avant e-tron",
-    "battery": 100.0,
-    "maxAc": 22.0,
-    "maxDc": 270.0,
+    "battery": 100,
+    "maxAc": 11,
+    "maxDc": 270,
     "range": 440
   },
   {
@@ -21,9 +21,9 @@ const VEICULOS = [
     "type": "BEV",
     "brand": "Audi",
     "model": "A6 Sportback e-tron Performance black",
-    "battery": 100.0,
-    "maxAc": 22.0,
-    "maxDc": 270.0,
+    "battery": 100,
+    "maxAc": 11,
+    "maxDc": 270,
     "range": 445
   },
   {
@@ -31,9 +31,9 @@ const VEICULOS = [
     "type": "BEV",
     "brand": "Audi",
     "model": "A6 Sportback e-tron S line",
-    "battery": 100.0,
-    "maxAc": 22.0,
-    "maxDc": 270.0,
+    "battery": 100,
+    "maxAc": 11,
+    "maxDc": 270,
     "range": 443
   },
   {
@@ -42,8 +42,8 @@ const VEICULOS = [
     "brand": "Audi",
     "model": "Q5 Sportback TFSIe 55 TFSI e quattro Performance",
     "battery": 17.9,
-    "maxAc": 6.6,
-    "maxDc": 0.0,
+    "maxAc": 7.4,
+    "maxDc": 0,
     "range": 38
   },
   {
@@ -52,8 +52,8 @@ const VEICULOS = [
     "brand": "Audi",
     "model": "Q5 Sportback TFSIe 55 TFSI e quattro Performance Black",
     "battery": 17.9,
-    "maxAc": 6.6,
-    "maxDc": 0.0,
+    "maxAc": 7.4,
+    "maxDc": 0,
     "range": 38
   },
   {
@@ -62,8 +62,8 @@ const VEICULOS = [
     "brand": "Audi",
     "model": "Q5 TFSIe 55 TFSI e quattro Performance",
     "battery": 17.9,
-    "maxAc": 6.6,
-    "maxDc": 0.0,
+    "maxAc": 7.4,
+    "maxDc": 0,
     "range": 38
   },
   {
@@ -72,8 +72,8 @@ const VEICULOS = [
     "brand": "Audi",
     "model": "Q5 TFSIe 55 TFSI e quattro Performance Black",
     "battery": 17.9,
-    "maxAc": 6.6,
-    "maxDc": 0.0,
+    "maxAc": 7.4,
+    "maxDc": 0,
     "range": 38
   },
   {
@@ -81,9 +81,9 @@ const VEICULOS = [
     "type": "BEV",
     "brand": "Audi",
     "model": "Q6 Sportback e-tron Quattro Performance black",
-    "battery": 100.0,
-    "maxAc": 22.0,
-    "maxDc": 270.0,
+    "battery": 100,
+    "maxAc": 11,
+    "maxDc": 270,
     "range": 427
   },
   {
@@ -91,9 +91,9 @@ const VEICULOS = [
     "type": "BEV",
     "brand": "Audi",
     "model": "Q6 Sportback e-tron Quattro S line",
-    "battery": 100.0,
-    "maxAc": 22.0,
-    "maxDc": 270.0,
+    "battery": 100,
+    "maxAc": 11,
+    "maxDc": 270,
     "range": 432
   },
   {
@@ -101,9 +101,9 @@ const VEICULOS = [
     "type": "BEV",
     "brand": "Audi",
     "model": "Q6 e-tron Quattro Dynamic",
-    "battery": 100.0,
-    "maxAc": 22.0,
-    "maxDc": 270.0,
+    "battery": 100,
+    "maxAc": 11,
+    "maxDc": 270,
     "range": 424
   },
   {
@@ -111,9 +111,9 @@ const VEICULOS = [
     "type": "BEV",
     "brand": "Audi",
     "model": "Q6 e-tron Quattro Performance",
-    "battery": 100.0,
-    "maxAc": 22.0,
-    "maxDc": 270.0,
+    "battery": 100,
+    "maxAc": 11,
+    "maxDc": 270,
     "range": 411
   },
   {
@@ -121,9 +121,9 @@ const VEICULOS = [
     "type": "BEV",
     "brand": "Audi",
     "model": "Q6 e-tron Quattro Performance black",
-    "battery": 100.0,
-    "maxAc": 22.0,
-    "maxDc": 270.0,
+    "battery": 100,
+    "maxAc": 11,
+    "maxDc": 270,
     "range": 411
   },
   {
@@ -131,9 +131,9 @@ const VEICULOS = [
     "type": "BEV",
     "brand": "Audi",
     "model": "Q6 e-tron Quattro S line",
-    "battery": 100.0,
-    "maxAc": 22.0,
-    "maxDc": 270.0,
+    "battery": 100,
+    "maxAc": 11,
+    "maxDc": 270,
     "range": 424
   },
   {
@@ -141,9 +141,9 @@ const VEICULOS = [
     "type": "BEV",
     "brand": "Audi",
     "model": "Q6 e-tron RWD Performance",
-    "battery": 100.0,
-    "maxAc": 22.0,
-    "maxDc": 270.0,
+    "battery": 100,
+    "maxAc": 11,
+    "maxDc": 270,
     "range": 411
   },
   {
@@ -151,9 +151,9 @@ const VEICULOS = [
     "type": "BEV",
     "brand": "Audi",
     "model": "Q8 e-tron 55 Launch Edition",
-    "battery": 114.0,
-    "maxAc": 22.0,
-    "maxDc": 270.0,
+    "battery": 114,
+    "maxAc": 11,
+    "maxDc": 150,
     "range": 357
   },
   {
@@ -161,9 +161,9 @@ const VEICULOS = [
     "type": "BEV",
     "brand": "Audi",
     "model": "Q8 e-tron 55 Performance Black",
-    "battery": 114.0,
-    "maxAc": 22.0,
-    "maxDc": 270.0,
+    "battery": 114,
+    "maxAc": 11,
+    "maxDc": 150,
     "range": 357
   },
   {
@@ -171,9 +171,9 @@ const VEICULOS = [
     "type": "BEV",
     "brand": "Audi",
     "model": "Q8 e-tron Sportback 55 Launch Edition",
-    "battery": 114.0,
-    "maxAc": 22.0,
-    "maxDc": 270.0,
+    "battery": 114,
+    "maxAc": 11,
+    "maxDc": 150,
     "range": 362
   },
   {
@@ -181,9 +181,9 @@ const VEICULOS = [
     "type": "BEV",
     "brand": "Audi",
     "model": "Q8 e-tron Sportback 55 Performance Black",
-    "battery": 114.0,
-    "maxAc": 22.0,
-    "maxDc": 270.0,
+    "battery": 114,
+    "maxAc": 11,
+    "maxDc": 150,
     "range": 362
   },
   {
@@ -192,8 +192,8 @@ const VEICULOS = [
     "brand": "Audi",
     "model": "RS e-tron GT",
     "battery": 93.4,
-    "maxAc": 22.0,
-    "maxDc": 270.0,
+    "maxAc": 11,
+    "maxDc": 270,
     "range": 313
   },
   {
@@ -201,9 +201,9 @@ const VEICULOS = [
     "type": "BEV",
     "brand": "Audi",
     "model": "RS e-tron GT performance",
-    "battery": 105.0,
-    "maxAc": 22.0,
-    "maxDc": 270.0,
+    "battery": 105,
+    "maxAc": 11,
+    "maxDc": 320,
     "range": 348
   },
   {
@@ -211,9 +211,9 @@ const VEICULOS = [
     "type": "BEV",
     "brand": "Audi",
     "model": "SQ6 Sportback e-tron",
-    "battery": 100.0,
-    "maxAc": 22.0,
-    "maxDc": 270.0,
+    "battery": 100,
+    "maxAc": 11,
+    "maxDc": 270,
     "range": 428
   },
   {
@@ -221,9 +221,9 @@ const VEICULOS = [
     "type": "BEV",
     "brand": "Audi",
     "model": "SQ8 e-tron Sportback",
-    "battery": 114.0,
-    "maxAc": 22.0,
-    "maxDc": 270.0,
+    "battery": 114,
+    "maxAc": 11,
+    "maxDc": 150,
     "range": 307
   },
   {
@@ -232,8 +232,8 @@ const VEICULOS = [
     "brand": "Audi",
     "model": "e-tron GT",
     "battery": 93.4,
-    "maxAc": 22.0,
-    "maxDc": 270.0,
+    "maxAc": 11,
+    "maxDc": 270,
     "range": 308
   },
   {
@@ -241,9 +241,9 @@ const VEICULOS = [
     "type": "BEV",
     "brand": "Audi",
     "model": "e-tron Performance",
-    "battery": 95.0,
-    "maxAc": 22.0,
-    "maxDc": 270.0,
+    "battery": 95,
+    "maxAc": 11,
+    "maxDc": 150,
     "range": 249
   },
   {
@@ -251,9 +251,9 @@ const VEICULOS = [
     "type": "BEV",
     "brand": "Audi",
     "model": "e-tron Performance Black",
-    "battery": 95.0,
-    "maxAc": 22.0,
-    "maxDc": 270.0,
+    "battery": 95,
+    "maxAc": 11,
+    "maxDc": 150,
     "range": 249
   },
   {
@@ -261,9 +261,9 @@ const VEICULOS = [
     "type": "BEV",
     "brand": "Audi",
     "model": "e-tron S Sportback",
-    "battery": 95.0,
-    "maxAc": 22.0,
-    "maxDc": 270.0,
+    "battery": 95,
+    "maxAc": 11,
+    "maxDc": 150,
     "range": 252
   },
   {
@@ -271,9 +271,9 @@ const VEICULOS = [
     "type": "BEV",
     "brand": "Audi",
     "model": "e-tron Sportback Performance",
-    "battery": 95.0,
-    "maxAc": 22.0,
-    "maxDc": 270.0,
+    "battery": 95,
+    "maxAc": 11,
+    "maxDc": 150,
     "range": 246
   },
   {
@@ -281,9 +281,9 @@ const VEICULOS = [
     "type": "BEV",
     "brand": "Audi",
     "model": "e-tron Sportback Performance Black",
-    "battery": 95.0,
-    "maxAc": 22.0,
-    "maxDc": 270.0,
+    "battery": 95,
+    "maxAc": 11,
+    "maxDc": 150,
     "range": 246
   },
   {
@@ -293,7 +293,7 @@ const VEICULOS = [
     "model": "Arcfox T1 Max",
     "battery": 42.3,
     "maxAc": 6.6,
-    "maxDc": 89.0,
+    "maxDc": 89,
     "range": 283
   },
   {
@@ -303,7 +303,7 @@ const VEICULOS = [
     "model": "Arcfox T1 Pro",
     "battery": 42.3,
     "maxAc": 6.6,
-    "maxDc": 89.0,
+    "maxDc": 89,
     "range": 283
   },
   {
@@ -312,8 +312,8 @@ const VEICULOS = [
     "brand": "BMW",
     "model": "330e M Sport",
     "battery": 19.5,
-    "maxAc": 6.6,
-    "maxDc": 0.0,
+    "maxAc": 11,
+    "maxDc": 0,
     "range": 61
   },
   {
@@ -322,8 +322,8 @@ const VEICULOS = [
     "brand": "BMW",
     "model": "530e M Sport",
     "battery": 22.1,
-    "maxAc": 6.6,
-    "maxDc": 0.0,
+    "maxAc": 11,
+    "maxDc": 0,
     "range": 70
   },
   {
@@ -332,8 +332,8 @@ const VEICULOS = [
     "brand": "BMW",
     "model": "X5 xDrive50e M Sport",
     "battery": 29.5,
-    "maxAc": 6.6,
-    "maxDc": 0.0,
+    "maxAc": 11,
+    "maxDc": 0,
     "range": 76
   },
   {
@@ -342,8 +342,8 @@ const VEICULOS = [
     "brand": "BMW",
     "model": "i4 M50 xDrive",
     "battery": 81.3,
-    "maxAc": 11.0,
-    "maxDc": 150.0,
+    "maxAc": 11,
+    "maxDc": 205,
     "range": 405
   },
   {
@@ -352,8 +352,8 @@ const VEICULOS = [
     "brand": "BMW",
     "model": "i4 eDrive40 M Sport",
     "battery": 81.3,
-    "maxAc": 11.0,
-    "maxDc": 150.0,
+    "maxAc": 11,
+    "maxDc": 205,
     "range": 399
   },
   {
@@ -362,8 +362,8 @@ const VEICULOS = [
     "brand": "BMW",
     "model": "i7 xDrive60 M Sport",
     "battery": 101.7,
-    "maxAc": 11.0,
-    "maxDc": 180.0,
+    "maxAc": 11,
+    "maxDc": 195,
     "range": 467
   },
   {
@@ -372,8 +372,8 @@ const VEICULOS = [
     "brand": "BMW",
     "model": "iX1 xDrive30",
     "battery": 64.8,
-    "maxAc": 7.0,
-    "maxDc": 85.0,
+    "maxAc": 11,
+    "maxDc": 130,
     "range": 324
   },
   {
@@ -382,8 +382,8 @@ const VEICULOS = [
     "brand": "BMW",
     "model": "iX2 xDrive30 M Sport",
     "battery": 64.8,
-    "maxAc": 7.0,
-    "maxDc": 85.0,
+    "maxAc": 11,
+    "maxDc": 130,
     "range": 327
   },
   {
@@ -392,8 +392,8 @@ const VEICULOS = [
     "brand": "BMW",
     "model": "iX3 50 xDrive",
     "battery": 108.7,
-    "maxAc": 11.0,
-    "maxDc": 180.0,
+    "maxAc": 22,
+    "maxDc": 400,
     "range": 570
   },
   {
@@ -402,8 +402,8 @@ const VEICULOS = [
     "brand": "BYD",
     "model": "Atto 2 DM-i Flex GL",
     "battery": 7.85,
-    "maxAc": 3.7,
-    "maxDc": 0.0,
+    "maxAc": 3.3,
+    "maxDc": 0,
     "range": 45
   },
   {
@@ -413,7 +413,7 @@ const VEICULOS = [
     "model": "Atto 2 DM-i Flex GS",
     "battery": 18.03,
     "maxAc": 6.6,
-    "maxDc": 0.0,
+    "maxDc": 0,
     "range": 110
   },
   {
@@ -423,7 +423,7 @@ const VEICULOS = [
     "model": "Atto 8",
     "battery": 35.6,
     "maxAc": 6.6,
-    "maxDc": 60.0,
+    "maxDc": 72,
     "range": 111
   },
   {
@@ -432,8 +432,8 @@ const VEICULOS = [
     "brand": "BYD",
     "model": "Dolphin GS",
     "battery": 44.9,
-    "maxAc": 6.6,
-    "maxDc": 60.0,
+    "maxAc": 7,
+    "maxDc": 60,
     "range": 291
   },
   {
@@ -443,7 +443,7 @@ const VEICULOS = [
     "model": "Dolphin Mini GL",
     "battery": 30.08,
     "maxAc": 6.6,
-    "maxDc": 40.0,
+    "maxDc": 30,
     "range": 224
   },
   {
@@ -453,7 +453,7 @@ const VEICULOS = [
     "model": "Dolphin Mini GS",
     "battery": 38.88,
     "maxAc": 6.6,
-    "maxDc": 40.0,
+    "maxDc": 40,
     "range": 280
   },
   {
@@ -462,8 +462,8 @@ const VEICULOS = [
     "brand": "BYD",
     "model": "Dolphin Plus 310EV",
     "battery": 60.48,
-    "maxAc": 6.6,
-    "maxDc": 60.0,
+    "maxAc": 11,
+    "maxDc": 88,
     "range": 330
   },
   {
@@ -473,7 +473,7 @@ const VEICULOS = [
     "model": "Dolphin Special Edition SE 290EV",
     "battery": 45.12,
     "maxAc": 6.6,
-    "maxDc": 60.0,
+    "maxDc": 80,
     "range": 272
   },
   {
@@ -482,8 +482,8 @@ const VEICULOS = [
     "brand": "BYD",
     "model": "Han AWD GS 680EV",
     "battery": 85.4,
-    "maxAc": 11.0,
-    "maxDc": 180.0,
+    "maxAc": 7,
+    "maxDc": 120,
     "range": 349
   },
   {
@@ -492,8 +492,8 @@ const VEICULOS = [
     "brand": "BYD",
     "model": "King DM-i GL",
     "battery": 8.3,
-    "maxAc": 6.6,
-    "maxDc": 18.0,
+    "maxAc": 3.3,
+    "maxDc": 0,
     "range": 35
   },
   {
@@ -503,7 +503,7 @@ const VEICULOS = [
     "model": "King DM-i GS",
     "battery": 18.3,
     "maxAc": 6.6,
-    "maxDc": 18.0,
+    "maxDc": 0,
     "range": 78
   },
   {
@@ -512,8 +512,8 @@ const VEICULOS = [
     "brand": "BYD",
     "model": "Seal AWD GS 590EV",
     "battery": 82.56,
-    "maxAc": 7.4,
-    "maxDc": 150.0,
+    "maxAc": 11,
+    "maxDc": 150,
     "range": 372
   },
   {
@@ -522,8 +522,8 @@ const VEICULOS = [
     "brand": "BYD",
     "model": "Sealion 7 GS 690EV",
     "battery": 82.5,
-    "maxAc": 7.4,
-    "maxDc": 150.0,
+    "maxAc": 11,
+    "maxDc": 150,
     "range": 360
   },
   {
@@ -533,7 +533,7 @@ const VEICULOS = [
     "model": "Shark GL",
     "battery": 29.6,
     "maxAc": 6.6,
-    "maxDc": 40.0,
+    "maxDc": 55,
     "range": 68
   },
   {
@@ -543,7 +543,7 @@ const VEICULOS = [
     "model": "Shark GS",
     "battery": 29.6,
     "maxAc": 6.6,
-    "maxDc": 40.0,
+    "maxDc": 55,
     "range": 68
   },
   {
@@ -553,7 +553,7 @@ const VEICULOS = [
     "model": "Song Plus DM-i 2027 1.5T",
     "battery": 26.6,
     "maxAc": 6.6,
-    "maxDc": 18.0,
+    "maxDc": 18,
     "range": 99
   },
   {
@@ -563,7 +563,7 @@ const VEICULOS = [
     "model": "Song Plus DM-i GS",
     "battery": 18.3,
     "maxAc": 6.6,
-    "maxDc": 18.0,
+    "maxDc": 0,
     "range": 63
   },
   {
@@ -573,7 +573,7 @@ const VEICULOS = [
     "model": "Song Plus DM-i Premium",
     "battery": 26.6,
     "maxAc": 6.6,
-    "maxDc": 18.0,
+    "maxDc": 18,
     "range": 87
   },
   {
@@ -583,7 +583,7 @@ const VEICULOS = [
     "model": "Song Pro DM-i Flex GL",
     "battery": 13.1,
     "maxAc": 6.6,
-    "maxDc": 18.0,
+    "maxDc": 0,
     "range": 57
   },
   {
@@ -593,7 +593,7 @@ const VEICULOS = [
     "model": "Song Pro DM-i Flex GS",
     "battery": 18.3,
     "maxAc": 6.6,
-    "maxDc": 18.0,
+    "maxDc": 0,
     "range": 72
   },
   {
@@ -602,8 +602,8 @@ const VEICULOS = [
     "brand": "BYD",
     "model": "Tan AWD GS 700EV",
     "battery": 108.8,
-    "maxAc": 11.0,
-    "maxDc": 180.0,
+    "maxAc": 11,
+    "maxDc": 170,
     "range": 430
   },
   {
@@ -612,8 +612,8 @@ const VEICULOS = [
     "brand": "BYD",
     "model": "Yuan Plus AWD",
     "battery": 74.88,
-    "maxAc": 7.0,
-    "maxDc": 80.0,
+    "maxAc": 11,
+    "maxDc": 205,
     "range": 378
   },
   {
@@ -622,8 +622,8 @@ const VEICULOS = [
     "brand": "BYD",
     "model": "Yuan Pro GS 290EV",
     "battery": 45.12,
-    "maxAc": 7.0,
-    "maxDc": 85.0,
+    "maxAc": 6.6,
+    "maxDc": 65,
     "range": 250
   },
   {
@@ -631,9 +631,9 @@ const VEICULOS = [
     "type": "BEV",
     "brand": "CAOA Changan",
     "model": "AVATR 11 4 lugares",
-    "battery": 116.0,
-    "maxAc": 11.0,
-    "maxDc": 180.0,
+    "battery": 116,
+    "maxAc": 11,
+    "maxDc": 240,
     "range": 497
   },
   {
@@ -641,9 +641,9 @@ const VEICULOS = [
     "type": "BEV",
     "brand": "CAOA Changan",
     "model": "AVATR 11 5 lugares",
-    "battery": 116.0,
-    "maxAc": 11.0,
-    "maxDc": 180.0,
+    "battery": 116,
+    "maxAc": 11,
+    "maxDc": 240,
     "range": 497
   },
   {
@@ -652,8 +652,8 @@ const VEICULOS = [
     "brand": "CAOA Chery",
     "model": "Tiggo 7 Pro PHEV",
     "battery": 19.27,
-    "maxAc": 6.6,
-    "maxDc": 0.0,
+    "maxAc": 3.3,
+    "maxDc": 50,
     "range": 60
   },
   {
@@ -662,8 +662,8 @@ const VEICULOS = [
     "brand": "CAOA Chery",
     "model": "Tiggo 8 Pro PHEV",
     "battery": 19.27,
-    "maxAc": 6.6,
-    "maxDc": 0.0,
+    "maxAc": 3.3,
+    "maxDc": 50,
     "range": 56
   },
   {
@@ -673,7 +673,7 @@ const VEICULOS = [
     "model": "Tiggo 9 PHEV",
     "battery": 34.46,
     "maxAc": 6.6,
-    "maxDc": 0.0,
+    "maxDc": 0,
     "range": 108
   },
   {
@@ -683,7 +683,7 @@ const VEICULOS = [
     "model": "iCar TEC",
     "battery": 30.8,
     "maxAc": 6.6,
-    "maxDc": 0.0,
+    "maxDc": 30,
     "range": 197
   },
   {
@@ -691,9 +691,9 @@ const VEICULOS = [
     "type": "BEV",
     "brand": "Cadillac",
     "model": "ESCALADE IQ 2026 Luxury",
-    "battery": 205.0,
-    "maxAc": 11.0,
-    "maxDc": 180.0,
+    "battery": 205,
+    "maxAc": 11.5,
+    "maxDc": 350,
     "range": 748
   },
   {
@@ -701,9 +701,9 @@ const VEICULOS = [
     "type": "BEV",
     "brand": "Cadillac",
     "model": "ESCALADE IQ 2026 Premium Luxury",
-    "battery": 205.0,
-    "maxAc": 11.0,
-    "maxDc": 180.0,
+    "battery": 205,
+    "maxAc": 19.2,
+    "maxDc": 350,
     "range": 748
   },
   {
@@ -711,9 +711,9 @@ const VEICULOS = [
     "type": "BEV",
     "brand": "Cadillac",
     "model": "ESCALADE IQ 2026 Premium Sport",
-    "battery": 205.0,
-    "maxAc": 11.0,
-    "maxDc": 180.0,
+    "battery": 205,
+    "maxAc": 19.2,
+    "maxDc": 350,
     "range": 748
   },
   {
@@ -721,9 +721,9 @@ const VEICULOS = [
     "type": "BEV",
     "brand": "Cadillac",
     "model": "ESCALADE IQ 2026 Sport",
-    "battery": 205.0,
-    "maxAc": 11.0,
-    "maxDc": 180.0,
+    "battery": 205,
+    "maxAc": 11.5,
+    "maxDc": 350,
     "range": 748
   },
   {
@@ -731,9 +731,9 @@ const VEICULOS = [
     "type": "BEV",
     "brand": "Cadillac",
     "model": "LYRIQ 2026 AWD",
-    "battery": 102.0,
-    "maxAc": 11.0,
-    "maxDc": 180.0,
+    "battery": 102,
+    "maxAc": 19.2,
+    "maxDc": 190,
     "range": 513
   },
   {
@@ -741,9 +741,9 @@ const VEICULOS = [
     "type": "BEV",
     "brand": "Cadillac",
     "model": "LYRIQ 2026 LYRIQ-V",
-    "battery": 102.0,
-    "maxAc": 11.0,
-    "maxDc": 180.0,
+    "battery": 102,
+    "maxAc": 11.5,
+    "maxDc": 190,
     "range": 459
   },
   {
@@ -751,9 +751,9 @@ const VEICULOS = [
     "type": "BEV",
     "brand": "Cadillac",
     "model": "LYRIQ 2026 LYRIQ-V Premium",
-    "battery": 102.0,
-    "maxAc": 11.0,
-    "maxDc": 180.0,
+    "battery": 102,
+    "maxAc": 19.2,
+    "maxDc": 190,
     "range": 459
   },
   {
@@ -761,9 +761,9 @@ const VEICULOS = [
     "type": "BEV",
     "brand": "Cadillac",
     "model": "LYRIQ 2026 RWD",
-    "battery": 102.0,
-    "maxAc": 11.0,
-    "maxDc": 180.0,
+    "battery": 102,
+    "maxAc": 11.5,
+    "maxDc": 190,
     "range": 525
   },
   {
@@ -772,8 +772,8 @@ const VEICULOS = [
     "brand": "Cadillac",
     "model": "LYRIQ 2026 Signature Luxury",
     "battery": 95.7,
-    "maxAc": 11.0,
-    "maxDc": 180.0,
+    "maxAc": 21.1,
+    "maxDc": 132,
     "range": 405
   },
   {
@@ -782,8 +782,8 @@ const VEICULOS = [
     "brand": "Cadillac",
     "model": "VISTIQ 2027",
     "battery": 95.7,
-    "maxAc": 11.0,
-    "maxDc": 180.0,
+    "maxAc": 11,
+    "maxDc": 180,
     "range": 395
   },
   {
@@ -791,9 +791,9 @@ const VEICULOS = [
     "type": "BEV",
     "brand": "Chevrolet",
     "model": "Blazer EV RS",
-    "battery": 102.0,
-    "maxAc": 11.0,
-    "maxDc": 180.0,
+    "battery": 102,
+    "maxAc": 11.5,
+    "maxDc": 195,
     "range": 481
   },
   {
@@ -801,9 +801,9 @@ const VEICULOS = [
     "type": "BEV",
     "brand": "Chevrolet",
     "model": "Bolt EUV Premier",
-    "battery": 66.0,
-    "maxAc": 11.0,
-    "maxDc": 150.0,
+    "battery": 66,
+    "maxAc": 7.2,
+    "maxDc": 55,
     "range": 377
   },
   {
@@ -811,9 +811,9 @@ const VEICULOS = [
     "type": "BEV",
     "brand": "Chevrolet",
     "model": "Bolt EV",
-    "battery": 66.0,
-    "maxAc": 11.0,
-    "maxDc": 150.0,
+    "battery": 66,
+    "maxAc": 7.2,
+    "maxDc": 55,
     "range": 390
   },
   {
@@ -821,9 +821,9 @@ const VEICULOS = [
     "type": "BEV",
     "brand": "Chevrolet",
     "model": "Bolt EV Premier",
-    "battery": 66.0,
-    "maxAc": 11.0,
-    "maxDc": 150.0,
+    "battery": 66,
+    "maxAc": 7.2,
+    "maxDc": 55,
     "range": 390
   },
   {
@@ -831,9 +831,9 @@ const VEICULOS = [
     "type": "BEV",
     "brand": "Chevrolet",
     "model": "Captiva EV Premier",
-    "battery": 60.0,
-    "maxAc": 7.0,
-    "maxDc": 85.0,
+    "battery": 60,
+    "maxAc": 11,
+    "maxDc": 100,
     "range": 304
   },
   {
@@ -841,9 +841,9 @@ const VEICULOS = [
     "type": "BEV",
     "brand": "Chevrolet",
     "model": "Equinox EV eAWD",
-    "battery": 85.0,
-    "maxAc": 11.0,
-    "maxDc": 150.0,
+    "battery": 85,
+    "maxAc": 11.5,
+    "maxDc": 150,
     "range": 443
   },
   {
@@ -851,9 +851,9 @@ const VEICULOS = [
     "type": "BEV",
     "brand": "Chevrolet",
     "model": "Silverado EV 2026 LT Max Range",
-    "battery": 0.0,
-    "maxAc": 6.6,
-    "maxDc": 60.0,
+    "battery": 0,
+    "maxAc": 19.2,
+    "maxDc": 350,
     "range": 769
   },
   {
@@ -861,9 +861,9 @@ const VEICULOS = [
     "type": "BEV",
     "brand": "Chevrolet",
     "model": "Silverado EV 2026 Trail Boss Max Range",
-    "battery": 0.0,
-    "maxAc": 6.6,
-    "maxDc": 60.0,
+    "battery": 0,
+    "maxAc": 19.2,
+    "maxDc": 350,
     "range": 769
   },
   {
@@ -871,9 +871,9 @@ const VEICULOS = [
     "type": "BEV",
     "brand": "Chevrolet",
     "model": "Spark EUV ACTIV",
-    "battery": 42.0,
-    "maxAc": 7.0,
-    "maxDc": 85.0,
+    "battery": 42,
+    "maxAc": 7,
+    "maxDc": 50,
     "range": 258
   },
   {
@@ -881,9 +881,9 @@ const VEICULOS = [
     "type": "BEV",
     "brand": "Citroën",
     "model": "e-Jumpy Cargo",
-    "battery": 75.0,
-    "maxAc": 11.0,
-    "maxDc": 150.0,
+    "battery": 75,
+    "maxAc": 11,
+    "maxDc": 100,
     "range": 258
   },
   {
@@ -892,8 +892,8 @@ const VEICULOS = [
     "brand": "DFM",
     "model": "Box Urban",
     "battery": 43.89,
-    "maxAc": 7.0,
-    "maxDc": 85.0,
+    "maxAc": 6.6,
+    "maxDc": 88,
     "range": 275
   },
   {
@@ -902,8 +902,8 @@ const VEICULOS = [
     "brand": "DFM",
     "model": "Vigo Urban Plus",
     "battery": 51.87,
-    "maxAc": 7.0,
-    "maxDc": 85.0,
+    "maxAc": 6.6,
+    "maxDc": 167,
     "range": 302
   },
   {
@@ -912,8 +912,8 @@ const VEICULOS = [
     "brand": "Denza",
     "model": "B5 GL DM",
     "battery": 31.8,
-    "maxAc": 11.0,
-    "maxDc": 150.0,
+    "maxAc": 11,
+    "maxDc": 100,
     "range": 81
   },
   {
@@ -922,8 +922,8 @@ const VEICULOS = [
     "brand": "Denza",
     "model": "B5 GS DM",
     "battery": 31.8,
-    "maxAc": 11.0,
-    "maxDc": 150.0,
+    "maxAc": 11,
+    "maxDc": 100,
     "range": 74
   },
   {
@@ -932,8 +932,8 @@ const VEICULOS = [
     "brand": "Denza",
     "model": "Z9 GT 1210EV",
     "battery": 122.4,
-    "maxAc": 22.0,
-    "maxDc": 270.0,
+    "maxAc": 11,
+    "maxDc": 270,
     "range": 476
   },
   {
@@ -942,8 +942,8 @@ const VEICULOS = [
     "brand": "Ferrari",
     "model": "296 GTB",
     "battery": 7.45,
-    "maxAc": 3.7,
-    "maxDc": 0.0,
+    "maxAc": 7.4,
+    "maxDc": 0,
     "range": 10
   },
   {
@@ -953,7 +953,7 @@ const VEICULOS = [
     "model": "296 GTS",
     "battery": 7.45,
     "maxAc": 3.7,
-    "maxDc": 0.0,
+    "maxDc": 0,
     "range": 11
   },
   {
@@ -961,9 +961,9 @@ const VEICULOS = [
     "type": "BEV",
     "brand": "Fiat",
     "model": "500e Icon",
-    "battery": 42.0,
-    "maxAc": 7.0,
-    "maxDc": 85.0,
+    "battery": 42,
+    "maxAc": 11,
+    "maxDc": 85,
     "range": 227
   },
   {
@@ -971,9 +971,9 @@ const VEICULOS = [
     "type": "BEV",
     "brand": "Ford",
     "model": "E-Transit C35EBAB",
-    "battery": 68.0,
-    "maxAc": 11.0,
-    "maxDc": 150.0,
+    "battery": 68,
+    "maxAc": 11.3,
+    "maxDc": 115,
     "range": 203
   },
   {
@@ -981,9 +981,9 @@ const VEICULOS = [
     "type": "BEV",
     "brand": "Ford",
     "model": "E-Transit C35LBAB",
-    "battery": 68.0,
-    "maxAc": 11.0,
-    "maxDc": 150.0,
+    "battery": 68,
+    "maxAc": 11.3,
+    "maxDc": 115,
     "range": 203
   },
   {
@@ -991,9 +991,9 @@ const VEICULOS = [
     "type": "BEV",
     "brand": "Ford",
     "model": "E-Transit F35EAAB",
-    "battery": 68.0,
-    "maxAc": 11.0,
-    "maxDc": 150.0,
+    "battery": 68,
+    "maxAc": 11.3,
+    "maxDc": 115,
     "range": 203
   },
   {
@@ -1001,9 +1001,9 @@ const VEICULOS = [
     "type": "BEV",
     "brand": "Ford",
     "model": "E-Transit F35LAAB",
-    "battery": 68.0,
-    "maxAc": 11.0,
-    "maxDc": 150.0,
+    "battery": 68,
+    "maxAc": 11.3,
+    "maxDc": 115,
     "range": 203
   },
   {
@@ -1011,9 +1011,9 @@ const VEICULOS = [
     "type": "BEV",
     "brand": "Ford",
     "model": "E-Transit F35LMAB",
-    "battery": 68.0,
-    "maxAc": 11.0,
-    "maxDc": 150.0,
+    "battery": 68,
+    "maxAc": 11.3,
+    "maxDc": 115,
     "range": 203
   },
   {
@@ -1021,9 +1021,9 @@ const VEICULOS = [
     "type": "BEV",
     "brand": "Ford",
     "model": "E-Transit F35MAAB",
-    "battery": 68.0,
-    "maxAc": 11.0,
-    "maxDc": 150.0,
+    "battery": 68,
+    "maxAc": 11.3,
+    "maxDc": 115,
     "range": 203
   },
   {
@@ -1031,9 +1031,9 @@ const VEICULOS = [
     "type": "BEV",
     "brand": "Ford",
     "model": "E-Transit F35MMAB",
-    "battery": 68.0,
-    "maxAc": 11.0,
-    "maxDc": 150.0,
+    "battery": 68,
+    "maxAc": 11.3,
+    "maxDc": 115,
     "range": 203
   },
   {
@@ -1041,9 +1041,9 @@ const VEICULOS = [
     "type": "BEV",
     "brand": "Ford",
     "model": "F-150 Lightning 2025 Flash Extended Range",
-    "battery": 123.0,
-    "maxAc": 11.0,
-    "maxDc": 180.0,
+    "battery": 123,
+    "maxAc": 11.3,
+    "maxDc": 180,
     "range": 483
   },
   {
@@ -1051,9 +1051,9 @@ const VEICULOS = [
     "type": "BEV",
     "brand": "Ford",
     "model": "F-150 Lightning 2025 Lariat Extended Range",
-    "battery": 131.0,
-    "maxAc": 11.0,
-    "maxDc": 180.0,
+    "battery": 131,
+    "maxAc": 11.3,
+    "maxDc": 180,
     "range": 515
   },
   {
@@ -1061,9 +1061,9 @@ const VEICULOS = [
     "type": "BEV",
     "brand": "Ford",
     "model": "F-150 Lightning 2025 Platinum Extended Range",
-    "battery": 131.0,
-    "maxAc": 11.0,
-    "maxDc": 180.0,
+    "battery": 131,
+    "maxAc": 11.3,
+    "maxDc": 180,
     "range": 483
   },
   {
@@ -1071,9 +1071,9 @@ const VEICULOS = [
     "type": "BEV",
     "brand": "Ford",
     "model": "F-150 Lightning 2025 Pro Extended Range 123 kWh",
-    "battery": 123.0,
-    "maxAc": 11.0,
-    "maxDc": 180.0,
+    "battery": 123,
+    "maxAc": 11.3,
+    "maxDc": 180,
     "range": 483
   },
   {
@@ -1081,9 +1081,9 @@ const VEICULOS = [
     "type": "BEV",
     "brand": "Ford",
     "model": "F-150 Lightning 2025 Pro Extended Range 131 kWh",
-    "battery": 131.0,
-    "maxAc": 11.0,
-    "maxDc": 180.0,
+    "battery": 131,
+    "maxAc": 11.3,
+    "maxDc": 180,
     "range": 515
   },
   {
@@ -1091,9 +1091,9 @@ const VEICULOS = [
     "type": "BEV",
     "brand": "Ford",
     "model": "F-150 Lightning 2025 Pro Standard Range",
-    "battery": 98.0,
-    "maxAc": 11.0,
-    "maxDc": 180.0,
+    "battery": 98,
+    "maxAc": 11.3,
+    "maxDc": 180,
     "range": 386
   },
   {
@@ -1101,9 +1101,9 @@ const VEICULOS = [
     "type": "BEV",
     "brand": "Ford",
     "model": "Mustang Mach-E GT Performance",
-    "battery": 91.0,
-    "maxAc": 11.0,
-    "maxDc": 180.0,
+    "battery": 91,
+    "maxAc": 11,
+    "maxDc": 150,
     "range": 379
   },
   {
@@ -1112,8 +1112,8 @@ const VEICULOS = [
     "brand": "GAC",
     "model": "AION ES Plus",
     "battery": 55.2,
-    "maxAc": 7.0,
-    "maxDc": 85.0,
+    "maxAc": 6.6,
+    "maxDc": 68,
     "range": 314
   },
   {
@@ -1121,9 +1121,9 @@ const VEICULOS = [
     "type": "BEV",
     "brand": "GAC",
     "model": "AION UT Elite",
-    "battery": 60.0,
-    "maxAc": 7.0,
-    "maxDc": 85.0,
+    "battery": 60,
+    "maxAc": 6.6,
+    "maxDc": 87,
     "range": 310
   },
   {
@@ -1132,8 +1132,8 @@ const VEICULOS = [
     "brand": "GAC",
     "model": "AION UT Premium",
     "battery": 44.12,
-    "maxAc": 7.0,
-    "maxDc": 85.0,
+    "maxAc": 6.6,
+    "maxDc": 64,
     "range": 253
   },
   {
@@ -1142,8 +1142,8 @@ const VEICULOS = [
     "brand": "GAC",
     "model": "AION V Elite",
     "battery": 75.3,
-    "maxAc": 11.0,
-    "maxDc": 150.0,
+    "maxAc": 6.6,
+    "maxDc": 180,
     "range": 389
   },
   {
@@ -1152,8 +1152,8 @@ const VEICULOS = [
     "brand": "GAC",
     "model": "AION Y Elite",
     "battery": 63.2,
-    "maxAc": 7.0,
-    "maxDc": 85.0,
+    "maxAc": 6.6,
+    "maxDc": 75,
     "range": 318
   },
   {
@@ -1162,8 +1162,8 @@ const VEICULOS = [
     "brand": "GAC",
     "model": "AION Y Premium",
     "battery": 63.2,
-    "maxAc": 7.0,
-    "maxDc": 85.0,
+    "maxAc": 6.6,
+    "maxDc": 75,
     "range": 318
   },
   {
@@ -1172,8 +1172,8 @@ const VEICULOS = [
     "brand": "GAC",
     "model": "GS9 Ultra",
     "battery": 44.5,
-    "maxAc": 7.0,
-    "maxDc": 85.0,
+    "maxAc": 6,
+    "maxDc": 140,
     "range": 114
   },
   {
@@ -1181,9 +1181,9 @@ const VEICULOS = [
     "type": "BEV",
     "brand": "GAC",
     "model": "HYPTEC HT Elite",
-    "battery": 83.0,
-    "maxAc": 11.0,
-    "maxDc": 150.0,
+    "battery": 83,
+    "maxAc": 11,
+    "maxDc": 180,
     "range": 431
   },
   {
@@ -1191,9 +1191,9 @@ const VEICULOS = [
     "type": "BEV",
     "brand": "GAC",
     "model": "HYPTEC HT Ultra",
-    "battery": 83.0,
-    "maxAc": 11.0,
-    "maxDc": 150.0,
+    "battery": 83,
+    "maxAc": 11,
+    "maxDc": 180,
     "range": 431
   },
   {
@@ -1201,9 +1201,9 @@ const VEICULOS = [
     "type": "BEV",
     "brand": "GMC",
     "model": "Hummer EV Pickup 2026 2X",
-    "battery": 0.0,
-    "maxAc": 6.6,
-    "maxDc": 60.0,
+    "battery": 0,
+    "maxAc": 19.2,
+    "maxDc": 300,
     "range": 509
   },
   {
@@ -1211,9 +1211,9 @@ const VEICULOS = [
     "type": "BEV",
     "brand": "GMC",
     "model": "Hummer EV Pickup 2026 2X Extreme Off-Road",
-    "battery": 0.0,
-    "maxAc": 6.6,
-    "maxDc": 60.0,
+    "battery": 0,
+    "maxAc": 19.2,
+    "maxDc": 300,
     "range": 483
   },
   {
@@ -1221,9 +1221,9 @@ const VEICULOS = [
     "type": "BEV",
     "brand": "GMC",
     "model": "Hummer EV Pickup 2026 3X 20-Module",
-    "battery": 0.0,
-    "maxAc": 6.6,
-    "maxDc": 60.0,
+    "battery": 0,
+    "maxAc": 19.2,
+    "maxDc": 300,
     "range": 502
   },
   {
@@ -1231,9 +1231,9 @@ const VEICULOS = [
     "type": "BEV",
     "brand": "GMC",
     "model": "Hummer EV Pickup 2026 3X 20-Module Extreme Off-Road",
-    "battery": 0.0,
-    "maxAc": 6.6,
-    "maxDc": 60.0,
+    "battery": 0,
+    "maxAc": 19.2,
+    "maxDc": 300,
     "range": 478
   },
   {
@@ -1241,9 +1241,9 @@ const VEICULOS = [
     "type": "BEV",
     "brand": "GMC",
     "model": "Hummer EV Pickup 2026 3X 24-Module",
-    "battery": 0.0,
-    "maxAc": 6.6,
-    "maxDc": 60.0,
+    "battery": 0,
+    "maxAc": 19.2,
+    "maxDc": 350,
     "range": 584
   },
   {
@@ -1251,9 +1251,9 @@ const VEICULOS = [
     "type": "BEV",
     "brand": "GMC",
     "model": "Hummer EV Pickup 2026 3X 24-Module Extreme Off-Road",
-    "battery": 0.0,
-    "maxAc": 6.6,
-    "maxDc": 60.0,
+    "battery": 0,
+    "maxAc": 19.2,
+    "maxDc": 350,
     "range": 555
   },
   {
@@ -1261,9 +1261,9 @@ const VEICULOS = [
     "type": "BEV",
     "brand": "GMC",
     "model": "Hummer EV SUV 2026 2X",
-    "battery": 0.0,
-    "maxAc": 6.6,
-    "maxDc": 60.0,
+    "battery": 0,
+    "maxAc": 19.2,
+    "maxDc": 300,
     "range": 513
   },
   {
@@ -1271,9 +1271,9 @@ const VEICULOS = [
     "type": "BEV",
     "brand": "GMC",
     "model": "Hummer EV SUV 2026 2X Extreme Off-Road",
-    "battery": 0.0,
-    "maxAc": 6.6,
-    "maxDc": 60.0,
+    "battery": 0,
+    "maxAc": 19.2,
+    "maxDc": 300,
     "range": 480
   },
   {
@@ -1281,9 +1281,9 @@ const VEICULOS = [
     "type": "BEV",
     "brand": "GMC",
     "model": "Hummer EV SUV 2026 3X",
-    "battery": 0.0,
-    "maxAc": 6.6,
-    "maxDc": 60.0,
+    "battery": 0,
+    "maxAc": 19.2,
+    "maxDc": 300,
     "range": 499
   },
   {
@@ -1291,9 +1291,9 @@ const VEICULOS = [
     "type": "BEV",
     "brand": "GMC",
     "model": "Hummer EV SUV 2026 3X Extreme Off-Road",
-    "battery": 0.0,
-    "maxAc": 6.6,
-    "maxDc": 60.0,
+    "battery": 0,
+    "maxAc": 19.2,
+    "maxDc": 300,
     "range": 473
   },
   {
@@ -1301,9 +1301,9 @@ const VEICULOS = [
     "type": "BEV",
     "brand": "GMC",
     "model": "Sierra EV 2026 AT4 Extended Range",
-    "battery": 0.0,
-    "maxAc": 6.6,
-    "maxDc": 60.0,
+    "battery": 0,
+    "maxAc": 11.5,
+    "maxDc": 300,
     "range": 628
   },
   {
@@ -1311,9 +1311,9 @@ const VEICULOS = [
     "type": "BEV",
     "brand": "GMC",
     "model": "Sierra EV 2026 AT4 Max Range",
-    "battery": 0.0,
-    "maxAc": 6.6,
-    "maxDc": 60.0,
+    "battery": 0,
+    "maxAc": 11.5,
+    "maxDc": 350,
     "range": 769
   },
   {
@@ -1321,9 +1321,9 @@ const VEICULOS = [
     "type": "BEV",
     "brand": "GMC",
     "model": "Sierra EV 2026 Denali Extended Range",
-    "battery": 0.0,
-    "maxAc": 6.6,
-    "maxDc": 60.0,
+    "battery": 0,
+    "maxAc": 11.5,
+    "maxDc": 300,
     "range": 660
   },
   {
@@ -1331,9 +1331,9 @@ const VEICULOS = [
     "type": "BEV",
     "brand": "GMC",
     "model": "Sierra EV 2026 Denali Max Range",
-    "battery": 0.0,
-    "maxAc": 6.6,
-    "maxDc": 60.0,
+    "battery": 0,
+    "maxAc": 11.5,
+    "maxDc": 350,
     "range": 769
   },
   {
@@ -1341,9 +1341,9 @@ const VEICULOS = [
     "type": "BEV",
     "brand": "GMC",
     "model": "Sierra EV 2026 Denali Standard Range",
-    "battery": 0.0,
-    "maxAc": 6.6,
-    "maxDc": 60.0,
+    "battery": 0,
+    "maxAc": 11.5,
+    "maxDc": 220,
     "range": 455
   },
   {
@@ -1351,9 +1351,9 @@ const VEICULOS = [
     "type": "BEV",
     "brand": "GMC",
     "model": "Sierra EV 2026 Elevation Extended Range",
-    "battery": 0.0,
-    "maxAc": 6.6,
-    "maxDc": 60.0,
+    "battery": 0,
+    "maxAc": 11.5,
+    "maxDc": 300,
     "range": 660
   },
   {
@@ -1361,9 +1361,9 @@ const VEICULOS = [
     "type": "BEV",
     "brand": "GMC",
     "model": "Sierra EV 2026 Elevation Standard Range",
-    "battery": 0.0,
-    "maxAc": 6.6,
-    "maxDc": 60.0,
+    "battery": 0,
+    "maxAc": 11.5,
+    "maxDc": 220,
     "range": 455
   },
   {
@@ -1371,9 +1371,9 @@ const VEICULOS = [
     "type": "PHEV",
     "brand": "GWM",
     "model": "Haval H6 PHEV Flex GT Flex",
-    "battery": 35.0,
+    "battery": 35,
     "maxAc": 6.6,
-    "maxDc": 33.0,
+    "maxDc": 48,
     "range": 126
   },
   {
@@ -1381,9 +1381,9 @@ const VEICULOS = [
     "type": "PHEV",
     "brand": "GWM",
     "model": "Haval H6 PHEV Flex PHEV19 Flex",
-    "battery": 19.0,
+    "battery": 19,
     "maxAc": 6.6,
-    "maxDc": 33.0,
+    "maxDc": 33,
     "range": 77
   },
   {
@@ -1391,9 +1391,9 @@ const VEICULOS = [
     "type": "PHEV",
     "brand": "GWM",
     "model": "Haval H6 PHEV Flex PHEV35 Flex",
-    "battery": 35.0,
+    "battery": 35,
     "maxAc": 6.6,
-    "maxDc": 33.0,
+    "maxDc": 48,
     "range": 126
   },
   {
@@ -1403,7 +1403,7 @@ const VEICULOS = [
     "model": "Haval H7 PHEV Flex Hi4 AWD",
     "battery": 27.5,
     "maxAc": 6.6,
-    "maxDc": 33.0,
+    "maxDc": 41,
     "range": 92
   },
   {
@@ -1411,9 +1411,9 @@ const VEICULOS = [
     "type": "BEV",
     "brand": "GWM",
     "model": "ORA 03 BEV58",
-    "battery": 58.0,
-    "maxAc": 11.0,
-    "maxDc": 67.0,
+    "battery": 58,
+    "maxAc": 11,
+    "maxDc": 64,
     "range": 315
   },
   {
@@ -1421,9 +1421,9 @@ const VEICULOS = [
     "type": "BEV",
     "brand": "GWM",
     "model": "ORA 03 GT BEV63",
-    "battery": 63.0,
-    "maxAc": 11.0,
-    "maxDc": 67.0,
+    "battery": 63,
+    "maxAc": 11,
+    "maxDc": 67,
     "range": 295
   },
   {
@@ -1432,8 +1432,8 @@ const VEICULOS = [
     "brand": "GWM",
     "model": "ORA 5",
     "battery": 58.3,
-    "maxAc": 7.0,
-    "maxDc": 85.0,
+    "maxAc": 11,
+    "maxDc": 120,
     "range": 349
   },
   {
@@ -1443,7 +1443,7 @@ const VEICULOS = [
     "model": "Tank 300 PHEV Flex Hi4-T",
     "battery": 37.1,
     "maxAc": 6.6,
-    "maxDc": 33.0,
+    "maxDc": 50,
     "range": 74
   },
   {
@@ -1452,8 +1452,8 @@ const VEICULOS = [
     "brand": "GWM",
     "model": "WEY 07 Dark Edition",
     "battery": 42.5,
-    "maxAc": 7.0,
-    "maxDc": 85.0,
+    "maxAc": 6.6,
+    "maxDc": 60,
     "range": 128
   },
   {
@@ -1462,8 +1462,8 @@ const VEICULOS = [
     "brand": "Geely",
     "model": "EX2 Max",
     "battery": 39.4,
-    "maxAc": 6.6,
-    "maxDc": 70.0,
+    "maxAc": 7,
+    "maxDc": 50,
     "range": 289
   },
   {
@@ -1472,8 +1472,8 @@ const VEICULOS = [
     "brand": "Geely",
     "model": "EX2 Pro",
     "battery": 39.4,
-    "maxAc": 6.6,
-    "maxDc": 70.0,
+    "maxAc": 7,
+    "maxDc": 50,
     "range": 289
   },
   {
@@ -1483,7 +1483,7 @@ const VEICULOS = [
     "model": "EX5 EM-i Max",
     "battery": 18.4,
     "maxAc": 6.6,
-    "maxDc": 30.0,
+    "maxDc": 30,
     "range": 65
   },
   {
@@ -1493,7 +1493,7 @@ const VEICULOS = [
     "model": "EX5 EM-i Pro",
     "battery": 18.4,
     "maxAc": 6.6,
-    "maxDc": 30.0,
+    "maxDc": 30,
     "range": 65
   },
   {
@@ -1503,7 +1503,7 @@ const VEICULOS = [
     "model": "EX5 EM-i Ultra",
     "battery": 29.8,
     "maxAc": 6.6,
-    "maxDc": 30.0,
+    "maxDc": 60,
     "range": 112
   },
   {
@@ -1512,8 +1512,8 @@ const VEICULOS = [
     "brand": "Geely",
     "model": "EX5 Max",
     "battery": 60.22,
-    "maxAc": 11.0,
-    "maxDc": 100.0,
+    "maxAc": 11,
+    "maxDc": 80,
     "range": 349
   },
   {
@@ -1522,8 +1522,8 @@ const VEICULOS = [
     "brand": "Geely",
     "model": "EX5 Pro",
     "battery": 60.22,
-    "maxAc": 11.0,
-    "maxDc": 100.0,
+    "maxAc": 11,
+    "maxDc": 80,
     "range": 413
   },
   {
@@ -1531,9 +1531,9 @@ const VEICULOS = [
     "type": "BEV",
     "brand": "Hyundai",
     "model": "IONIQ 5 Signature AWD",
-    "battery": 84.0,
-    "maxAc": 11.0,
-    "maxDc": 150.0,
+    "battery": 84,
+    "maxAc": 11,
+    "maxDc": 220,
     "range": 374
   },
   {
@@ -1542,8 +1542,8 @@ const VEICULOS = [
     "brand": "Hyundai",
     "model": "Kona EV EV39",
     "battery": 39.2,
-    "maxAc": 6.6,
-    "maxDc": 60.0,
+    "maxAc": 7.2,
+    "maxDc": 100,
     "range": 252
   },
   {
@@ -1552,8 +1552,8 @@ const VEICULOS = [
     "brand": "JAC",
     "model": "E-J7",
     "battery": 50.1,
-    "maxAc": 7.0,
-    "maxDc": 85.0,
+    "maxAc": 7,
+    "maxDc": 85,
     "range": 263
   },
   {
@@ -1562,8 +1562,8 @@ const VEICULOS = [
     "brand": "JAC",
     "model": "E-JS1",
     "battery": 31.4,
-    "maxAc": 6.6,
-    "maxDc": 0.0,
+    "maxAc": 6,
+    "maxDc": 20,
     "range": 181
   },
   {
@@ -1572,8 +1572,8 @@ const VEICULOS = [
     "brand": "JAC",
     "model": "E-JS1 City Cargo",
     "battery": 31.4,
-    "maxAc": 6.6,
-    "maxDc": 0.0,
+    "maxAc": 6,
+    "maxDc": 20,
     "range": 181
   },
   {
@@ -1582,8 +1582,8 @@ const VEICULOS = [
     "brand": "JAC",
     "model": "E-JS1 E-JS1 EXT",
     "battery": 31.4,
-    "maxAc": 6.6,
-    "maxDc": 0.0,
+    "maxAc": 6.5,
+    "maxDc": 20,
     "range": 181
   },
   {
@@ -1592,8 +1592,8 @@ const VEICULOS = [
     "brand": "JAC",
     "model": "E-JS4",
     "battery": 55.1,
-    "maxAc": 7.0,
-    "maxDc": 85.0,
+    "maxAc": 6,
+    "maxDc": 85,
     "range": 307
   },
   {
@@ -1601,9 +1601,9 @@ const VEICULOS = [
     "type": "BEV",
     "brand": "JAC",
     "model": "E-JT12.5 Chassi",
-    "battery": 89.0,
-    "maxAc": 11.0,
-    "maxDc": 180.0,
+    "battery": 89,
+    "maxAc": 6,
+    "maxDc": 75,
     "range": 150
   },
   {
@@ -1611,9 +1611,9 @@ const VEICULOS = [
     "type": "BEV",
     "brand": "JAC",
     "model": "E-JT18 Chassi",
-    "battery": 282.0,
-    "maxAc": 11.0,
-    "maxDc": 180.0,
+    "battery": 282,
+    "maxAc": 11,
+    "maxDc": 180,
     "range": 500
   },
   {
@@ -1621,9 +1621,9 @@ const VEICULOS = [
     "type": "BEV",
     "brand": "JAC",
     "model": "E-JT3.5 Chassi",
-    "battery": 64.0,
-    "maxAc": 7.0,
-    "maxDc": 85.0,
+    "battery": 64,
+    "maxAc": 7,
+    "maxDc": 85,
     "range": 230
   },
   {
@@ -1631,9 +1631,9 @@ const VEICULOS = [
     "type": "BEV",
     "brand": "JAC",
     "model": "E-JT9.5 Chassi",
-    "battery": 89.0,
-    "maxAc": 11.0,
-    "maxDc": 180.0,
+    "battery": 89,
+    "maxAc": 6,
+    "maxDc": 75,
     "range": 200
   },
   {
@@ -1642,8 +1642,8 @@ const VEICULOS = [
     "brand": "JAC",
     "model": "E-JV12 Cargo",
     "battery": 77.28,
-    "maxAc": 11.0,
-    "maxDc": 150.0,
+    "maxAc": 6,
+    "maxDc": 70,
     "range": 220
   },
   {
@@ -1652,8 +1652,8 @@ const VEICULOS = [
     "brand": "JAC",
     "model": "E-JV12 VIP 15 passageiros + motorista",
     "battery": 77.28,
-    "maxAc": 11.0,
-    "maxDc": 150.0,
+    "maxAc": 6.6,
+    "maxDc": 150,
     "range": 220
   },
   {
@@ -1662,8 +1662,8 @@ const VEICULOS = [
     "brand": "JAC",
     "model": "E-JV5.5 Cargo",
     "battery": 50.23,
-    "maxAc": 7.0,
-    "maxDc": 85.0,
+    "maxAc": 6,
+    "maxDc": 40,
     "range": 260
   },
   {
@@ -1672,8 +1672,8 @@ const VEICULOS = [
     "brand": "JAC",
     "model": "E-JV7L 6 passageiros + motorista",
     "battery": 50.23,
-    "maxAc": 7.0,
-    "maxDc": 85.0,
+    "maxAc": 6,
+    "maxDc": 40,
     "range": 260
   },
   {
@@ -1682,8 +1682,8 @@ const VEICULOS = [
     "brand": "JAC",
     "model": "E-JVCC Chassi-cabine",
     "battery": 77.28,
-    "maxAc": 11.0,
-    "maxDc": 150.0,
+    "maxAc": 6,
+    "maxDc": 70,
     "range": 240
   },
   {
@@ -1691,9 +1691,9 @@ const VEICULOS = [
     "type": "BEV",
     "brand": "JAC",
     "model": "EV Hunter 4x4",
-    "battery": 88.0,
-    "maxAc": 11.0,
-    "maxDc": 180.0,
+    "battery": 88,
+    "maxAc": 11,
+    "maxDc": 180,
     "range": 400
   },
   {
@@ -1701,9 +1701,9 @@ const VEICULOS = [
     "type": "BEV",
     "brand": "JAC",
     "model": "iEV1200T Chassi",
-    "battery": 97.0,
-    "maxAc": 11.0,
-    "maxDc": 180.0,
+    "battery": 97,
+    "maxAc": 11,
+    "maxDc": 180,
     "range": 200
   },
   {
@@ -1712,8 +1712,8 @@ const VEICULOS = [
     "brand": "JAC",
     "model": "iEV330P",
     "battery": 65.3,
-    "maxAc": 11.0,
-    "maxDc": 150.0,
+    "maxAc": 11,
+    "maxDc": 150,
     "range": 226
   },
   {
@@ -1723,7 +1723,7 @@ const VEICULOS = [
     "model": "7 SHS-P Elite",
     "battery": 18.4,
     "maxAc": 6.6,
-    "maxDc": 0.0,
+    "maxDc": 40,
     "range": 79
   },
   {
@@ -1733,7 +1733,7 @@ const VEICULOS = [
     "model": "7 SHS-P Luxury",
     "battery": 18.4,
     "maxAc": 6.6,
-    "maxDc": 0.0,
+    "maxDc": 40,
     "range": 79
   },
   {
@@ -1743,7 +1743,7 @@ const VEICULOS = [
     "model": "7 SHS-P Prestige",
     "battery": 18.4,
     "maxAc": 6.6,
-    "maxDc": 0.0,
+    "maxDc": 40,
     "range": 79
   },
   {
@@ -1753,7 +1753,7 @@ const VEICULOS = [
     "model": "S06 Advance",
     "battery": 19.43,
     "maxAc": 6.6,
-    "maxDc": 0.0,
+    "maxDc": 40,
     "range": 70
   },
   {
@@ -1763,7 +1763,7 @@ const VEICULOS = [
     "model": "S06 Premium",
     "battery": 19.43,
     "maxAc": 6.6,
-    "maxDc": 0.0,
+    "maxDc": 40,
     "range": 70
   },
   {
@@ -1773,7 +1773,7 @@ const VEICULOS = [
     "model": "T1 Advance",
     "battery": 26.7,
     "maxAc": 6.6,
-    "maxDc": 60.0,
+    "maxDc": 40,
     "range": 88
   },
   {
@@ -1783,7 +1783,7 @@ const VEICULOS = [
     "model": "T1 Premium",
     "battery": 26.7,
     "maxAc": 6.6,
-    "maxDc": 60.0,
+    "maxDc": 40,
     "range": 88
   },
   {
@@ -1793,7 +1793,7 @@ const VEICULOS = [
     "model": "T2 Advance",
     "battery": 26.7,
     "maxAc": 6.6,
-    "maxDc": 60.0,
+    "maxDc": 40,
     "range": 75
   },
   {
@@ -1803,7 +1803,7 @@ const VEICULOS = [
     "model": "T2 Premium",
     "battery": 26.7,
     "maxAc": 6.6,
-    "maxDc": 60.0,
+    "maxDc": 40,
     "range": 75
   },
   {
@@ -1813,7 +1813,7 @@ const VEICULOS = [
     "model": "F-PACE P400e R-Dynamic SE",
     "battery": 19.2,
     "maxAc": 6.6,
-    "maxDc": 0.0,
+    "maxDc": 35,
     "range": 39
   },
   {
@@ -1821,9 +1821,9 @@ const VEICULOS = [
     "type": "BEV",
     "brand": "Jaguar",
     "model": "I-PACE E400 First Edition",
-    "battery": 90.0,
-    "maxAc": 11.0,
-    "maxDc": 180.0,
+    "battery": 90,
+    "maxAc": 11,
+    "maxDc": 100,
     "range": 298
   },
   {
@@ -1831,9 +1831,9 @@ const VEICULOS = [
     "type": "BEV",
     "brand": "Jaguar",
     "model": "I-PACE E400 HSE",
-    "battery": 90.0,
-    "maxAc": 11.0,
-    "maxDc": 180.0,
+    "battery": 90,
+    "maxAc": 11,
+    "maxDc": 100,
     "range": 298
   },
   {
@@ -1841,9 +1841,9 @@ const VEICULOS = [
     "type": "BEV",
     "brand": "Jaguar",
     "model": "I-PACE E400 S",
-    "battery": 90.0,
-    "maxAc": 11.0,
-    "maxDc": 180.0,
+    "battery": 90,
+    "maxAc": 11,
+    "maxDc": 100,
     "range": 298
   },
   {
@@ -1851,9 +1851,9 @@ const VEICULOS = [
     "type": "BEV",
     "brand": "Jaguar",
     "model": "I-PACE E400 SE",
-    "battery": 90.0,
-    "maxAc": 11.0,
-    "maxDc": 180.0,
+    "battery": 90,
+    "maxAc": 11,
+    "maxDc": 100,
     "range": 298
   },
   {
@@ -1862,8 +1862,8 @@ const VEICULOS = [
     "brand": "Jeep",
     "model": "Compass 4xe Série S",
     "battery": 11.4,
-    "maxAc": 3.7,
-    "maxDc": 0.0,
+    "maxAc": 7.2,
+    "maxDc": 0,
     "range": 30
   },
   {
@@ -1872,8 +1872,8 @@ const VEICULOS = [
     "brand": "Jeep",
     "model": "Grand Cherokee 4xe",
     "battery": 17.3,
-    "maxAc": 6.6,
-    "maxDc": 0.0,
+    "maxAc": 7.2,
+    "maxDc": 0,
     "range": 29
   },
   {
@@ -1882,8 +1882,8 @@ const VEICULOS = [
     "brand": "Kia",
     "model": "EV5 Air 2WD",
     "battery": 88.16,
-    "maxAc": 11.0,
-    "maxDc": 180.0,
+    "maxAc": 11,
+    "maxDc": 141,
     "range": 402
   },
   {
@@ -1892,8 +1892,8 @@ const VEICULOS = [
     "brand": "Kia",
     "model": "EV5 Land 2WD",
     "battery": 88.16,
-    "maxAc": 11.0,
-    "maxDc": 180.0,
+    "maxAc": 11,
+    "maxDc": 141,
     "range": 402
   },
   {
@@ -1902,8 +1902,8 @@ const VEICULOS = [
     "brand": "Kia",
     "model": "EV9 GT-Line AWD",
     "battery": 99.8,
-    "maxAc": 11.0,
-    "maxDc": 180.0,
+    "maxAc": 11,
+    "maxDc": 233,
     "range": 434
   },
   {
@@ -1913,7 +1913,7 @@ const VEICULOS = [
     "model": "Revuelto",
     "battery": 3.8,
     "maxAc": 3.7,
-    "maxDc": 0.0,
+    "maxDc": 0,
     "range": 13
   },
   {
@@ -1922,8 +1922,8 @@ const VEICULOS = [
     "brand": "Lamborghini",
     "model": "Temerario",
     "battery": 3.8,
-    "maxAc": 3.7,
-    "maxDc": 0.0,
+    "maxAc": 7,
+    "maxDc": 0,
     "range": 12
   },
   {
@@ -1933,7 +1933,7 @@ const VEICULOS = [
     "model": "Urus SE",
     "battery": 25.9,
     "maxAc": 6.6,
-    "maxDc": 0.0,
+    "maxDc": 0,
     "range": 60
   },
   {
@@ -1942,8 +1942,8 @@ const VEICULOS = [
     "brand": "Land Rover",
     "model": "Range Rover PHEV",
     "battery": 38.2,
-    "maxAc": 6.6,
-    "maxDc": 33.0,
+    "maxAc": 7,
+    "maxDc": 43,
     "range": 71
   },
   {
@@ -1952,8 +1952,8 @@ const VEICULOS = [
     "brand": "Land Rover",
     "model": "Range Rover Sport PHEV",
     "battery": 38.2,
-    "maxAc": 6.6,
-    "maxDc": 33.0,
+    "maxAc": 7,
+    "maxDc": 43,
     "range": 71
   },
   {
@@ -1962,8 +1962,8 @@ const VEICULOS = [
     "brand": "Land Rover",
     "model": "Range Rover Velar PHEV",
     "battery": 17.1,
-    "maxAc": 6.6,
-    "maxDc": 0.0,
+    "maxAc": 7,
+    "maxDc": 0,
     "range": 40
   },
   {
@@ -1972,8 +1972,8 @@ const VEICULOS = [
     "brand": "Leapmotor",
     "model": "B10 Life",
     "battery": 56.2,
-    "maxAc": 7.0,
-    "maxDc": 85.0,
+    "maxAc": 11,
+    "maxDc": 140,
     "range": 288
   },
   {
@@ -1983,7 +1983,7 @@ const VEICULOS = [
     "model": "B10 Ultra-Híbrido REEV",
     "battery": 18.8,
     "maxAc": 6.6,
-    "maxDc": 30.0,
+    "maxDc": 30,
     "range": 68
   },
   {
@@ -1992,8 +1992,8 @@ const VEICULOS = [
     "brand": "Leapmotor",
     "model": "C10 BEV",
     "battery": 69.9,
-    "maxAc": 11.0,
-    "maxDc": 150.0,
+    "maxAc": 11,
+    "maxDc": 84,
     "range": 338
   },
   {
@@ -2003,7 +2003,7 @@ const VEICULOS = [
     "model": "C10 REEV",
     "battery": 28.4,
     "maxAc": 6.6,
-    "maxDc": 30.0,
+    "maxDc": 65,
     "range": 111
   },
   {
@@ -2013,7 +2013,7 @@ const VEICULOS = [
     "model": "NX 450h+",
     "battery": 18.1,
     "maxAc": 6.6,
-    "maxDc": 0.0,
+    "maxDc": 0,
     "range": 56
   },
   {
@@ -2023,7 +2023,7 @@ const VEICULOS = [
     "model": "RX 450h+",
     "battery": 18.1,
     "maxAc": 6.6,
-    "maxDc": 0.0,
+    "maxDc": 0,
     "range": 54
   },
   {
@@ -2032,8 +2032,8 @@ const VEICULOS = [
     "brand": "Lexus",
     "model": "RZ 500e 500e AWD",
     "battery": 76.96,
-    "maxAc": 11.0,
-    "maxDc": 150.0,
+    "maxAc": 22,
+    "maxDc": 150,
     "range": 357
   },
   {
@@ -2041,9 +2041,9 @@ const VEICULOS = [
     "type": "BEV",
     "brand": "Lucid",
     "model": "Air Grand Touring",
-    "battery": 117.0,
-    "maxAc": 22.0,
-    "maxDc": 270.0,
+    "battery": 117,
+    "maxAc": 19.2,
+    "maxDc": 300,
     "range": 824
   },
   {
@@ -2051,9 +2051,9 @@ const VEICULOS = [
     "type": "BEV",
     "brand": "Lucid",
     "model": "Air Pure",
-    "battery": 84.0,
-    "maxAc": 11.0,
-    "maxDc": 150.0,
+    "battery": 84,
+    "maxAc": 19.2,
+    "maxDc": 250,
     "range": 676
   },
   {
@@ -2061,9 +2061,9 @@ const VEICULOS = [
     "type": "BEV",
     "brand": "Lucid",
     "model": "Air Sapphire",
-    "battery": 118.0,
-    "maxAc": 22.0,
-    "maxDc": 270.0,
+    "battery": 118,
+    "maxAc": 19.2,
+    "maxDc": 300,
     "range": 687
   },
   {
@@ -2071,9 +2071,9 @@ const VEICULOS = [
     "type": "BEV",
     "brand": "Lucid",
     "model": "Air Touring",
-    "battery": 92.0,
-    "maxAc": 22.0,
-    "maxDc": 270.0,
+    "battery": 92,
+    "maxAc": 19.2,
+    "maxDc": 250,
     "range": 694
   },
   {
@@ -2081,9 +2081,9 @@ const VEICULOS = [
     "type": "BEV",
     "brand": "Lucid",
     "model": "Gravity Grand Touring",
-    "battery": 123.0,
-    "maxAc": 22.0,
-    "maxDc": 270.0,
+    "battery": 123,
+    "maxAc": 19.2,
+    "maxDc": 400,
     "range": 724
   },
   {
@@ -2091,9 +2091,9 @@ const VEICULOS = [
     "type": "BEV",
     "brand": "Lucid",
     "model": "Gravity Touring",
-    "battery": 89.0,
-    "maxAc": 11.0,
-    "maxDc": 150.0,
+    "battery": 89,
+    "maxAc": 19.2,
+    "maxDc": 300,
     "range": 542
   },
   {
@@ -2102,8 +2102,8 @@ const VEICULOS = [
     "brand": "MG Motor",
     "model": "Cyberster AWD 77kWh",
     "battery": 74.4,
-    "maxAc": 11.0,
-    "maxDc": 150.0,
+    "maxAc": 11,
+    "maxDc": 150,
     "range": 342
   },
   {
@@ -2112,8 +2112,8 @@ const VEICULOS = [
     "brand": "MG Motor",
     "model": "MG S5 Comfort RWD 62kWh",
     "battery": 62.1,
-    "maxAc": 7.0,
-    "maxDc": 85.0,
+    "maxAc": 11,
+    "maxDc": 150,
     "range": 351
   },
   {
@@ -2122,8 +2122,8 @@ const VEICULOS = [
     "brand": "MG Motor",
     "model": "MG S5 Luxury RWD 62kWh",
     "battery": 62.1,
-    "maxAc": 7.0,
-    "maxDc": 85.0,
+    "maxAc": 11,
+    "maxDc": 150,
     "range": 351
   },
   {
@@ -2132,8 +2132,8 @@ const VEICULOS = [
     "brand": "MG Motor",
     "model": "MG4 Comfort RWD 64kWh",
     "battery": 61.7,
-    "maxAc": 7.0,
-    "maxDc": 85.0,
+    "maxAc": 11,
+    "maxDc": 135,
     "range": 364
   },
   {
@@ -2142,8 +2142,8 @@ const VEICULOS = [
     "brand": "MG Motor",
     "model": "MG4 Luxury RWD 64kWh",
     "battery": 61.7,
-    "maxAc": 7.0,
-    "maxDc": 85.0,
+    "maxAc": 11,
+    "maxDc": 135,
     "range": 364
   },
   {
@@ -2152,8 +2152,8 @@ const VEICULOS = [
     "brand": "MG Motor",
     "model": "MG4 Urban Comfort 43kWh",
     "battery": 41.9,
-    "maxAc": 7.0,
-    "maxDc": 85.0,
+    "maxAc": 11,
+    "maxDc": 82,
     "range": 299
   },
   {
@@ -2162,8 +2162,8 @@ const VEICULOS = [
     "brand": "MG Motor",
     "model": "MG4 Urban Luxury 43kWh",
     "battery": 41.9,
-    "maxAc": 7.0,
-    "maxDc": 85.0,
+    "maxAc": 11,
+    "maxDc": 82,
     "range": 299
   },
   {
@@ -2172,8 +2172,8 @@ const VEICULOS = [
     "brand": "MG Motor",
     "model": "MG4 Urban Luxury 54kWh",
     "battery": 52.8,
-    "maxAc": 7.0,
-    "maxDc": 85.0,
+    "maxAc": 11,
+    "maxDc": 87,
     "range": 358
   },
   {
@@ -2182,8 +2182,8 @@ const VEICULOS = [
     "brand": "MG Motor",
     "model": "MG4 XPower AWD 64kWh",
     "battery": 61.7,
-    "maxAc": 7.0,
-    "maxDc": 85.0,
+    "maxAc": 11,
+    "maxDc": 150,
     "range": 279
   },
   {
@@ -2192,8 +2192,8 @@ const VEICULOS = [
     "brand": "Maserati",
     "model": "GranCabrio Folgore",
     "battery": 92.5,
-    "maxAc": 11.0,
-    "maxDc": 180.0,
+    "maxAc": 11,
+    "maxDc": 270,
     "range": 441
   },
   {
@@ -2202,8 +2202,8 @@ const VEICULOS = [
     "brand": "Maserati",
     "model": "GranTurismo Folgore",
     "battery": 92.5,
-    "maxAc": 11.0,
-    "maxDc": 180.0,
+    "maxAc": 11,
+    "maxDc": 270,
     "range": 456
   },
   {
@@ -2211,9 +2211,9 @@ const VEICULOS = [
     "type": "BEV",
     "brand": "Maserati",
     "model": "Grecale Folgore",
-    "battery": 105.0,
-    "maxAc": 11.0,
-    "maxDc": 180.0,
+    "battery": 105,
+    "maxAc": 11,
+    "maxDc": 150,
     "range": 580
   },
   {
@@ -2222,8 +2222,8 @@ const VEICULOS = [
     "brand": "McLaren",
     "model": "Artura Coupé",
     "battery": 7.4,
-    "maxAc": 3.7,
-    "maxDc": 0.0,
+    "maxAc": 7.4,
+    "maxDc": 0,
     "range": 23
   },
   {
@@ -2232,8 +2232,8 @@ const VEICULOS = [
     "brand": "McLaren",
     "model": "Artura Spider",
     "battery": 7.4,
-    "maxAc": 3.7,
-    "maxDc": 0.0,
+    "maxAc": 7.4,
+    "maxDc": 0,
     "range": 23
   },
   {
@@ -2242,8 +2242,8 @@ const VEICULOS = [
     "brand": "Mercedes",
     "model": "EQB 250 250+",
     "battery": 70.5,
-    "maxAc": 11.0,
-    "maxDc": 150.0,
+    "maxAc": 11,
+    "maxDc": 100,
     "range": 376
   },
   {
@@ -2251,9 +2251,9 @@ const VEICULOS = [
     "type": "BEV",
     "brand": "Mercedes",
     "model": "EQE 300 300 AMG Line",
-    "battery": 89.0,
-    "maxAc": 11.0,
-    "maxDc": 180.0,
+    "battery": 89,
+    "maxAc": 11,
+    "maxDc": 170,
     "range": 369
   },
   {
@@ -2262,8 +2262,8 @@ const VEICULOS = [
     "brand": "Mercedes",
     "model": "Mercedes-AMG EQE 53 4MATIC+ SUV",
     "battery": 90.6,
-    "maxAc": 11.0,
-    "maxDc": 180.0,
+    "maxAc": 22,
+    "maxDc": 170,
     "range": 338
   },
   {
@@ -2271,9 +2271,9 @@ const VEICULOS = [
     "type": "BEV",
     "brand": "Mercedes",
     "model": "eSprinter 320 Chassi 81 kWh",
-    "battery": 81.0,
-    "maxAc": 11.0,
-    "maxDc": 150.0,
+    "battery": 81,
+    "maxAc": 11,
+    "maxDc": 115,
     "range": 206
   },
   {
@@ -2281,9 +2281,9 @@ const VEICULOS = [
     "type": "BEV",
     "brand": "Mercedes",
     "model": "eSprinter 320 Furgão 81 kWh",
-    "battery": 81.0,
-    "maxAc": 11.0,
-    "maxDc": 150.0,
+    "battery": 81,
+    "maxAc": 11,
+    "maxDc": 115,
     "range": 206
   },
   {
@@ -2291,9 +2291,9 @@ const VEICULOS = [
     "type": "BEV",
     "brand": "Mercedes",
     "model": "eSprinter Furgão 113 kWh",
-    "battery": 113.0,
-    "maxAc": 11.0,
-    "maxDc": 180.0,
+    "battery": 113,
+    "maxAc": 11,
+    "maxDc": 115,
     "range": 478
   },
   {
@@ -2303,7 +2303,7 @@ const VEICULOS = [
     "model": "Mercedes-AMG C 63 S E Performance",
     "battery": 6.1,
     "maxAc": 3.7,
-    "maxDc": 0.0,
+    "maxDc": 0,
     "range": 9
   },
   {
@@ -2313,7 +2313,7 @@ const VEICULOS = [
     "model": "Mercedes-AMG C 63 S E Performance F1 Edition",
     "battery": 6.1,
     "maxAc": 3.7,
-    "maxDc": 0.0,
+    "maxDc": 0,
     "range": 9
   },
   {
@@ -2323,7 +2323,7 @@ const VEICULOS = [
     "model": "Mercedes-AMG GLC 63 S E Performance Coupé",
     "battery": 6.1,
     "maxAc": 3.7,
-    "maxDc": 0.0,
+    "maxDc": 0,
     "range": 18
   },
   {
@@ -2333,7 +2333,7 @@ const VEICULOS = [
     "model": "Mercedes-AMG GT 63 S E Performance Coupé 2 portas",
     "battery": 6.1,
     "maxAc": 3.7,
-    "maxDc": 0.0,
+    "maxDc": 0,
     "range": 9
   },
   {
@@ -2343,7 +2343,7 @@ const VEICULOS = [
     "model": "Mercedes-AMG GT 63 S E Performance Coupé 4 portas",
     "battery": 6.1,
     "maxAc": 3.7,
-    "maxDc": 0.0,
+    "maxDc": 0,
     "range": 9
   },
   {
@@ -2353,7 +2353,7 @@ const VEICULOS = [
     "model": "Mercedes-AMG S 63 E Performance",
     "battery": 13.1,
     "maxAc": 3.7,
-    "maxDc": 0.0,
+    "maxDc": 0,
     "range": 25
   },
   {
@@ -2363,7 +2363,7 @@ const VEICULOS = [
     "model": "Mercedes-AMG SL 63 S E Performance",
     "battery": 6.1,
     "maxAc": 3.7,
-    "maxDc": 0.0,
+    "maxDc": 0,
     "range": 9
   },
   {
@@ -2372,8 +2372,8 @@ const VEICULOS = [
     "brand": "Mini",
     "model": "Aceman",
     "battery": 38.5,
-    "maxAc": 6.6,
-    "maxDc": 60.0,
+    "maxAc": 11,
+    "maxDc": 70,
     "range": 253
   },
   {
@@ -2382,8 +2382,8 @@ const VEICULOS = [
     "brand": "Mini",
     "model": "Aceman JCW E",
     "battery": 49.2,
-    "maxAc": 7.0,
-    "maxDc": 85.0,
+    "maxAc": 11,
+    "maxDc": 95,
     "range": 312
   },
   {
@@ -2392,8 +2392,8 @@ const VEICULOS = [
     "brand": "Mini",
     "model": "Aceman SE",
     "battery": 49.2,
-    "maxAc": 7.0,
-    "maxDc": 85.0,
+    "maxAc": 11,
+    "maxDc": 95,
     "range": 270
   },
   {
@@ -2402,8 +2402,8 @@ const VEICULOS = [
     "brand": "Mini",
     "model": "Cooper Elétrico",
     "battery": 36.6,
-    "maxAc": 6.6,
-    "maxDc": 60.0,
+    "maxAc": 11,
+    "maxDc": 75,
     "range": 239
   },
   {
@@ -2412,8 +2412,8 @@ const VEICULOS = [
     "brand": "Mini",
     "model": "Cooper Elétrico Cooper SE",
     "battery": 49.2,
-    "maxAc": 7.0,
-    "maxDc": 85.0,
+    "maxAc": 11,
+    "maxDc": 95,
     "range": 312
   },
   {
@@ -2422,8 +2422,8 @@ const VEICULOS = [
     "brand": "Mini",
     "model": "Cooper Elétrico JCW E",
     "battery": 49.2,
-    "maxAc": 7.0,
-    "maxDc": 85.0,
+    "maxAc": 11,
+    "maxDc": 95,
     "range": 306
   },
   {
@@ -2432,8 +2432,8 @@ const VEICULOS = [
     "brand": "Mini",
     "model": "Countryman SE ALL4 Exclusive",
     "battery": 66.45,
-    "maxAc": 11.0,
-    "maxDc": 150.0,
+    "maxAc": 11,
+    "maxDc": 130,
     "range": 320
   },
   {
@@ -2442,8 +2442,8 @@ const VEICULOS = [
     "brand": "Mini",
     "model": "Countryman SE ALL4 Top",
     "battery": 66.45,
-    "maxAc": 11.0,
-    "maxDc": 150.0,
+    "maxAc": 11,
+    "maxDc": 130,
     "range": 320
   },
   {
@@ -2451,9 +2451,9 @@ const VEICULOS = [
     "type": "PHEV",
     "brand": "Mitsubishi",
     "model": "Outlander PHEV HPE-S",
-    "battery": 20.0,
-    "maxAc": 6.6,
-    "maxDc": 0.0,
+    "battery": 20,
+    "maxAc": 3.5,
+    "maxDc": 0,
     "range": 58
   },
   {
@@ -2461,9 +2461,9 @@ const VEICULOS = [
     "type": "PHEV",
     "brand": "Mitsubishi",
     "model": "Outlander PHEV Signature",
-    "battery": 20.0,
-    "maxAc": 6.6,
-    "maxDc": 0.0,
+    "battery": 20,
+    "maxAc": 3.5,
+    "maxDc": 0,
     "range": 58
   },
   {
@@ -2472,8 +2472,8 @@ const VEICULOS = [
     "brand": "Neta",
     "model": "AYA Comfort",
     "battery": 40.7,
-    "maxAc": 7.0,
-    "maxDc": 85.0,
+    "maxAc": 6.6,
+    "maxDc": 60,
     "range": 263
   },
   {
@@ -2482,8 +2482,8 @@ const VEICULOS = [
     "brand": "Neta",
     "model": "AYA Luxury",
     "battery": 40.7,
-    "maxAc": 7.0,
-    "maxDc": 85.0,
+    "maxAc": 6.6,
+    "maxDc": 60,
     "range": 263
   },
   {
@@ -2492,8 +2492,8 @@ const VEICULOS = [
     "brand": "Neta",
     "model": "X 400 Comfort",
     "battery": 52.49,
-    "maxAc": 7.0,
-    "maxDc": 85.0,
+    "maxAc": 6.6,
+    "maxDc": 65,
     "range": 258
   },
   {
@@ -2502,8 +2502,8 @@ const VEICULOS = [
     "brand": "Neta",
     "model": "X 500 Comfort",
     "battery": 64.1,
-    "maxAc": 7.0,
-    "maxDc": 85.0,
+    "maxAc": 6.6,
+    "maxDc": 88.8,
     "range": 317
   },
   {
@@ -2512,8 +2512,8 @@ const VEICULOS = [
     "brand": "Neta",
     "model": "X 500 Luxury",
     "battery": 64.1,
-    "maxAc": 7.0,
-    "maxDc": 85.0,
+    "maxAc": 6.6,
+    "maxDc": 88.8,
     "range": 317
   },
   {
@@ -2521,9 +2521,9 @@ const VEICULOS = [
     "type": "BEV",
     "brand": "Nissan",
     "model": "Ariya ENG 2WD",
-    "battery": 63.0,
-    "maxAc": 7.0,
-    "maxDc": 85.0,
+    "battery": 63,
+    "maxAc": 7.4,
+    "maxDc": 130,
     "range": 348
   },
   {
@@ -2531,9 +2531,9 @@ const VEICULOS = [
     "type": "BEV",
     "brand": "Nissan",
     "model": "Ariya ENG AWD",
-    "battery": 63.0,
-    "maxAc": 7.0,
-    "maxDc": 85.0,
+    "battery": 63,
+    "maxAc": 7.4,
+    "maxDc": 130,
     "range": 333
   },
   {
@@ -2541,9 +2541,9 @@ const VEICULOS = [
     "type": "BEV",
     "brand": "Nissan",
     "model": "Ariya PLT AWD / ENGPL AWD",
-    "battery": 87.0,
-    "maxAc": 11.0,
-    "maxDc": 180.0,
+    "battery": 87,
+    "maxAc": 7.4,
+    "maxDc": 130,
     "range": 415
   },
   {
@@ -2551,9 +2551,9 @@ const VEICULOS = [
     "type": "BEV",
     "brand": "Nissan",
     "model": "LEAF Tekna",
-    "battery": 40.0,
+    "battery": 40,
     "maxAc": 6.6,
-    "maxDc": 60.0,
+    "maxDc": 50,
     "range": 192
   },
   {
@@ -2563,7 +2563,7 @@ const VEICULOS = [
     "model": "7 SHS-P Luxury",
     "battery": 18.4,
     "maxAc": 6.6,
-    "maxDc": 0.0,
+    "maxDc": 40,
     "range": 60
   },
   {
@@ -2573,7 +2573,7 @@ const VEICULOS = [
     "model": "7 SHS-P Prestige",
     "battery": 18.4,
     "maxAc": 6.6,
-    "maxDc": 0.0,
+    "maxDc": 40,
     "range": 60
   },
   {
@@ -2582,8 +2582,8 @@ const VEICULOS = [
     "brand": "OMODA",
     "model": "E5",
     "battery": 61.1,
-    "maxAc": 7.0,
-    "maxDc": 85.0,
+    "maxAc": 11,
+    "maxDc": 120,
     "range": 345
   },
   {
@@ -2591,9 +2591,9 @@ const VEICULOS = [
     "type": "BEV",
     "brand": "Peugeot",
     "model": "e-2008 GT",
-    "battery": 54.0,
-    "maxAc": 7.0,
-    "maxDc": 85.0,
+    "battery": 54,
+    "maxAc": 11,
+    "maxDc": 100,
     "range": 261
   },
   {
@@ -2601,9 +2601,9 @@ const VEICULOS = [
     "type": "BEV",
     "brand": "Peugeot",
     "model": "e-208 GT",
-    "battery": 50.0,
-    "maxAc": 7.0,
-    "maxDc": 85.0,
+    "battery": 50,
+    "maxAc": 11,
+    "maxDc": 100,
     "range": 220
   },
   {
@@ -2611,9 +2611,9 @@ const VEICULOS = [
     "type": "BEV",
     "brand": "Peugeot",
     "model": "e-Expert Cargo",
-    "battery": 75.0,
-    "maxAc": 11.0,
-    "maxDc": 150.0,
+    "battery": 75,
+    "maxAc": 11,
+    "maxDc": 100,
     "range": 258
   },
   {
@@ -2622,8 +2622,8 @@ const VEICULOS = [
     "brand": "Porsche",
     "model": "Cayenne E-Hybrid",
     "battery": 25.9,
-    "maxAc": 6.6,
-    "maxDc": 0.0,
+    "maxAc": 11,
+    "maxDc": 0,
     "range": 52
   },
   {
@@ -2632,8 +2632,8 @@ const VEICULOS = [
     "brand": "Porsche",
     "model": "Cayenne E-Hybrid Base",
     "battery": 25.9,
-    "maxAc": 6.6,
-    "maxDc": 0.0,
+    "maxAc": 11,
+    "maxDc": 0,
     "range": 52
   },
   {
@@ -2642,8 +2642,8 @@ const VEICULOS = [
     "brand": "Porsche",
     "model": "Cayenne E-Hybrid Coupe",
     "battery": 25.9,
-    "maxAc": 6.6,
-    "maxDc": 0.0,
+    "maxAc": 11,
+    "maxDc": 0,
     "range": 52
   },
   {
@@ -2652,8 +2652,8 @@ const VEICULOS = [
     "brand": "Porsche",
     "model": "Cayenne E-Hybrid S E-Hybrid",
     "battery": 25.9,
-    "maxAc": 6.6,
-    "maxDc": 0.0,
+    "maxAc": 11,
+    "maxDc": 0,
     "range": 57
   },
   {
@@ -2662,8 +2662,8 @@ const VEICULOS = [
     "brand": "Porsche",
     "model": "Cayenne E-Hybrid Turbo E-Hybrid",
     "battery": 25.9,
-    "maxAc": 6.6,
-    "maxDc": 0.0,
+    "maxAc": 11,
+    "maxDc": 0,
     "range": 57
   },
   {
@@ -2672,8 +2672,8 @@ const VEICULOS = [
     "brand": "Porsche",
     "model": "Cayenne E-Hybrid Turbo S",
     "battery": 25.9,
-    "maxAc": 6.6,
-    "maxDc": 0.0,
+    "maxAc": 11,
+    "maxDc": 0,
     "range": 57
   },
   {
@@ -2682,8 +2682,8 @@ const VEICULOS = [
     "brand": "Porsche",
     "model": "Cayenne E-Hybrid Turbo S Coupe",
     "battery": 25.9,
-    "maxAc": 6.6,
-    "maxDc": 0.0,
+    "maxAc": 11,
+    "maxDc": 0,
     "range": 57
   },
   {
@@ -2691,9 +2691,9 @@ const VEICULOS = [
     "type": "BEV",
     "brand": "Porsche",
     "model": "Cayenne Electric",
-    "battery": 113.0,
-    "maxAc": 22.0,
-    "maxDc": 270.0,
+    "battery": 113,
+    "maxAc": 11,
+    "maxDc": 400,
     "range": 493
   },
   {
@@ -2701,9 +2701,9 @@ const VEICULOS = [
     "type": "BEV",
     "brand": "Porsche",
     "model": "Cayenne Electric Cayenne Electric Coupé",
-    "battery": 113.0,
-    "maxAc": 22.0,
-    "maxDc": 270.0,
+    "battery": 113,
+    "maxAc": 11,
+    "maxDc": 400,
     "range": 493
   },
   {
@@ -2711,9 +2711,9 @@ const VEICULOS = [
     "type": "BEV",
     "brand": "Porsche",
     "model": "Cayenne Electric Cayenne S Electric",
-    "battery": 113.0,
-    "maxAc": 22.0,
-    "maxDc": 270.0,
+    "battery": 113,
+    "maxAc": 11,
+    "maxDc": 400,
     "range": 643
   },
   {
@@ -2721,9 +2721,9 @@ const VEICULOS = [
     "type": "BEV",
     "brand": "Porsche",
     "model": "Cayenne Electric Cayenne S Electric Coupé",
-    "battery": 113.0,
-    "maxAc": 22.0,
-    "maxDc": 270.0,
+    "battery": 113,
+    "maxAc": 11,
+    "maxDc": 400,
     "range": 643
   },
   {
@@ -2731,9 +2731,9 @@ const VEICULOS = [
     "type": "BEV",
     "brand": "Porsche",
     "model": "Cayenne Electric Cayenne Turbo Electric",
-    "battery": 113.0,
-    "maxAc": 22.0,
-    "maxDc": 270.0,
+    "battery": 113,
+    "maxAc": 11,
+    "maxDc": 400,
     "range": 481
   },
   {
@@ -2741,9 +2741,9 @@ const VEICULOS = [
     "type": "BEV",
     "brand": "Porsche",
     "model": "Cayenne Electric Cayenne Turbo Electric Coupé",
-    "battery": 113.0,
-    "maxAc": 22.0,
-    "maxDc": 270.0,
+    "battery": 113,
+    "maxAc": 11,
+    "maxDc": 400,
     "range": 481
   },
   {
@@ -2751,9 +2751,9 @@ const VEICULOS = [
     "type": "BEV",
     "brand": "Porsche",
     "model": "Macan Electric Macan 4",
-    "battery": 100.0,
-    "maxAc": 22.0,
-    "maxDc": 270.0,
+    "battery": 100,
+    "maxAc": 11,
+    "maxDc": 270,
     "range": 443
   },
   {
@@ -2761,9 +2761,9 @@ const VEICULOS = [
     "type": "BEV",
     "brand": "Porsche",
     "model": "Macan Electric Macan 4S",
-    "battery": 100.0,
-    "maxAc": 22.0,
-    "maxDc": 270.0,
+    "battery": 100,
+    "maxAc": 11,
+    "maxDc": 270,
     "range": 438
   },
   {
@@ -2771,9 +2771,9 @@ const VEICULOS = [
     "type": "BEV",
     "brand": "Porsche",
     "model": "Macan Electric Macan GTS",
-    "battery": 100.0,
-    "maxAc": 22.0,
-    "maxDc": 270.0,
+    "battery": 100,
+    "maxAc": 11,
+    "maxDc": 270,
     "range": 441
   },
   {
@@ -2781,9 +2781,9 @@ const VEICULOS = [
     "type": "BEV",
     "brand": "Porsche",
     "model": "Macan Electric Macan Turbo",
-    "battery": 100.0,
-    "maxAc": 22.0,
-    "maxDc": 270.0,
+    "battery": 100,
+    "maxAc": 11,
+    "maxDc": 270,
     "range": 435
   },
   {
@@ -2792,8 +2792,8 @@ const VEICULOS = [
     "brand": "Porsche",
     "model": "Panamera E-Hybrid 4 E-Hybrid",
     "battery": 25.9,
-    "maxAc": 6.6,
-    "maxDc": 0.0,
+    "maxAc": 11,
+    "maxDc": 0,
     "range": 63
   },
   {
@@ -2802,8 +2802,8 @@ const VEICULOS = [
     "brand": "Porsche",
     "model": "Panamera E-Hybrid 4S E-Hybrid",
     "battery": 25.9,
-    "maxAc": 6.6,
-    "maxDc": 0.0,
+    "maxAc": 11,
+    "maxDc": 0,
     "range": 63
   },
   {
@@ -2812,8 +2812,8 @@ const VEICULOS = [
     "brand": "Porsche",
     "model": "Panamera E-Hybrid Turbo E-Hybrid",
     "battery": 25.9,
-    "maxAc": 6.6,
-    "maxDc": 0.0,
+    "maxAc": 11,
+    "maxDc": 0,
     "range": 61
   },
   {
@@ -2822,8 +2822,8 @@ const VEICULOS = [
     "brand": "Porsche",
     "model": "Panamera E-Hybrid Turbo S E-Hybrid",
     "battery": 25.9,
-    "maxAc": 6.6,
-    "maxDc": 0.0,
+    "maxAc": 11,
+    "maxDc": 0,
     "range": 60
   },
   {
@@ -2831,9 +2831,9 @@ const VEICULOS = [
     "type": "BEV",
     "brand": "Porsche",
     "model": "Taycan 4 Cross Turismo",
-    "battery": 105.0,
-    "maxAc": 22.0,
-    "maxDc": 270.0,
+    "battery": 105,
+    "maxAc": 11,
+    "maxDc": 320,
     "range": 415
   },
   {
@@ -2841,9 +2841,9 @@ const VEICULOS = [
     "type": "BEV",
     "brand": "Porsche",
     "model": "Taycan 4S",
-    "battery": 105.0,
-    "maxAc": 22.0,
-    "maxDc": 270.0,
+    "battery": 105,
+    "maxAc": 11,
+    "maxDc": 320,
     "range": 415
   },
   {
@@ -2851,9 +2851,9 @@ const VEICULOS = [
     "type": "BEV",
     "brand": "Porsche",
     "model": "Taycan 4S Cross Turismo",
-    "battery": 105.0,
-    "maxAc": 22.0,
-    "maxDc": 270.0,
+    "battery": 105,
+    "maxAc": 11,
+    "maxDc": 320,
     "range": 415
   },
   {
@@ -2861,9 +2861,9 @@ const VEICULOS = [
     "type": "BEV",
     "brand": "Porsche",
     "model": "Taycan Turbo Cross Turismo",
-    "battery": 105.0,
-    "maxAc": 22.0,
-    "maxDc": 270.0,
+    "battery": 105,
+    "maxAc": 11,
+    "maxDc": 320,
     "range": 415
   },
   {
@@ -2871,9 +2871,9 @@ const VEICULOS = [
     "type": "BEV",
     "brand": "Porsche",
     "model": "Taycan Turbo S",
-    "battery": 105.0,
-    "maxAc": 22.0,
-    "maxDc": 270.0,
+    "battery": 105,
+    "maxAc": 11,
+    "maxDc": 320,
     "range": 425
   },
   {
@@ -2881,9 +2881,9 @@ const VEICULOS = [
     "type": "BEV",
     "brand": "Renault",
     "model": "Kangoo E-Tech L2",
-    "battery": 45.0,
-    "maxAc": 7.0,
-    "maxDc": 85.0,
+    "battery": 45,
+    "maxAc": 7.4,
+    "maxDc": 50,
     "range": 210
   },
   {
@@ -2892,8 +2892,8 @@ const VEICULOS = [
     "brand": "Renault",
     "model": "Kwid E-Tech Intens",
     "battery": 26.8,
-    "maxAc": 7.0,
-    "maxDc": 30.0,
+    "maxAc": 7.4,
+    "maxDc": 30,
     "range": 185
   },
   {
@@ -2901,9 +2901,9 @@ const VEICULOS = [
     "type": "BEV",
     "brand": "Renault",
     "model": "Megane E-Tech EV60 220 optimum charge",
-    "battery": 60.0,
-    "maxAc": 7.0,
-    "maxDc": 85.0,
+    "battery": 60,
+    "maxAc": 22,
+    "maxDc": 130,
     "range": 337
   },
   {
@@ -2911,9 +2911,9 @@ const VEICULOS = [
     "type": "BEV",
     "brand": "Rivian",
     "model": "R1S Dual Large",
-    "battery": 109.0,
-    "maxAc": 11.0,
-    "maxDc": 180.0,
+    "battery": 109,
+    "maxAc": 11.5,
+    "maxDc": 220,
     "range": 529
   },
   {
@@ -2922,8 +2922,8 @@ const VEICULOS = [
     "brand": "Rivian",
     "model": "R1S Dual Max",
     "battery": 141.5,
-    "maxAc": 11.0,
-    "maxDc": 180.0,
+    "maxAc": 11.5,
+    "maxDc": 220,
     "range": 660
   },
   {
@@ -2932,8 +2932,8 @@ const VEICULOS = [
     "brand": "Rivian",
     "model": "R1S Quad Max",
     "battery": 141.5,
-    "maxAc": 11.0,
-    "maxDc": 180.0,
+    "maxAc": 11.5,
+    "maxDc": 220,
     "range": 602
   },
   {
@@ -2942,8 +2942,8 @@ const VEICULOS = [
     "brand": "Rivian",
     "model": "R1S Tri Max",
     "battery": 141.5,
-    "maxAc": 11.0,
-    "maxDc": 180.0,
+    "maxAc": 11.5,
+    "maxDc": 220,
     "range": 597
   },
   {
@@ -2951,9 +2951,9 @@ const VEICULOS = [
     "type": "BEV",
     "brand": "Rivian",
     "model": "R1T Dual Large",
-    "battery": 109.0,
-    "maxAc": 11.0,
-    "maxDc": 180.0,
+    "battery": 109,
+    "maxAc": 11.5,
+    "maxDc": 220,
     "range": 529
   },
   {
@@ -2962,8 +2962,8 @@ const VEICULOS = [
     "brand": "Rivian",
     "model": "R1T Dual Max",
     "battery": 141.5,
-    "maxAc": 11.0,
-    "maxDc": 180.0,
+    "maxAc": 11.5,
+    "maxDc": 220,
     "range": 676
   },
   {
@@ -2972,8 +2972,8 @@ const VEICULOS = [
     "brand": "Rivian",
     "model": "R1T Quad Max",
     "battery": 141.5,
-    "maxAc": 11.0,
-    "maxDc": 180.0,
+    "maxAc": 11.5,
+    "maxDc": 220,
     "range": 602
   },
   {
@@ -2982,8 +2982,8 @@ const VEICULOS = [
     "brand": "Rivian",
     "model": "R1T Tri Max",
     "battery": 141.5,
-    "maxAc": 11.0,
-    "maxDc": 180.0,
+    "maxAc": 11.5,
+    "maxDc": 220,
     "range": 597
   },
   {
@@ -2992,8 +2992,8 @@ const VEICULOS = [
     "brand": "Seres",
     "model": "3 Elegance",
     "battery": 53.61,
-    "maxAc": 7.0,
-    "maxDc": 85.0,
+    "maxAc": 6.6,
+    "maxDc": 85,
     "range": 206
   },
   {
@@ -3002,8 +3002,8 @@ const VEICULOS = [
     "brand": "Suzuki",
     "model": "e Vitara 4STY 2WD",
     "battery": 61.1,
-    "maxAc": 7.0,
-    "maxDc": 85.0,
+    "maxAc": 11,
+    "maxDc": 150,
     "range": 317
   },
   {
@@ -3012,8 +3012,8 @@ const VEICULOS = [
     "brand": "Suzuki",
     "model": "e Vitara 4X4 ALLGRIP-e",
     "battery": 61.1,
-    "maxAc": 7.0,
-    "maxDc": 85.0,
+    "maxAc": 11,
+    "maxDc": 150,
     "range": 293
   },
   {
@@ -3021,9 +3021,9 @@ const VEICULOS = [
     "type": "BEV",
     "brand": "Tesla",
     "model": "Cybertruck Cyberbeast",
-    "battery": 123.0,
-    "maxAc": 11.0,
-    "maxDc": 180.0,
+    "battery": 123,
+    "maxAc": 11.5,
+    "maxDc": 250,
     "range": 515
   },
   {
@@ -3031,9 +3031,9 @@ const VEICULOS = [
     "type": "BEV",
     "brand": "Tesla",
     "model": "Cybertruck Dual Motor AWD",
-    "battery": 123.0,
-    "maxAc": 11.0,
-    "maxDc": 180.0,
+    "battery": 123,
+    "maxAc": 11,
+    "maxDc": 180,
     "range": 523
   },
   {
@@ -3041,9 +3041,9 @@ const VEICULOS = [
     "type": "BEV",
     "brand": "Tesla",
     "model": "Cybertruck Premium AWD",
-    "battery": 123.0,
-    "maxAc": 11.0,
-    "maxDc": 180.0,
+    "battery": 123,
+    "maxAc": 11.5,
+    "maxDc": 250,
     "range": 523
   },
   {
@@ -3051,9 +3051,9 @@ const VEICULOS = [
     "type": "BEV",
     "brand": "Tesla",
     "model": "Model 3 2026 Performance",
-    "battery": 0.0,
-    "maxAc": 6.6,
-    "maxDc": 60.0,
+    "battery": 0,
+    "maxAc": 11,
+    "maxDc": 250,
     "range": 497
   },
   {
@@ -3061,9 +3061,9 @@ const VEICULOS = [
     "type": "BEV",
     "brand": "Tesla",
     "model": "Model 3 2026 Premium Long Range AWD",
-    "battery": 0.0,
-    "maxAc": 6.6,
-    "maxDc": 60.0,
+    "battery": 0,
+    "maxAc": 11,
+    "maxDc": 250,
     "range": 557
   },
   {
@@ -3071,9 +3071,9 @@ const VEICULOS = [
     "type": "BEV",
     "brand": "Tesla",
     "model": "Model 3 2026 Premium Long Range RWD",
-    "battery": 0.0,
-    "maxAc": 6.6,
-    "maxDc": 60.0,
+    "battery": 0,
+    "maxAc": 11,
+    "maxDc": 170,
     "range": 584
   },
   {
@@ -3081,9 +3081,9 @@ const VEICULOS = [
     "type": "BEV",
     "brand": "Tesla",
     "model": "Model 3 2026 RWD",
-    "battery": 0.0,
-    "maxAc": 6.6,
-    "maxDc": 60.0,
+    "battery": 0,
+    "maxAc": 11,
+    "maxDc": 170,
     "range": 517
   },
   {
@@ -3091,9 +3091,9 @@ const VEICULOS = [
     "type": "BEV",
     "brand": "Tesla",
     "model": "Model S Long Range",
-    "battery": 95.0,
-    "maxAc": 11.0,
-    "maxDc": 180.0,
+    "battery": 95,
+    "maxAc": 11,
+    "maxDc": 250,
     "range": 660
   },
   {
@@ -3101,9 +3101,9 @@ const VEICULOS = [
     "type": "BEV",
     "brand": "Tesla",
     "model": "Model S Plaid",
-    "battery": 100.0,
-    "maxAc": 11.0,
-    "maxDc": 180.0,
+    "battery": 100,
+    "maxAc": 11,
+    "maxDc": 250,
     "range": 592
   },
   {
@@ -3111,9 +3111,9 @@ const VEICULOS = [
     "type": "BEV",
     "brand": "Tesla",
     "model": "Model X Long Range",
-    "battery": 100.0,
-    "maxAc": 11.0,
-    "maxDc": 180.0,
+    "battery": 100,
+    "maxAc": 11,
+    "maxDc": 250,
     "range": 567
   },
   {
@@ -3121,9 +3121,9 @@ const VEICULOS = [
     "type": "BEV",
     "brand": "Tesla",
     "model": "Model X Plaid",
-    "battery": 100.0,
-    "maxAc": 11.0,
-    "maxDc": 180.0,
+    "battery": 100,
+    "maxAc": 11,
+    "maxDc": 250,
     "range": 539
   },
   {
@@ -3131,9 +3131,9 @@ const VEICULOS = [
     "type": "BEV",
     "brand": "Tesla",
     "model": "Model Y 2026 AWD",
-    "battery": 0.0,
-    "maxAc": 6.6,
-    "maxDc": 60.0,
+    "battery": 0,
+    "maxAc": 11,
+    "maxDc": 250,
     "range": 473
   },
   {
@@ -3141,9 +3141,9 @@ const VEICULOS = [
     "type": "BEV",
     "brand": "Tesla",
     "model": "Model Y 2026 Performance",
-    "battery": 0.0,
-    "maxAc": 6.6,
-    "maxDc": 60.0,
+    "battery": 0,
+    "maxAc": 11,
+    "maxDc": 250,
     "range": 492
   },
   {
@@ -3151,9 +3151,9 @@ const VEICULOS = [
     "type": "BEV",
     "brand": "Tesla",
     "model": "Model Y 2026 Premium",
-    "battery": 0.0,
-    "maxAc": 6.6,
-    "maxDc": 60.0,
+    "battery": 0,
+    "maxAc": 11,
+    "maxDc": 60,
     "range": 526
   },
   {
@@ -3161,9 +3161,9 @@ const VEICULOS = [
     "type": "BEV",
     "brand": "Tesla",
     "model": "Model Y 2026 RWD",
-    "battery": 0.0,
-    "maxAc": 6.6,
-    "maxDc": 60.0,
+    "battery": 0,
+    "maxAc": 11,
+    "maxDc": 170,
     "range": 517
   },
   {
@@ -3171,9 +3171,9 @@ const VEICULOS = [
     "type": "BEV",
     "brand": "Tesla",
     "model": "Model Y 2027 L Premium",
-    "battery": 0.0,
-    "maxAc": 6.6,
-    "maxDc": 60.0,
+    "battery": 0,
+    "maxAc": 11,
+    "maxDc": 60,
     "range": 523
   },
   {
@@ -3181,9 +3181,9 @@ const VEICULOS = [
     "type": "BEV",
     "brand": "Tesla",
     "model": "Roadster 2008-2012",
-    "battery": 53.0,
-    "maxAc": 7.0,
-    "maxDc": 85.0,
+    "battery": 53,
+    "maxAc": 7,
+    "maxDc": 85,
     "range": 394
   },
   {
@@ -3191,9 +3191,9 @@ const VEICULOS = [
     "type": "BEV",
     "brand": "Tesla",
     "model": "Roadster 2008-2012 Roadster Sport / 2.5 Sport",
-    "battery": 53.0,
-    "maxAc": 7.0,
-    "maxDc": 85.0,
+    "battery": 53,
+    "maxAc": 7,
+    "maxDc": 85,
     "range": 394
   },
   {
@@ -3203,7 +3203,7 @@ const VEICULOS = [
     "model": "RAV4 Plug-in Hybrid XSE Plug-in Hybrid",
     "battery": 18.1,
     "maxAc": 6.6,
-    "maxDc": 0.0,
+    "maxDc": 0,
     "range": 55
   },
   {
@@ -3211,9 +3211,9 @@ const VEICULOS = [
     "type": "BEV",
     "brand": "Volkswagen",
     "model": "ID.4 Pro Performance",
-    "battery": 77.0,
-    "maxAc": 11.0,
-    "maxDc": 150.0,
+    "battery": 77,
+    "maxAc": 11,
+    "maxDc": 135,
     "range": 370
   },
   {
@@ -3221,9 +3221,9 @@ const VEICULOS = [
     "type": "BEV",
     "brand": "Volkswagen",
     "model": "ID.Buzz Pro",
-    "battery": 77.0,
-    "maxAc": 11.0,
-    "maxDc": 150.0,
+    "battery": 77,
+    "maxAc": 11,
+    "maxDc": 135,
     "range": 337
   },
   {
@@ -3231,9 +3231,9 @@ const VEICULOS = [
     "type": "BEV",
     "brand": "Volvo",
     "model": "C40 Recharge P6 Plus Single Motor",
-    "battery": 69.0,
-    "maxAc": 11.0,
-    "maxDc": 150.0,
+    "battery": 69,
+    "maxAc": 11,
+    "maxDc": 150,
     "range": 385
   },
   {
@@ -3241,9 +3241,9 @@ const VEICULOS = [
     "type": "BEV",
     "brand": "Volvo",
     "model": "EC40 Plus Single Motor",
-    "battery": 70.0,
-    "maxAc": 11.0,
-    "maxDc": 150.0,
+    "battery": 70,
+    "maxAc": 11,
+    "maxDc": 150,
     "range": 404
   },
   {
@@ -3251,9 +3251,9 @@ const VEICULOS = [
     "type": "BEV",
     "brand": "Volvo",
     "model": "EC40 Ultra Twin Motor Performance",
-    "battery": 82.0,
-    "maxAc": 11.0,
-    "maxDc": 150.0,
+    "battery": 82,
+    "maxAc": 11,
+    "maxDc": 150,
     "range": 404
   },
   {
@@ -3261,9 +3261,9 @@ const VEICULOS = [
     "type": "BEV",
     "brand": "Volvo",
     "model": "ES90 Ultra Twin Motor Performance",
-    "battery": 106.0,
-    "maxAc": 11.0,
-    "maxDc": 180.0,
+    "battery": 106,
+    "maxAc": 11,
+    "maxDc": 180,
     "range": 524
   },
   {
@@ -3271,9 +3271,9 @@ const VEICULOS = [
     "type": "BEV",
     "brand": "Volvo",
     "model": "EX30 Cross Country Twin Motor",
-    "battery": 69.0,
-    "maxAc": 11.0,
-    "maxDc": 153.0,
+    "battery": 69,
+    "maxAc": 11,
+    "maxDc": 153,
     "range": 327
   },
   {
@@ -3281,9 +3281,9 @@ const VEICULOS = [
     "type": "BEV",
     "brand": "Volvo",
     "model": "EX30 Single Motor",
-    "battery": 51.0,
-    "maxAc": 11.0,
-    "maxDc": 153.0,
+    "battery": 51,
+    "maxAc": 11,
+    "maxDc": 134,
     "range": 250
   },
   {
@@ -3291,9 +3291,9 @@ const VEICULOS = [
     "type": "BEV",
     "brand": "Volvo",
     "model": "EX30 Twin Motor Performance",
-    "battery": 69.0,
-    "maxAc": 11.0,
-    "maxDc": 153.0,
+    "battery": 69,
+    "maxAc": 11,
+    "maxDc": 153,
     "range": 316
   },
   {
@@ -3301,9 +3301,9 @@ const VEICULOS = [
     "type": "BEV",
     "brand": "Volvo",
     "model": "EX40 Plus Single Motor",
-    "battery": 70.0,
-    "maxAc": 11.0,
-    "maxDc": 150.0,
+    "battery": 70,
+    "maxAc": 11,
+    "maxDc": 150,
     "range": 364
   },
   {
@@ -3311,9 +3311,9 @@ const VEICULOS = [
     "type": "BEV",
     "brand": "Volvo",
     "model": "EX40 Ultra Twin Motor Performance",
-    "battery": 82.0,
-    "maxAc": 11.0,
-    "maxDc": 150.0,
+    "battery": 82,
+    "maxAc": 11,
+    "maxDc": 150,
     "range": 404
   },
   {
@@ -3321,9 +3321,9 @@ const VEICULOS = [
     "type": "BEV",
     "brand": "Volvo",
     "model": "EX60 P10 AWD",
-    "battery": 95.0,
-    "maxAc": 11.0,
-    "maxDc": 180.0,
+    "battery": 95,
+    "maxAc": 22,
+    "maxDc": 370,
     "range": 695
   },
   {
@@ -3331,9 +3331,9 @@ const VEICULOS = [
     "type": "BEV",
     "brand": "Volvo",
     "model": "EX90 Ultra Twin Motor Performance",
-    "battery": 111.0,
-    "maxAc": 11.0,
-    "maxDc": 180.0,
+    "battery": 111,
+    "maxAc": 11,
+    "maxDc": 250,
     "range": 459
   },
   {
@@ -3342,8 +3342,8 @@ const VEICULOS = [
     "brand": "Volvo",
     "model": "XC60 Plug-in Hybrid Plus T8 AWD",
     "battery": 18.8,
-    "maxAc": 6.6,
-    "maxDc": 0.0,
+    "maxAc": 6.4,
+    "maxDc": 0,
     "range": 48
   },
   {
@@ -3352,8 +3352,8 @@ const VEICULOS = [
     "brand": "Volvo",
     "model": "XC60 Plug-in Hybrid Polestar Engineered T8 AWD",
     "battery": 18.8,
-    "maxAc": 6.6,
-    "maxDc": 0.0,
+    "maxAc": 6.4,
+    "maxDc": 0,
     "range": 48
   },
   {
@@ -3362,8 +3362,8 @@ const VEICULOS = [
     "brand": "Volvo",
     "model": "XC60 Plug-in Hybrid Ultra T8 AWD",
     "battery": 18.8,
-    "maxAc": 6.6,
-    "maxDc": 0.0,
+    "maxAc": 6.4,
+    "maxDc": 0,
     "range": 48
   },
   {
@@ -3372,8 +3372,8 @@ const VEICULOS = [
     "brand": "Volvo",
     "model": "XC90 Plug-in Hybrid Plus T8 AWD",
     "battery": 18.8,
-    "maxAc": 6.6,
-    "maxDc": 0.0,
+    "maxAc": 6.4,
+    "maxDc": 0,
     "range": 47
   },
   {
@@ -3382,8 +3382,8 @@ const VEICULOS = [
     "brand": "Volvo",
     "model": "XC90 Plug-in Hybrid Ultra T8 AWD",
     "battery": 18.8,
-    "maxAc": 6.6,
-    "maxDc": 0.0,
+    "maxAc": 6.4,
+    "maxDc": 0,
     "range": 47
   },
   {
@@ -3392,8 +3392,8 @@ const VEICULOS = [
     "brand": "Xiaomi",
     "model": "SU7 Max",
     "battery": 101.7,
-    "maxAc": 11.0,
-    "maxDc": 180.0,
+    "maxAc": 11,
+    "maxDc": 180,
     "range": 835
   },
   {
@@ -3402,8 +3402,8 @@ const VEICULOS = [
     "brand": "Xiaomi",
     "model": "SU7 Pro",
     "battery": 96.3,
-    "maxAc": 11.0,
-    "maxDc": 180.0,
+    "maxAc": 11,
+    "maxDc": 180,
     "range": 902
   },
   {
@@ -3411,9 +3411,9 @@ const VEICULOS = [
     "type": "BEV",
     "brand": "Xiaomi",
     "model": "SU7 Standard",
-    "battery": 73.0,
-    "maxAc": 11.0,
-    "maxDc": 150.0,
+    "battery": 73,
+    "maxAc": 11,
+    "maxDc": 150,
     "range": 720
   },
   {
@@ -3422,8 +3422,8 @@ const VEICULOS = [
     "brand": "Xiaomi",
     "model": "SU7 Ultra",
     "battery": 93.7,
-    "maxAc": 11.0,
-    "maxDc": 180.0,
+    "maxAc": 11,
+    "maxDc": 180,
     "range": 630
   },
   {
@@ -3432,8 +3432,8 @@ const VEICULOS = [
     "brand": "Xiaomi",
     "model": "YU7 Max",
     "battery": 101.7,
-    "maxAc": 11.0,
-    "maxDc": 180.0,
+    "maxAc": 11,
+    "maxDc": 180,
     "range": 760
   },
   {
@@ -3442,8 +3442,8 @@ const VEICULOS = [
     "brand": "Xiaomi",
     "model": "YU7 Pro",
     "battery": 96.3,
-    "maxAc": 11.0,
-    "maxDc": 180.0,
+    "maxAc": 11,
+    "maxDc": 180,
     "range": 770
   },
   {
@@ -3452,8 +3452,8 @@ const VEICULOS = [
     "brand": "Xiaomi",
     "model": "YU7 Standard",
     "battery": 96.3,
-    "maxAc": 11.0,
-    "maxDc": 180.0,
+    "maxAc": 11,
+    "maxDc": 180,
     "range": 835
   },
   {
@@ -3461,9 +3461,9 @@ const VEICULOS = [
     "type": "BEV",
     "brand": "Zeekr",
     "model": "001 Flagship AWD",
-    "battery": 100.0,
-    "maxAc": 22.0,
-    "maxDc": 270.0,
+    "battery": 100,
+    "maxAc": 22,
+    "maxDc": 200,
     "range": 426
   },
   {
@@ -3471,9 +3471,9 @@ const VEICULOS = [
     "type": "BEV",
     "brand": "Zeekr",
     "model": "001 Premium AWD",
-    "battery": 100.0,
-    "maxAc": 22.0,
-    "maxDc": 270.0,
+    "battery": 100,
+    "maxAc": 22,
+    "maxDc": 200,
     "range": 426
   },
   {
@@ -3481,9 +3481,9 @@ const VEICULOS = [
     "type": "BEV",
     "brand": "Zeekr",
     "model": "7X Flagship AWD",
-    "battery": 100.0,
-    "maxAc": 22.0,
-    "maxDc": 270.0,
+    "battery": 100,
+    "maxAc": 11,
+    "maxDc": 200,
     "range": 423
   },
   {
@@ -3491,9 +3491,9 @@ const VEICULOS = [
     "type": "BEV",
     "brand": "Zeekr",
     "model": "7X Premium AWD",
-    "battery": 100.0,
-    "maxAc": 22.0,
-    "maxDc": 270.0,
+    "battery": 100,
+    "maxAc": 11,
+    "maxDc": 200,
     "range": 423
   },
   {
@@ -3501,9 +3501,9 @@ const VEICULOS = [
     "type": "BEV",
     "brand": "Zeekr",
     "model": "7X Premium RWD",
-    "battery": 100.0,
-    "maxAc": 22.0,
-    "maxDc": 270.0,
+    "battery": 100,
+    "maxAc": 11,
+    "maxDc": 200,
     "range": 491
   },
   {
@@ -3511,9 +3511,9 @@ const VEICULOS = [
     "type": "BEV",
     "brand": "Zeekr",
     "model": "X Flagship AWD",
-    "battery": 66.0,
-    "maxAc": 11.0,
-    "maxDc": 150.0,
+    "battery": 66,
+    "maxAc": 11,
+    "maxDc": 150,
     "range": 304
   },
   {
@@ -3521,9 +3521,9 @@ const VEICULOS = [
     "type": "BEV",
     "brand": "Zeekr",
     "model": "X Premium RWD",
-    "battery": 66.0,
-    "maxAc": 11.0,
-    "maxDc": 150.0,
+    "battery": 66,
+    "maxAc": 11,
+    "maxDc": 150,
     "range": 332
   }
 ];
