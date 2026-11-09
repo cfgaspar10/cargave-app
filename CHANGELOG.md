@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.4.1](https://github.com/cfgaspar10/cargave-app/compare/cargave-v1.4.0...cargave-v1.4.1) (2026-11-09)
+
+
+### 🐛 Correções de Bugs
+
+* **deploy:** recarregar cache de rotas e dns do gateway nginx no deploy da vps ([20115a0](https://github.com/cfgaspar10/cargave-app/commit/20115a0d050c66a82f0fa984d78b63dff0f8ea14))
+
+
+### 🔧 Tarefas e Manutenção
+
+* **release:** atualizar badge da interface para v1.4.0 [skip ci] ([4cce3c5](https://github.com/cfgaspar10/cargave-app/commit/4cce3c56ccb47681706515ecc76059e81703306c))
+
 ## [1.4.0](https://github.com/cfgaspar10/cargave-app/compare/cargave-v1.3.4...cargave-v1.4.0) (2026-11-09)
 
 
