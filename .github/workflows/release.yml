@@ -30,18 +30,44 @@ jobs:
         with:
           ref: main
 
-      - name: Sincronizar versão no client/index.html
+      - name: Sincronizar versão no client/index.html e Index.html
         if: ${{ steps.release.outputs.release_created }}
         run: |
           NEW_VERSION="${{ steps.release.outputs.version }}"
-          echo "Sincronizando client/index.html para a versão: v$NEW_VERSION"
+          echo "Sincronizando interfaces para a versão: v$NEW_VERSION"
           sed -i -E "s/id=\"app-version\">v[0-9]+\.[0-9]+\.[0-9]+/id=\"app-version\">v$NEW_VERSION/g" client/index.html
+          if [ -f "Index.html" ]; then
+            sed -i -E "s/id=\"app-version\">v[0-9]+\.[0-9]+\.[0-9]+/id=\"app-version\">v$NEW_VERSION/g" Index.html
+          fi
 
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-          if ! git diff --quiet client/index.html; then
-            git add client/index.html
+          if ! git diff --quiet client/index.html Index.html; then
+            git add client/index.html Index.html
             git commit -m "chore(release): atualizar badge da interface para v$NEW_VERSION [skip ci]"
             git push origin main
           fi
+
+      # Deploy automático garantido em Produção após a publicação da Release
+      - name: Conectar à rede privada Tailscale para Deploy
+        if: ${{ steps.release.outputs.release_created }}
+        uses: tailscale/github-action@v3
+        with:
+          authkey: ${{ secrets.TAILSCALE_AUTHKEY }}
+
+      - name: Configurar chave de acesso SSH
+        if: ${{ steps.release.outputs.release_created }}
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          ssh-keyscan -H ${{ secrets.SSH_HOST }} >> ~/.ssh/known_hosts 2>/dev/null || true
+
+      - name: Executar Deploy em Produção (PROD)
+        if: ${{ steps.release.outputs.release_created }}
+        run: |
+          echo "🚀 Disparando deploy automático pós-release em Produção (PROD)..."
+          ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} \
+            "bash -s -- 'cargave-prod' 'kwhub-prod' 'main'" < scripts/deploy_vps.sh
+          echo "🎉 Deploy de Produção v${{ steps.release.outputs.version }} concluído com sucesso!"
