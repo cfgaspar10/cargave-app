@@ -32,7 +32,7 @@ git checkout "$TARGET_BRANCH"
 git pull origin "$TARGET_BRANCH"
 
 echo "==> Recriando o contêiner app-server..."
-docker compose up -d --build app-server
+docker compose up -d --build --remove-orphans app-server
 
 echo "==> Atualizando cache de rotas e DNS do gateway Nginx..."
 docker exec oci-gateway nginx -s reload 2>/dev/null || true
