@@ -1,6 +1,6 @@
 {
   "name": "cargave-server",
-  "version": "1.4.1",
+  "version": "1.4.2",
   "description": "Backend API para CargaVE - Central de Inteligência em Recarga VE",
   "main": "src/index.js",
   "scripts": {

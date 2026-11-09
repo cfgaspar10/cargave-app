@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.4.2](https://github.com/cfgaspar10/cargave-app/compare/cargave-v1.4.1...cargave-v1.4.2) (2026-11-09)
+
+
+### 🔧 Tarefas e Manutenção
+
+* **release:** atualizar badge da interface para v1.4.1 [skip ci] ([be269ce](https://github.com/cfgaspar10/cargave-app/commit/be269cedfac70406cb869fe929e9ad63a5ff60ec))
+
 ## [1.4.1](https://github.com/cfgaspar10/cargave-app/compare/cargave-v1.4.0...cargave-v1.4.1) (2026-11-09)
 
 
