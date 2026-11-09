@@ -605,6 +605,16 @@ function obterListaVeiculos() {
     "range": 430
   },
   {
+    "id": "byd_yuan_plus_ate_2025",
+    "type": "BEV",
+    "brand": "BYD",
+    "model": "Yuan Plus (até 2025)",
+    "battery": 60.5,
+    "maxAc": 11,
+    "maxDc": 80,
+    "range": 294
+  },
+  {
     "id": "byd_yuan_plus_awd",
     "type": "BEV",
     "brand": "BYD",

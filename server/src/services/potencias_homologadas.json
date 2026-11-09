@@ -239,6 +239,10 @@
     "maxAc": 11,
     "maxDc": 170
   },
+  "byd_yuan_plus_ate_2025": {
+    "maxAc": 11,
+    "maxDc": 80
+  },
   "byd_yuan_plus_awd": {
     "maxAc": 11,
     "maxDc": 205
