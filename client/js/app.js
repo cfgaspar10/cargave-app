@@ -4350,23 +4350,23 @@
       });
 
       // Resetar Controles de Consumo & Viagem
-      sliderTripDistance.value = 183;
-      inputTripDistance.value = '183';
+      sliderTripDistance.value = 220;
+      inputTripDistance.value = '220';
       sliderTripStart.value = 100;
       inputTripStart.value = '100';
-      sliderTripCurrent.value = 47;
-      inputTripCurrent.value = '47';
+      sliderTripCurrent.value = 37;
+      inputTripCurrent.value = '37';
       sliderTripBattery.value = 60.5;
       inputTripBattery.value = '60,5';
 
       document.querySelectorAll('#trip-distance-presets .preset-chip').forEach(c => {
-        c.classList.toggle('active', c.dataset.val === '183');
+        c.classList.toggle('active', c.dataset.val === '220');
       });
       document.querySelectorAll('#trip-start-presets .preset-chip').forEach(c => {
         c.classList.toggle('active', c.dataset.val === '100');
       });
       document.querySelectorAll('#trip-current-presets .preset-chip').forEach(c => {
-        c.classList.toggle('active', c.dataset.val === '47');
+        c.classList.toggle('active', c.dataset.val === '37');
       });
 
       // Resetar Controles do Painel (Dashboard)
@@ -5051,6 +5051,13 @@
       inputTripStart.value = startSoc;
       inputTripCurrent.value = currentSoc;
 
+      document.querySelectorAll('#trip-start-presets .preset-chip').forEach(c => {
+        c.classList.toggle('active', parseInt(c.dataset.val, 10) === startSoc);
+      });
+      document.querySelectorAll('#trip-current-presets .preset-chip').forEach(c => {
+        c.classList.toggle('active', parseInt(c.dataset.val, 10) === currentSoc);
+      });
+
       recalculateConsumption();
     }
 
@@ -5067,6 +5074,13 @@
       sliderTripDistance.value = Math.min(Math.max(distance, 1), 800);
       sliderTripStart.value = Math.min(Math.max(startSoc, 0), 100);
       sliderTripCurrent.value = Math.min(Math.max(currentSoc, 0), 100);
+
+      document.querySelectorAll('#trip-start-presets .preset-chip').forEach(c => {
+        c.classList.toggle('active', parseInt(c.dataset.val, 10) === startSoc);
+      });
+      document.querySelectorAll('#trip-current-presets .preset-chip').forEach(c => {
+        c.classList.toggle('active', parseInt(c.dataset.val, 10) === currentSoc);
+      });
 
       recalculateConsumption();
     }

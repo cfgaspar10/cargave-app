@@ -1634,18 +1634,18 @@
         <div class="control-item">
           <div class="control-header-row">
             <div class="control-title"><span class="emoji">📍</span> Distância Percorrida (km)</div>
-            <input type="text" id="input-trip-distance" class="pill-input" value="183">
+            <input type="text" id="input-trip-distance" class="pill-input" value="220">
           </div>
           <div class="presets-row" id="trip-distance-presets">
             <button type="button" class="preset-chip" data-add="10">+10 km</button>
             <button type="button" class="preset-chip" data-add="50">+50 km</button>
             <button type="button" class="preset-chip" data-val="50">50 km</button>
             <button type="button" class="preset-chip" data-val="100">100 km</button>
-            <button type="button" class="preset-chip active" data-val="183">183 km</button>
+            <button type="button" class="preset-chip active" data-val="220">220 km</button>
             <button type="button" class="preset-chip" data-val="250">250 km</button>
           </div>
           <div class="slider-container">
-            <input type="range" id="slider-trip-distance" min="1" max="800" step="1" value="183">
+            <input type="range" id="slider-trip-distance" min="1" max="800" step="1" value="220">
           </div>
         </div>
 
@@ -1656,6 +1656,8 @@
             <input type="text" id="input-trip-start" class="pill-input" value="100">
           </div>
           <div class="presets-row" id="trip-start-presets">
+            <button type="button" class="preset-chip" data-val="60">60%</button>
+            <button type="button" class="preset-chip" data-val="70">70%</button>
             <button type="button" class="preset-chip" data-val="80">80%</button>
             <button type="button" class="preset-chip" data-val="90">90%</button>
             <button type="button" class="preset-chip active" data-val="100">100% (Cheia)</button>
@@ -1669,17 +1671,19 @@
         <div class="control-item">
           <div class="control-header-row">
             <div class="control-title"><span class="emoji">📉</span> Carga Restante Atual (%)</div>
-            <input type="text" id="input-trip-current" class="pill-input" value="47">
+            <input type="text" id="input-trip-current" class="pill-input" value="37">
           </div>
           <div class="presets-row" id="trip-current-presets">
+            <button type="button" class="preset-chip" data-val="5">5%</button>
+            <button type="button" class="preset-chip" data-val="10">10%</button>
+            <button type="button" class="preset-chip" data-val="15">15%</button>
             <button type="button" class="preset-chip" data-val="20">20%</button>
             <button type="button" class="preset-chip" data-val="30">30%</button>
-            <button type="button" class="preset-chip active" data-val="47">47%</button>
             <button type="button" class="preset-chip" data-val="60">60%</button>
             <button type="button" class="preset-chip" data-val="80">80%</button>
           </div>
           <div class="slider-container">
-            <input type="range" id="slider-trip-current" min="0" max="100" step="1" value="47">
+            <input type="range" id="slider-trip-current" min="0" max="100" step="1" value="37">
           </div>
         </div>
 
@@ -5906,23 +5910,23 @@
       });
 
       // Resetar Controles de Consumo & Viagem
-      sliderTripDistance.value = 183;
-      inputTripDistance.value = '183';
+      sliderTripDistance.value = 220;
+      inputTripDistance.value = '220';
       sliderTripStart.value = 100;
       inputTripStart.value = '100';
-      sliderTripCurrent.value = 47;
-      inputTripCurrent.value = '47';
+      sliderTripCurrent.value = 37;
+      inputTripCurrent.value = '37';
       sliderTripBattery.value = 60.5;
       inputTripBattery.value = '60,5';
 
       document.querySelectorAll('#trip-distance-presets .preset-chip').forEach(c => {
-        c.classList.toggle('active', c.dataset.val === '183');
+        c.classList.toggle('active', c.dataset.val === '220');
       });
       document.querySelectorAll('#trip-start-presets .preset-chip').forEach(c => {
         c.classList.toggle('active', c.dataset.val === '100');
       });
       document.querySelectorAll('#trip-current-presets .preset-chip').forEach(c => {
-        c.classList.toggle('active', c.dataset.val === '47');
+        c.classList.toggle('active', c.dataset.val === '37');
       });
       // Resetar Viagem com Paradas
       if (sliderMultiDistance) sliderMultiDistance.value = 800;
@@ -6464,6 +6468,13 @@
       inputTripStart.value = startSoc;
       inputTripCurrent.value = currentSoc;
 
+      document.querySelectorAll('#trip-start-presets .preset-chip').forEach(c => {
+        c.classList.toggle('active', parseInt(c.dataset.val, 10) === startSoc);
+      });
+      document.querySelectorAll('#trip-current-presets .preset-chip').forEach(c => {
+        c.classList.toggle('active', parseInt(c.dataset.val, 10) === currentSoc);
+      });
+
       recalculateConsumption();
     }
 
@@ -6480,6 +6491,13 @@
       sliderTripDistance.value = Math.min(Math.max(distance, 1), 800);
       sliderTripStart.value = Math.min(Math.max(startSoc, 0), 100);
       sliderTripCurrent.value = Math.min(Math.max(currentSoc, 0), 100);
+
+      document.querySelectorAll('#trip-start-presets .preset-chip').forEach(c => {
+        c.classList.toggle('active', parseInt(c.dataset.val, 10) === startSoc);
+      });
+      document.querySelectorAll('#trip-current-presets .preset-chip').forEach(c => {
+        c.classList.toggle('active', parseInt(c.dataset.val, 10) === currentSoc);
+      });
 
       recalculateConsumption();
     }
