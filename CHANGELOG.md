@@ -1,5 +1,19 @@
 # Changelog
 
+## [1.4.0](https://github.com/cfgaspar10/cargave-app/compare/cargave-v1.3.4...cargave-v1.4.0) (2026-11-09)
+
+
+### ✨ Novas Funcionalidades
+
+* **autonomia:** atualizar presets e valores padrao na calculadora por distancia ([eea1abb](https://github.com/cfgaspar10/cargave-app/commit/eea1abb055ee9ba521b485863080af58e1aee030))
+* **calculadora:** adicionar seletor ac/dc e amperagem nos presets de recarga ([f87edee](https://github.com/cfgaspar10/cargave-app/commit/f87edeed770ef2ec2b4a9b3589cd3d54a6924786))
+* **veiculos:** adicionar versao do BYD Yuan Plus (ate 2025) de 60.5 kWh ([c9da1c2](https://github.com/cfgaspar10/cargave-app/commit/c9da1c2780f550eda1a1bf42024016c85850ed64))
+
+
+### 🔧 Tarefas e Manutenção
+
+* **release:** atualizar badge da interface para v1.3.4 [skip ci] ([e65c3fe](https://github.com/cfgaspar10/cargave-app/commit/e65c3fe9495adf4db3f8dffbb660591449569873))
+
 ## [1.3.4](https://github.com/cfgaspar10/cargave-app/compare/cargave-v1.3.3...cargave-v1.3.4) (2026-11-07)
 
 
