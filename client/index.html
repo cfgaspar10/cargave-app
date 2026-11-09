@@ -145,7 +145,16 @@
           </div>
           <input type="text" id="input-charger" class="pill-input" value="6.6">
         </div>
-        <div class="presets-row" id="charger-presets"></div>
+        <!-- Seletor de Tipo de Carga (AC / DC) -->
+        <div class="charger-type-tabs" id="charger-type-tabs">
+          <button type="button" class="charger-type-tab active" data-type="ac">
+            <span class="tab-icon">⚡</span> Carga AC <span class="tab-sub">(Residencial)</span>
+          </button>
+          <button type="button" class="charger-type-tab" data-type="dc">
+            <span class="tab-icon">🚀</span> Carga DC <span class="tab-sub">(Rápida)</span>
+          </button>
+        </div>
+        <div class="presets-row charger-presets-wrap" id="charger-presets"></div>
         <div class="slider-container">
           <input type="range" id="slider-charger" min="1.0" max="150.0" step="0.1" value="6.6">
         </div>

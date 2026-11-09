@@ -3950,60 +3950,151 @@
       });
     }
 
+    let currentChargerType = 'ac';
+
+    function formatAcAmperage(val) {
+      if (Math.abs(val - 1.7) < 0.15 || Math.abs(val - 1.8) < 0.15) return '8A';
+      if (Math.abs(val - 2.2) < 0.15) return '10A';
+      if (Math.abs(val - 3.3) < 0.15 || Math.abs(val - 3.5) < 0.15 || Math.abs(val - 3.7) < 0.15) return '16A';
+      if (Math.abs(val - 6.6) < 0.15) return '30A';
+      if (Math.abs(val - 7.0) < 0.15 || Math.abs(val - 7.4) < 0.15) return '32A';
+      if (Math.abs(val - 11) < 0.2) return '16A 3F';
+      if (Math.abs(val - 22) < 0.2) return '32A 3F';
+      if (val <= 7.4) {
+        return Math.round((val * 1000) / 220) + 'A';
+      }
+      return Math.round((val * 1000) / (Math.sqrt(3) * 380)) + 'A 3F';
+    }
+
+    function updateChargerTypeTabs(v) {
+      const tabAc = document.querySelector('#charger-type-tabs .charger-type-tab[data-type="ac"]');
+      const tabDc = document.querySelector('#charger-type-tabs .charger-type-tab[data-type="dc"]');
+      if (!tabAc || !tabDc) return;
+
+      const hasDc = !v || (v.maxDc && v.maxDc > 0);
+      tabDc.classList.toggle('tab-disabled', !hasDc);
+
+      if (!hasDc) {
+        tabDc.innerHTML = '<span class="tab-icon">🚀</span> Carga DC <span class="tab-sub">(Sem DC)</span>';
+        tabDc.title = 'Este modelo não suporta recarga rápida DC';
+      } else {
+        tabDc.innerHTML = '<span class="tab-icon">🚀</span> Carga DC <span class="tab-sub">(Rápida)</span>';
+        tabDc.title = 'Estações rápidas em rodovias e postos';
+      }
+
+      tabAc.classList.toggle('active', currentChargerType === 'ac');
+      tabDc.classList.toggle('active', currentChargerType === 'dc');
+    }
+
+    function setChargerType(type, triggerValueChange = false) {
+      currentChargerType = type;
+      updateChargerTypeTabs(currentVehicle);
+
+      if (triggerValueChange) {
+        if (type === 'ac') {
+          const defAc = (currentVehicle && currentVehicle.maxAc) ? Math.min(6.6, currentVehicle.maxAc) : 6.6;
+          sliderCharger.value = defAc;
+          inputCharger.value = formatPt(defAc, defAc % 1 === 0 ? 0 : 1);
+        } else if (type === 'dc') {
+          if (!currentVehicle || currentVehicle.maxDc > 0) {
+            const defDc = (currentVehicle && currentVehicle.maxDc) ? Math.min(50, currentVehicle.maxDc) : 50;
+            sliderCharger.value = defDc;
+            inputCharger.value = formatPt(defDc, 0);
+          }
+        }
+        recalculate();
+      }
+
+      updateChargerPresets(currentVehicle);
+    }
+
     function updateChargerPresets(v) {
+      if (!chargerPresetsContainer) return;
       chargerPresetsContainer.innerHTML = '';
+      updateChargerTypeTabs(v);
+
       let presets = [];
 
-      if (v) {
-        const maxAc = v.maxAc || 6.6;
-        const maxDc = v.maxDc || 0;
+      if (currentChargerType === 'ac') {
+        if (v) {
+          const maxAc = v.maxAc || 6.6;
+          presets.push({ label: '1.7 kW (8A)', val: 1.7 });
+          presets.push({ label: '2.2 kW (10A)', val: 2.2 });
 
-        presets.push({ label: '2.2 kW (Tomada)', val: 2.2 });
-        if (maxAc > 6.6) {
-          presets.push({ label: '6.6 kW', val: 6.6 });
-          presets.push({ label: maxAc + ' kW (Máx AC)', val: maxAc });
-        } else if (maxAc === 6.6) {
-          presets.push({ label: '6.6 kW (Máx AC)', val: 6.6 });
-        } else {
-          if (maxAc > 3.3) {
-            presets.push({ label: '3.7 kW', val: 3.7 });
-          }
-          presets.push({ label: maxAc + ' kW (Máx AC)', val: maxAc });
-        }
-
-        if (maxDc > 0) {
-          if (maxDc <= 22) {
-            presets.push({ label: maxDc + ' kW (DC)', val: maxDc });
-          } else if (maxDc <= 40) {
-            presets.push({ label: '22 kW (DC)', val: 22 });
-            presets.push({ label: maxDc + ' kW (Máx DC)', val: maxDc });
-          } else if (maxDc <= 60) {
-            presets.push({ label: '30 kW (DC)', val: 30 });
-            presets.push({ label: maxDc + ' kW (Máx DC)', val: maxDc });
-          } else {
-            presets.push({ label: '50 kW (DC)', val: 50 });
-            if (maxDc >= 80) {
-              if (maxDc > 80) {
-                presets.push({ label: '80 kW (DC)', val: 80 });
-                presets.push({ label: Math.min(maxDc, 150) + ' kW (Máx DC)', val: Math.min(maxDc, 150) });
-              } else {
-                presets.push({ label: '80 kW (Máx DC)', val: 80 });
-              }
-            } else if (maxDc > 50) {
-              presets.push({ label: maxDc + ' kW (Máx DC)', val: maxDc });
+          if (maxAc > 2.2 && maxAc <= 3.7) {
+            presets.push({ label: `${formatPt(maxAc, 1)} kW (${formatAcAmperage(maxAc)} · Máx)`, val: maxAc });
+          } else if (maxAc > 3.7 && maxAc <= 7.4) {
+            presets.push({ label: '3.7 kW (16A)', val: 3.7 });
+            if (Math.abs(maxAc - 6.6) < 0.1) {
+              presets.push({ label: '6.6 kW (30A · Máx)', val: 6.6 });
+            } else if (Math.abs(maxAc - 7.0) < 0.1 || Math.abs(maxAc - 7.4) < 0.1) {
+              presets.push({ label: `${formatPt(maxAc, 1)} kW (32A · Máx)`, val: maxAc });
+            } else {
+              presets.push({ label: `${formatPt(maxAc, 1)} kW (${formatAcAmperage(maxAc)} · Máx)`, val: maxAc });
+            }
+          } else if (maxAc > 7.4) {
+            presets.push({ label: '3.7 kW (16A)', val: 3.7 });
+            presets.push({ label: '7.4 kW (32A)', val: 7.4 });
+            if (Math.abs(maxAc - 11) < 0.2) {
+              presets.push({ label: '11 kW (16A 3F · Máx)', val: 11 });
+            } else if (maxAc > 11 && maxAc < 22) {
+              presets.push({ label: '11 kW (16A 3F)', val: 11 });
+              presets.push({ label: `${formatPt(maxAc, 1)} kW (${formatAcAmperage(maxAc)} · Máx)`, val: maxAc });
+            } else if (maxAc >= 22) {
+              presets.push({ label: '11 kW (16A 3F)', val: 11 });
+              presets.push({ label: '22 kW (32A 3F · Máx)', val: 22 });
             }
           }
+        } else {
+          presets = [
+            { label: '1.7 kW (8A)', val: 1.7 },
+            { label: '2.2 kW (10A)', val: 2.2 },
+            { label: '3.7 kW (16A)', val: 3.7 },
+            { label: '7.4 kW (32A)', val: 7.4 },
+            { label: '11 kW (16A 3F)', val: 11 },
+            { label: '22 kW (32A 3F)', val: 22 }
+          ];
         }
       } else {
-        presets = [
-          { label: '2.2 kW (Tomada)', val: 2.2 },
-          { label: '6.6 kW', val: 6.6 },
-          { label: '7.4 kW', val: 7.4 },
-          { label: '11 kW', val: 11 },
-          { label: '22 kW', val: 22 },
-          { label: '50 kW (DC)', val: 50 },
-          { label: '80 kW (DC)', val: 80 }
-        ];
+        // Modo DC (Corrente Contínua)
+        if (v) {
+          const maxDc = v.maxDc || 0;
+          if (maxDc <= 0) {
+            const hint = document.createElement('div');
+            hint.className = 'charger-no-dc-hint';
+            hint.innerHTML = '⚡ <strong>Veículo PHEV / AC puro:</strong> Este modelo opera exclusivamente com recarga AC (não possui carregamento rápido DC).';
+            chargerPresetsContainer.appendChild(hint);
+            return;
+          }
+
+          if (maxDc <= 30) {
+            if (maxDc > 20) presets.push({ label: '20 kW (DC)', val: 20 });
+            presets.push({ label: `${formatPt(maxDc, 0)} kW (Máx DC)`, val: maxDc });
+          } else if (maxDc <= 60) {
+            presets.push({ label: '30 kW (DC)', val: 30 });
+            if (maxDc > 50) presets.push({ label: '50 kW (DC)', val: 50 });
+            presets.push({ label: `${formatPt(maxDc, 0)} kW (Máx DC)`, val: maxDc });
+          } else if (maxDc <= 100) {
+            presets.push({ label: '30 kW (DC)', val: 30 });
+            presets.push({ label: '50 kW (DC)', val: 50 });
+            if (maxDc > 80) presets.push({ label: '80 kW (DC)', val: 80 });
+            presets.push({ label: `${formatPt(maxDc, 0)} kW (Máx DC)`, val: maxDc });
+          } else {
+            presets.push({ label: '50 kW (DC)', val: 50 });
+            presets.push({ label: '80 kW (DC)', val: 80 });
+            presets.push({ label: '120 kW (DC)', val: 120 });
+            const targetMax = Math.min(maxDc, 150);
+            presets.push({ label: `${formatPt(targetMax, 0)} kW (Máx DC)`, val: targetMax });
+          }
+        } else {
+          presets = [
+            { label: '30 kW (DC)', val: 30 },
+            { label: '50 kW (DC)', val: 50 },
+            { label: '80 kW (DC)', val: 80 },
+            { label: '120 kW (DC)', val: 120 },
+            { label: '150 kW (DC)', val: 150 }
+          ];
+        }
       }
 
       const currentChargerVal = parsePtNumber(inputCharger.value);
@@ -4015,13 +4106,13 @@
         chip.className = 'preset-chip' + (isActive ? ' active' : '');
         chip.setAttribute('data-val', p.val);
         chip.textContent = p.label;
-        
+
         chip.addEventListener('click', function() {
           document.querySelectorAll('#charger-presets .preset-chip').forEach(c => c.classList.remove('active'));
           chip.classList.add('active');
           const val = parseFloat(p.val);
           sliderCharger.value = val;
-          inputCharger.value = formatPt(val, 1);
+          inputCharger.value = formatPt(val, val % 1 === 0 ? 0 : 1);
           recalculate();
         });
         chargerPresetsContainer.appendChild(chip);
@@ -4685,15 +4776,32 @@
         sliderStart.value = startSoc;
       }
 
-      inputCharger.value = formatPt(charger, 1);
+      inputCharger.value = formatPt(charger, charger % 1 === 0 ? 0 : 1);
       inputBattery.value = formatPt(battery, 2);
       inputStart.value = startSoc;
       inputTarget.value = targetSoc;
 
-      document.querySelectorAll('#charger-presets .preset-chip').forEach(c => {
-        const cVal = parseFloat(c.getAttribute('data-val'));
-        c.classList.toggle('active', Math.abs(charger - cVal) < 0.15);
-      });
+      // Sincronização inteligente com a aba AC / DC
+      const acLimit = (currentVehicle && currentVehicle.maxAc) ? currentVehicle.maxAc : 22.0;
+      const vehicleHasDc = !currentVehicle || (currentVehicle.maxDc && currentVehicle.maxDc > 0);
+      let targetType = currentChargerType;
+
+      if (charger > acLimit && vehicleHasDc) {
+        targetType = 'dc';
+      } else if (charger <= acLimit) {
+        targetType = 'ac';
+      }
+
+      if (targetType !== currentChargerType) {
+        currentChargerType = targetType;
+        updateChargerPresets(currentVehicle);
+      } else {
+        document.querySelectorAll('#charger-presets .preset-chip').forEach(c => {
+          const cVal = parseFloat(c.getAttribute('data-val'));
+          c.classList.toggle('active', Math.abs(charger - cVal) < 0.15);
+        });
+      }
+
       document.querySelectorAll('#start-presets .preset-chip').forEach(c => {
         c.classList.toggle('active', parseInt(c.dataset.val, 10) === startSoc);
       });
@@ -4724,10 +4832,27 @@
       sliderStart.value = Math.min(Math.max(startSoc, 0), 100);
       sliderTarget.value = Math.min(Math.max(targetSoc, 0), 100);
 
-      document.querySelectorAll('#charger-presets .preset-chip').forEach(c => {
-        const cVal = parseFloat(c.getAttribute('data-val'));
-        c.classList.toggle('active', Math.abs(charger - cVal) < 0.15);
-      });
+      // Sincronização inteligente com a aba AC / DC
+      const acLimit = (currentVehicle && currentVehicle.maxAc) ? currentVehicle.maxAc : 22.0;
+      const vehicleHasDc = !currentVehicle || (currentVehicle.maxDc && currentVehicle.maxDc > 0);
+      let targetType = currentChargerType;
+
+      if (charger > acLimit && vehicleHasDc) {
+        targetType = 'dc';
+      } else if (charger <= acLimit) {
+        targetType = 'ac';
+      }
+
+      if (targetType !== currentChargerType) {
+        currentChargerType = targetType;
+        updateChargerPresets(currentVehicle);
+      } else {
+        document.querySelectorAll('#charger-presets .preset-chip').forEach(c => {
+          const cVal = parseFloat(c.getAttribute('data-val'));
+          c.classList.toggle('active', Math.abs(charger - cVal) < 0.15);
+        });
+      }
+
       document.querySelectorAll('#start-presets .preset-chip').forEach(c => {
         c.classList.toggle('active', parseInt(c.dataset.val, 10) === startSoc);
       });
@@ -5147,6 +5272,14 @@
       try {
         localStorage.setItem(STORAGE_KEY_TARIFF, inputTariff.value);
       } catch (e) {}
+    });
+
+    document.querySelectorAll('#charger-type-tabs .charger-type-tab').forEach(tab => {
+      tab.addEventListener('click', () => {
+        const targetType = tab.dataset.type;
+        if (targetType === currentChargerType) return;
+        setChargerType(targetType, true);
+      });
     });
 
     // ============================================================
